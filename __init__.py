@@ -82,8 +82,8 @@ if module == "LoginSap":
 if module == "ClickObjeto":
     # global id_object
     id_object = GetParams('id_object')
+    input_ = GetParams('input_')
     tipo = GetParams('tipo')
-    #print(id_object)
 
     if not conx:
         raise Exception("Debe iniciar sesión en SAP")
@@ -104,9 +104,8 @@ if module == "ClickObjeto":
 
             if tipo == "setFocus":
                 session.findById(id_object).setFocus()
-                print(session.findById(id_object).setFocus())
 
-            if tipo == "select_":
+            if tipo == "select":
                 session.findById(id_object).select()
 
             if tipo == "close":
@@ -115,6 +114,26 @@ if module == "ClickObjeto":
             if tipo == "createSession":
                 session.createSession()
 
+            if tipo == "selectColumn":
+                session.findById(id_object).selectColumn(input_)
+
+            if tipo == "pressContextButton":
+                if input_:
+                    session.findById(id_object).pressContextButton(input_)
+                else:
+                    session.findById(id_object).pressContextButton()
+
+            if tipo == "pressButton":
+                if input_:
+                    session.findById(id_object).pressButton(input_)
+                else:
+                    session.findById(id_object).pressButton()
+
+            if tipo == "pressToolbarButton":
+                session.findById(id_object).pressToolbarButton(input_)
+
+            if tipo == "currentCellColumn":
+                session.findById(id_object).currentCellColumn(input_)
 
 
     except:

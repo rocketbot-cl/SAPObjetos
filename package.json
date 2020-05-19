@@ -2,7 +2,7 @@
     "author":"Marcela Vergara",
     "description": "Module to work with SAP R3 and Hana",
     "disclaimer":"THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-    "version":"0.3",
+    "version":"0.4",
     "license": "MIT",
     "homepage":"http://rocketbot.co/",
     "linux": false,
@@ -190,6 +190,23 @@
                         "css": "col-md-12"
                     },
                   {
+                        "type": "input",
+                        "placeholder": {
+                            "es": "QMNUM",
+                            "en": "QMNUM"
+                        },
+                        "title": {
+                            "es": "Valor:",
+                            "en": "Value:"
+                        },
+                        "help": {
+                            "es": "solo cuando requiere parametros",
+                            "en": "Only when it requires parameters"
+                        },
+                        "id": "input_",
+                        "css": "col-md-12"
+                    },
+                  {
                         "type": "select",
                         "placeholder": {
                             "es": "Opción",
@@ -208,7 +225,12 @@
                                 {"title":"text","value":"text"},
                                 {"title":"select","value":"select"},
                                 {"title":"close","value":"close"},
-                                {"title":"createSession","value":"createSession"}
+                                {"title":"createSession","value":"createSession"},
+                                {"title":"selectColumn","value":"selectColumn"},
+                                {"title":"pressContextButton","value":"pressContextButton"},
+                                {"title":"pressButton","value":"pressButton"},
+                                {"title":"pressToolbarButton","value":"pressToolbarButton"},
+                                {"title":"currentCellColumn","value":"currentCellColumn"}
                         ],
                         "id": "tipo",
                         "css": "col-md-12"
