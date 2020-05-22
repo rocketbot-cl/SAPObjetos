@@ -147,8 +147,8 @@ if module == "ClickObjeto":
             if tipo == "selectedRows":
                 session.findById(id_object).selectedRows(input_)
 
-            if tipo == "verticalScrollBar":
-                session.findById(id_object).verticalScrollBar(input_)
+            if tipo == "verticalScrollbar":
+                session.findById(id_object).verticalScrollbar(input_)
 
 
     except:

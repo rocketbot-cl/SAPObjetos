@@ -234,7 +234,7 @@
                                 {"title":"selectedNode","value":"selectedNode"},
                                 {"title":"selectedRows","value":"selectedRows"},
                                 {"title":"text","value":"text"},
-                                {"title":"verticalScrollBar","value":"verticalScrollBar"}
+                                {"title":"verticalScrollbar","value":"verticalScrollbar"}
                         ],
                         "id": "tipo",
                         "css": "col-md-12"
