@@ -85,6 +85,9 @@ if module == "ClickObjeto":
     input_ = GetParams('input_')
     tipo = GetParams('tipo')
 
+    #agregar espacios hasta completar 10 caracteres
+    #"{:>10}".format(input_)
+
     if not conx:
         raise Exception("Debe iniciar sesión en SAP")
 
@@ -134,6 +137,18 @@ if module == "ClickObjeto":
 
             if tipo == "currentCellColumn":
                 session.findById(id_object).currentCellColumn(input_)
+
+            if tipo == "selectContextMenuItem":
+                session.findById(id_object).selectContextMenuItem(input_)
+
+            if tipo == "selectedNode":
+                session.findById(id_object).selectedNode(input_)
+
+            if tipo == "selectedRows":
+                session.findById(id_object).selectedRows(input_)
+
+            if tipo == "verticalScrollBar":
+                session.findById(id_object).verticalScrollBar(input_)
 
 
     except:
