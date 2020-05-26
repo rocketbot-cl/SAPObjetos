@@ -32,8 +32,9 @@ import time
     Obtengo el modulo que fue invocado
 """
 module = GetParams("module")
-global conx
+global SAPObject
 global id_object
+
 
 """
     Realiza Login
@@ -71,12 +72,12 @@ if module == "LoginSap":
             session.findById(id_pass).text = password
 
             if connection:
-                conx = connection
+                SAPObject = connection
 
         except:
             PrintException()
             print(sys.exc_info()[0])
-            conx = None
+            SAPObject = None
 
 
 if module == "ClickObjeto":
@@ -88,12 +89,12 @@ if module == "ClickObjeto":
     #agregar espacios hasta completar 10 caracteres
     #"{:>10}".format(input_)
 
-    if not conx:
+    if not SAPObject:
         raise Exception("Debe iniciar sesión en SAP")
 
     try:
 
-        connection = conx
+        connection = SAPObject
         session = connection.Children(0)
         session.findById("wnd[0]").maximize()
 
@@ -161,7 +162,7 @@ if module == "ExtraerTexto":
     var = GetParams('var')
 
     try:
-        connection = conx
+        connection = SAPObject
         session = connection.Children(0)
 
         if id_object:
@@ -176,11 +177,11 @@ if module == "click_check":
     tipo = GetParams('tipo')
     # print(id_object)
 
-    if not conx:
+    if not SAPObject:
         raise Exception("Debe iniciar sesión en SAP")
 
     try:
-        connection = conx
+        connection = SAPObject
         session = connection.Children(0)
         session.findById("wnd[0]").maximize()
 
