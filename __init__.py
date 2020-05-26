@@ -32,7 +32,7 @@ import time
     Obtengo el modulo que fue invocado
 """
 module = GetParams("module")
-global SAPObject
+global conx
 global id_object
 
 """
@@ -71,16 +71,12 @@ if module == "LoginSap":
             session.findById(id_pass).text = password
 
             if connection:
-                SAPObject = {
-                    "connection": connection
-                }
+                conx = connection
 
         except:
             PrintException()
             print(sys.exc_info()[0])
-            SAPObject = {
-                "connection": None
-            }
+            conx = None
 
 
 if module == "ClickObjeto":
@@ -89,12 +85,15 @@ if module == "ClickObjeto":
     input_ = GetParams('input_')
     tipo = GetParams('tipo')
 
-    if not SAPObject["connection"]:
+    #agregar espacios hasta completar 10 caracteres
+    #"{:>10}".format(input_)
+
+    if not conx:
         raise Exception("Debe iniciar sesión en SAP")
 
     try:
 
-        connection = SAPObject["connection"]
+        connection = conx
         session = connection.Children(0)
         session.findById("wnd[0]").maximize()
 
@@ -139,6 +138,18 @@ if module == "ClickObjeto":
             if tipo == "currentCellColumn":
                 session.findById(id_object).currentCellColumn(input_)
 
+            if tipo == "selectContextMenuItem":
+                session.findById(id_object).selectContextMenuItem(input_)
+
+            if tipo == "selectedNode":
+                session.findById(id_object).selectedNode(input_)
+
+            if tipo == "selectedRows":
+                session.findById(id_object).selectedRows(input_)
+
+            if tipo == "verticalScrollbar":
+                session.findById(id_object).verticalScrollbar(input_)
+
 
     except:
         raise Exception("Debe iniciar sesion en SAP")
@@ -150,7 +161,7 @@ if module == "ExtraerTexto":
     var = GetParams('var')
 
     try:
-        connection = SAPObject["connection"]
+        connection = conx
         session = connection.Children(0)
 
         if id_object:
@@ -165,11 +176,11 @@ if module == "click_check":
     tipo = GetParams('tipo')
     # print(id_object)
 
-    if not SAPObject["connection"]:
+    if not conx:
         raise Exception("Debe iniciar sesión en SAP")
 
     try:
-        connection = SAPObject["connection"]
+        connection = conx
         session = connection.Children(0)
         session.findById("wnd[0]").maximize()
 
