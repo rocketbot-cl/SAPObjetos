@@ -151,10 +151,10 @@ if module == "ClickObjeto":
             if tipo == "verticalScrollbar":
                 session.findById(id_object).verticalScrollbar(input_)
 
-
-    except:
-        raise Exception("Debe iniciar sesion en SAP")
+    except Exception as e:
+        print("\x1B[" + "31;40mError\u2193\x1B[" + "0m")
         PrintException()
+        raise e
 
 
 if module == "ExtraerTexto":
@@ -169,8 +169,11 @@ if module == "ExtraerTexto":
             val = session.findById(id_object).text
             SetVar(var,val)
 
-    except:
+
+    except Exception as e:
+        print("\x1B[" + "31;40mError\u2193\x1B[" + "0m")
         PrintException()
+        raise e
 
 if module == "click_check":
     id_object = GetParams('id_object')
@@ -194,6 +197,7 @@ if module == "click_check":
         if not tipo:
             raise Exception("Debe seleccionar una opción")
 
-    except:
-        raise Exception("Debe iniciar sesion en SAP")
+    except Exception as e:
+        print("\x1B[" + "31;40mError\u2193\x1B[" + "0m")
         PrintException()
+        raise e
