@@ -232,6 +232,7 @@
                                 {"title":"selectColumn","value":"selectColumn"},
                                 {"title":"selectContextMenuItem","value":"selectContextMenuItem"},
                                 {"title":"selectedNode","value":"selectedNode"},
+                                {"title":"selectNode","value":"selectNode"},
                                 {"title":"selectedRows","value":"selectedRows"},
                                 {"title":"text","value":"text"},
                                 {"title":"verticalScrollbar","value":"verticalScrollbar"}

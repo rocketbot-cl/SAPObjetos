@@ -145,6 +145,9 @@ if module == "ClickObjeto":
             if tipo == "selectedNode":
                 session.findById(id_object).selectedNode(input_)
 
+            if tipo == "selectNode":
+                session.findById(id_object).selectedNode(input_)
+
             if tipo == "selectedRows":
                 session.findById(id_object).selectedRows(input_)
 
