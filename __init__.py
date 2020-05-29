@@ -98,6 +98,9 @@ if module == "ClickObjeto":
         session = connection.Children(0)
         session.findById("wnd[0]").maximize()
 
+        if input_.startswith('"'):
+            input_ = eval(input_)
+
         if id_object:
 
             if tipo == "text":
@@ -146,7 +149,7 @@ if module == "ClickObjeto":
                 session.findById(id_object).selectedNode(input_)
 
             if tipo == "selectNode":
-                session.findById(id_object).selectedNode(input_)
+                session.findById(id_object).selectNode(input_)
 
             if tipo == "selectedRows":
                 session.findById(id_object).selectedRows(input_)
