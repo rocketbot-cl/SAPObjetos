@@ -221,11 +221,13 @@
                         "options":[
                                 {"title":"--Seleccione--","value":""},
                                 {"title":"close","value":"close"},
+                                {"title":"contextMenu","value":"contextMenu"},
                                 {"title":"createSession","value":"createSession"},
                                 {"title":"currentCellColumn","value":"currentCellColumn"},
                                 {"title":"press","value":"press"},
                                 {"title":"pressButton","value":"pressButton"},
                                 {"title":"pressContextButton","value":"pressContextButton"},
+                                {"title":"pressToolbarContextButton","value":"pressToolbarContextButton"},
                                 {"title":"pressToolbarButton","value":"pressToolbarButton"},
                                 {"title":"select","value":"select"},
                                 {"title":"setFocus","value":"setFocus"},

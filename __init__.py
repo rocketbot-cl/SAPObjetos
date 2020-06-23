@@ -119,6 +119,10 @@ if module == "ClickObjeto":
             if tipo == "close":
                 session.findById(id_object).close()
 
+            if tipo == "contextMenu":
+                session.findById(id_object).contextMenu()
+                time.sleep(2)
+
             if tipo == "createSession":
                 session.createSession()
 
@@ -130,6 +134,12 @@ if module == "ClickObjeto":
                     session.findById(id_object).pressContextButton(input_)
                 else:
                     session.findById(id_object).pressContextButton()
+
+            if tipo == "pressToolbarContextButton":
+                if input_:
+                    session.findById(id_object).pressToolbarContextButton(input_)
+                else:
+                    session.findById(id_object).pressToolbarContextButton()
 
             if tipo == "pressButton":
                 if input_:
