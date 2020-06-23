@@ -98,8 +98,9 @@ if module == "ClickObjeto":
         session = connection.Children(0)
         session.findById("wnd[0]").maximize()
 
-        if input_.startswith('"'):
-            input_ = eval(input_)
+        if input_:
+            if input_.startswith('"'):
+                input_ = eval(input_)
 
         if id_object:
 
