@@ -163,6 +163,8 @@ if module == "ClickObjeto":
                 session.findById(id_object).selectNode(input_)
 
             if tipo == "selectedRows":
+                if input_.isdigit(): input_ = int(input_)
+
                 session.findById(id_object).selectedRows(input_)
 
             if tipo == "verticalScrollbar":
