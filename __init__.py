@@ -218,3 +218,23 @@ if module == "click_check":
         print("\x1B[" + "31;40mError\u2193\x1B[" + "0m")
         PrintException()
         raise e
+
+if module == "ExtractCell":
+    id_object = GetParams('id_object')
+    column = GetParams('column')
+    row = GetParams('row')
+    var = GetParams('var')
+
+    try:
+        connection = SAPObject
+        session = connection.Children(0)
+
+        if id_object:
+            val = session.findById(id_object).getcellvalue(row, column)
+            SetVar(var, val)
+
+
+    except Exception as e:
+        print("\x1B[" + "31;40mError\u2193\x1B[" + "0m")
+        PrintException()
+        raise e
