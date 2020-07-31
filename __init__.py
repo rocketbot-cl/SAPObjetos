@@ -105,7 +105,10 @@ if module == "ClickObjeto":
         if id_object:
 
             if tipo == "text":
-                session.findById(id_object).text()
+                try:
+                    session.findById(id_object).text()
+                except:
+                    session.findById(id_object).text = input_
 
             if tipo == "press":
                 session.findById(id_object).press()
