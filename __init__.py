@@ -230,9 +230,28 @@ if module == "ExtractCell":
         session = connection.Children(0)
 
         if id_object:
-            val = session.findById(id_object).getcellvalue(row, column)
+            val = session.findById(id_object).getcellvalue(int(row), column)
             SetVar(var, val)
 
+
+    except Exception as e:
+        print("\x1B[" + "31;40mError\u2193\x1B[" + "0m")
+        PrintException()
+        raise e
+
+if module == "ClickCell":
+    id_object = GetParams('id_object')
+    column = GetParams('column')
+    row = GetParams('row')
+
+    try:
+        connection = SAPObject
+        session = connection.Children(0)
+
+        if id_object:
+            session.findById(id_object).currentCellColumn = column
+            session.findById(id_object).selectedRows = row
+            session.findById(id_object).clickCurrentCell()
 
     except Exception as e:
         print("\x1B[" + "31;40mError\u2193\x1B[" + "0m")
