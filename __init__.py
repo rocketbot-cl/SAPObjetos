@@ -172,7 +172,7 @@ if module == "ClickObjeto":
                 session.findById(id_object).verticalScrollbar(input_)
 
     except Exception as e:
-        print("\x1B[" + "31;40mError\u2193\x1B[" + "0m")
+        print("\x1B[" + "31;40mError\x1B[" + "0m")
         PrintException()
         raise e
 
@@ -191,7 +191,7 @@ if module == "ExtraerTexto":
 
 
     except Exception as e:
-        print("\x1B[" + "31;40mError\u2193\x1B[" + "0m")
+        print("\x1B[" + "31;40mError\x1B[" + "0m")
         PrintException()
         raise e
 
@@ -218,7 +218,7 @@ if module == "click_check":
             raise Exception("Debe seleccionar una opción")
 
     except Exception as e:
-        print("\x1B[" + "31;40mError\u2193\x1B[" + "0m")
+        print("\x1B[" + "31;40mError\x1B[" + "0m")
         PrintException()
         raise e
 
@@ -238,7 +238,7 @@ if module == "ExtractCell":
 
 
     except Exception as e:
-        print("\x1B[" + "31;40mError\u2193\x1B[" + "0m")
+        print("\x1B[" + "31;40mError\x1B[" + "0m")
         PrintException()
         raise e
 
@@ -257,6 +257,25 @@ if module == "ClickCell":
             session.findById(id_object).clickCurrentCell()
 
     except Exception as e:
-        print("\x1B[" + "31;40mError\u2193\x1B[" + "0m")
+        print("\x1B[" + "31;40mError\x1B[" + "0m")
+        PrintException()
+        raise e
+
+if module == "runVBA":
+    try:
+        import subprocess
+
+        path = GetParams("path")
+        example = GetParams("example")
+
+        if example:
+            base_path = tmp_global_obj["basepath"]
+            cur_path = base_path + 'modules' + os.sep + 'SAPObjetos' + os.sep + 'libs' + os.sep
+            path = cur_path + example
+
+        subprocess.call(r"cscript " + path)
+
+    except Exception as e:
+        print("\x1B[" + "31;40mError\x1B[" + "0m")
         PrintException()
         raise e
