@@ -246,15 +246,21 @@ if module == "ClickCell":
     id_object = GetParams('id_object')
     column = GetParams('column')
     row = GetParams('row')
+    click_type = GetParams("type")
 
     try:
         connection = SAPObject
         session = connection.Children(0)
 
-        if id_object:
+        if not id_object:
+            raise Exception("Field 'Id object' is empty")
+
+        if not click_type or click_type == "clickCurrentCell":
             session.findById(id_object).currentCellColumn = column
             session.findById(id_object).selectedRows = row
             session.findById(id_object).clickCurrentCell()
+        if click_type == "setCurrentCell":
+            session.findById(id_object).setCurrentCell(row, column)
 
     except Exception as e:
         print("\x1B[" + "31;40mError\x1B[" + "0m")
