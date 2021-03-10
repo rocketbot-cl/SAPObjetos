@@ -170,11 +170,6 @@ if module == "ClickObjeto":
 
             if tipo == "verticalScrollbar":
                 session.findById(id_object).verticalScrollbar(input_)
-            if tipo == "key":
-                if input_:
-                    session.findById(id_object).key = input_
-                else:
-                    session.findById(id_object).key()
 
             if tipo == "key":
                 session.findById(id_object).key = input_
