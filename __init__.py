@@ -170,6 +170,11 @@ if module == "ClickObjeto":
 
             if tipo == "verticalScrollbar":
                 session.findById(id_object).verticalScrollbar(input_)
+            if tipo == "key":
+                if input_:
+                    session.findById(id_object).key = input_
+                else:
+                    session.findById(id_object).key()
 
     except Exception as e:
         print("\x1B[" + "31;40mError\x1B[" + "0m")
@@ -280,6 +285,24 @@ if module == "runVBA":
             path = cur_path + example
 
         subprocess.call(r"cscript " + path)
+
+    except Exception as e:
+        print("\x1B[" + "31;40mError\x1B[" + "0m")
+        PrintException()
+        raise e
+
+if module == "checkbox":
+    id_object = GetParams('id_object')
+    result = GetParams('var')
+    try:
+        connection = SAPObject
+        session = connection.Children(0)
+
+        if not id_object:
+            raise Exception("Field 'Id object' is empty")
+
+        val = session.findById(id_object).selected
+        SetVar(result, val)
 
     except Exception as e:
         print("\x1B[" + "31;40mError\x1B[" + "0m")
