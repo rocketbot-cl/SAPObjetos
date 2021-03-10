@@ -176,6 +176,9 @@ if module == "ClickObjeto":
                 else:
                     session.findById(id_object).key()
 
+            if tipo == "key":
+                session.findById(id_object).key = input_
+
     except Exception as e:
         print("\x1B[" + "31;40mError\x1B[" + "0m")
         PrintException()
