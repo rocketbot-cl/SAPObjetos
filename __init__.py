@@ -68,8 +68,9 @@ if module == "LoginSap":
             connection = application.OpenConnection(conn, True)
             session = connection.Children(0)
 
-            session.findById(id_user).text = user
-            session.findById(id_pass).text = password
+            if user and password:
+                session.findById(id_user).text = user
+                session.findById(id_pass).text = password
 
             if connection:
                 SAPObject = connection
