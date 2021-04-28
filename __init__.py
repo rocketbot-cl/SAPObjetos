@@ -80,20 +80,18 @@ if module == "LoginSap":
             print(sys.exc_info()[0])
             SAPObject = None
 
+try:
+    if module == "ClickObjeto":
+        # global id_object
+        id_object = GetParams('id_object')
+        input_ = GetParams('input_')
+        tipo = GetParams('tipo')
 
-if module == "ClickObjeto":
-    # global id_object
-    id_object = GetParams('id_object')
-    input_ = GetParams('input_')
-    tipo = GetParams('tipo')
+        #agregar espacios hasta completar 10 caracteres
+        #"{:>10}".format(input_)
 
-    #agregar espacios hasta completar 10 caracteres
-    #"{:>10}".format(input_)
-
-    if not SAPObject:
-        raise Exception("Debe iniciar sesión en SAP")
-
-    try:
+        if not SAPObject:
+            raise Exception("Debe iniciar sesión en SAP")
 
         connection = SAPObject
         session = connection.Children(0)
@@ -175,17 +173,10 @@ if module == "ClickObjeto":
             if tipo == "key":
                 session.findById(id_object).key = input_
 
-    except Exception as e:
-        print("\x1B[" + "31;40mError\x1B[" + "0m")
-        PrintException()
-        raise e
+    if module == "ExtraerTexto":
+        id_object = GetParams('id_object')
+        var = GetParams('var')
 
-
-if module == "ExtraerTexto":
-    id_object = GetParams('id_object')
-    var = GetParams('var')
-
-    try:
         connection = SAPObject
         session = connection.Children(0)
 
@@ -194,20 +185,14 @@ if module == "ExtraerTexto":
             SetVar(var,val)
 
 
-    except Exception as e:
-        print("\x1B[" + "31;40mError\x1B[" + "0m")
-        PrintException()
-        raise e
+    if module == "click_check":
+        id_object = GetParams('id_object')
+        tipo = GetParams('tipo')
+        # print(id_object)
 
-if module == "click_check":
-    id_object = GetParams('id_object')
-    tipo = GetParams('tipo')
-    # print(id_object)
+        if not SAPObject:
+            raise Exception("Debe iniciar sesión en SAP")
 
-    if not SAPObject:
-        raise Exception("Debe iniciar sesión en SAP")
-
-    try:
         connection = SAPObject
         session = connection.Children(0)
         session.findById("wnd[0]").maximize()
@@ -221,18 +206,13 @@ if module == "click_check":
         if not tipo:
             raise Exception("Debe seleccionar una opción")
 
-    except Exception as e:
-        print("\x1B[" + "31;40mError\x1B[" + "0m")
-        PrintException()
-        raise e
 
-if module == "ExtractCell":
-    id_object = GetParams('id_object')
-    column = GetParams('column')
-    row = GetParams('row')
-    var = GetParams('var')
+    if module == "ExtractCell":
+        id_object = GetParams('id_object')
+        column = GetParams('column')
+        row = GetParams('row')
+        var = GetParams('var')
 
-    try:
         connection = SAPObject
         session = connection.Children(0)
 
@@ -241,18 +221,12 @@ if module == "ExtractCell":
             SetVar(var, val)
 
 
-    except Exception as e:
-        print("\x1B[" + "31;40mError\x1B[" + "0m")
-        PrintException()
-        raise e
+    if module == "ClickCell":
+        id_object = GetParams('id_object')
+        column = GetParams('column')
+        row = GetParams('row')
+        click_type = GetParams("type")
 
-if module == "ClickCell":
-    id_object = GetParams('id_object')
-    column = GetParams('column')
-    row = GetParams('row')
-    click_type = GetParams("type")
-
-    try:
         connection = SAPObject
         session = connection.Children(0)
 
@@ -266,13 +240,8 @@ if module == "ClickCell":
         if click_type == "setCurrentCell":
             session.findById(id_object).setCurrentCell(row, column)
 
-    except Exception as e:
-        print("\x1B[" + "31;40mError\x1B[" + "0m")
-        PrintException()
-        raise e
-
-if module == "runVBA":
-    try:
+    if module == "runVBA":
+   
         import subprocess
 
         path = GetParams("path")
@@ -287,15 +256,11 @@ if module == "runVBA":
 
         subprocess.call(r"cscript " + path)
 
-    except Exception as e:
-        print("\x1B[" + "31;40mError\x1B[" + "0m")
-        PrintException()
-        raise e
 
-if module == "checkbox":
-    id_object = GetParams('id_object')
-    result = GetParams('var')
-    try:
+    if module == "checkbox":
+        id_object = GetParams('id_object')
+        result = GetParams('var')
+    
         connection = SAPObject
         session = connection.Children(0)
 
@@ -305,7 +270,25 @@ if module == "checkbox":
         val = session.findById(id_object).selected
         SetVar(result, val)
 
-    except Exception as e:
-        print("\x1B[" + "31;40mError\x1B[" + "0m")
-        PrintException()
-        raise e
+    if module == "sendKey":
+        id_object = GetParams('id_object')
+        key = GetParams('key')
+
+        if not SAPObject:
+            raise Exception("Debe iniciar sesión en SAP")
+
+        connection = SAPObject
+        session = connection.Children(0)
+
+        if not id_object:
+            raise Exception("Field 'Id object' is empty")
+
+        if key.isdigit():
+            key = int(key)
+
+        session.findById(id_object).sendVKey(key)
+
+except Exception as e:
+    print("\x1B[" + "31;40mError\x1B[" + "0m")
+    PrintException()
+    raise e
