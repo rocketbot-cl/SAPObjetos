@@ -843,8 +843,8 @@
         "options": null
       },
       "pr": {
-        "title": "Envio de chave",
-        "description": "Replica evento de envio de chave",
+        "title": "Envio de tecla",
+        "description": "Replica evento de envio de tecla",
         "title_options": "选择选项",
         "options": null
       },
@@ -873,7 +873,7 @@
             "title": {
               "es": "Tecla",
               "en": "Key",
-              "pr": "Chave"
+              "pr": "tecla"
             },
             "options": [
               {
