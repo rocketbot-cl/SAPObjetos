@@ -168,7 +168,10 @@ try:
                 session.findById(id_object).selectedRows = input_
 
             if tipo == "verticalScrollbar":
-                session.findById(id_object).verticalScrollbar(input_)
+                try:
+                    session.findById(id_object).verticalScrollbar(input_)
+                except:
+                    session.findById(id_object).verticalScrollbar.position = input_
 
             if tipo == "key":
                 session.findById(id_object).key = input_
