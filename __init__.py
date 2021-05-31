@@ -63,9 +63,12 @@ if module == "LoginSap":
             subprocess.Popen(path)
             time.sleep(10)
 
+            print("Get Object 'SAPGUI'")
             SapGuiAuto = client.GetObject('SAPGUI')
             application = SapGuiAuto.GetScriptingEngine
+            print("Open connection")
             connection = application.OpenConnection(conn, True)
+            print("session")
             session = connection.Children(0)
 
             if user and password:
@@ -109,72 +112,80 @@ try:
                 except:
                     session.findById(id_object).text = input_
 
-            if tipo == "press":
+            elif tipo == "press":
                 session.findById(id_object).press()
 
-            if tipo == "setFocus":
+            elif tipo == "setFocus":
                 session.findById(id_object).setFocus()
 
-            if tipo == "select":
+            elif tipo == "select":
                 session.findById(id_object).select()
 
-            if tipo == "close":
+            elif tipo == "close":
                 session.findById(id_object).close()
 
-            if tipo == "contextMenu":
+            elif tipo == "contextMenu":
                 session.findById(id_object).contextMenu()
                 time.sleep(2)
 
-            if tipo == "createSession":
+            elif tipo == "createSession":
                 session.createSession()
 
-            if tipo == "selectColumn":
+            elif tipo == "selectColumn":
                 session.findById(id_object).selectColumn(input_)
 
-            if tipo == "pressContextButton":
+            elif tipo == "pressContextButton":
                 if input_:
                     session.findById(id_object).pressContextButton(input_)
                 else:
                     session.findById(id_object).pressContextButton()
 
-            if tipo == "pressToolbarContextButton":
+            elif tipo == "pressToolbarContextButton":
                 if input_:
                     session.findById(id_object).pressToolbarContextButton(input_)
                 else:
                     session.findById(id_object).pressToolbarContextButton()
 
-            if tipo == "pressButton":
+            elif tipo == "pressButton":
                 if input_:
                     session.findById(id_object).pressButton(input_)
                 else:
                     session.findById(id_object).pressButton()
 
-            if tipo == "pressToolbarButton":
+            elif tipo == "pressToolbarButton":
                 session.findById(id_object).pressToolbarButton(input_)
 
-            if tipo == "currentCellColumn":
+            elif tipo == "currentCellColumn":
                 session.findById(id_object).currentCellColumn(input_)
 
-            if tipo == "selectContextMenuItem":
+            elif tipo == "selectContextMenuItem":
                 session.findById(id_object).selectContextMenuItem(input_)
 
-            if tipo == "selectedNode":
+            elif tipo == "selectedNode":
                 session.findById(id_object).selectedNode(input_)
 
-            if tipo == "selectNode":
+            elif tipo == "selectNode":
                 session.findById(id_object).selectNode(input_)
 
-            if tipo == "selectedRows":
+            elif tipo == "selectedRows":
                 session.findById(id_object).selectedRows = input_
 
-            if tipo == "verticalScrollbar":
+            elif tipo == "verticalScrollbar":
                 try:
                     session.findById(id_object).verticalScrollbar(input_)
                 except:
                     session.findById(id_object).verticalScrollbar.position = input_
 
-            if tipo == "key":
+            elif tipo == "key":
                 session.findById(id_object).key = input_
+            
+            else:
+                try:
+                    getattr(session.findById(id_button), tipo)()
+                except:
+                    getattr(session.findById(id_button), tipo) = input_
+            
+    
 
     if module == "ExtraerTexto":
         id_object = GetParams('id_object')
