@@ -179,11 +179,11 @@ try:
             elif tipo == "key":
                 session.findById(id_object).key = input_
             
-            else:
+            elif tipo == "caretPosition":
                 try:
-                    getattr(session.findById(id_button), tipo)()
+                    session.findById(id_object).caretPosition(input_)
                 except:
-                    getattr(session.findById(id_button), tipo) = input_
+                    session.findById(id_object).caretPosition = input_
             
     
 
