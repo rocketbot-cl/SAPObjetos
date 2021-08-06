@@ -36,6 +36,7 @@ global SAPObject
 global id_object
 
 
+
 """
     Realiza Login
 """
@@ -302,6 +303,30 @@ try:
 
         session.findById(id_object).sendVKey(key)
 
+
+    if module == "GetProperty":
+        
+        def GetProperty(object, property):
+            properties = {
+                "Height": object.Height, 
+                "Highlighted": object.Highlighted,
+                "Name": object.Name,
+                "Required": object.Required,
+                "Text": object.Text,
+                "Width": object.Width,
+              }
+            return properties[property]
+
+        id_object = GetParams('id_object')
+        property = GetParams('property')
+        result = GetParams('result')
+
+        connection = SAPObject
+        session = connection.Children(0)
+        res = GetProperty(session.findById(id_object), property)
+        SetVar(res, result)
+
+    
 except Exception as e:
     print("\x1B[" + "31;40mError\x1B[" + "0m")
     PrintException()
