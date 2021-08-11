@@ -324,7 +324,7 @@ try:
         connection = SAPObject
         session = connection.Children(0)
         res = GetProperty(session.findById(id_object), property)
-        SetVar(res, result)
+        SetVar(result, res)
 
     
 except Exception as e:
