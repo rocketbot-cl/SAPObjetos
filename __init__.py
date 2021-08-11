@@ -254,6 +254,10 @@ try:
             session.findById(id_object).clickCurrentCell()
         if click_type == "setCurrentCell":
             session.findById(id_object).setCurrentCell(row, column)
+        if click_type == "doubleClickCurrentCell":
+            session.findById(id_object).currentCellColumn = column
+            session.findById(id_object).selectedRows = row
+            session.findById(id_object).doubleClickCurrentCell()
 
     if module == "runVBA":
    

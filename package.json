@@ -675,6 +675,10 @@
               {
                 "title": "setCurrentCell",
                 "value": "setCurrentCell"
+              },
+              {
+                "title": "doubleClickCurrentCell",
+                "value": "doubleClickCurrentCell"
               }
             ],
             "id": "type",
