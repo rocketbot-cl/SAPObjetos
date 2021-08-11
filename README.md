@@ -7,7 +7,6 @@ Module for scripting in SAP R3
 
 ![alt text](https://raw.githubusercontent.com/rocketbot-cl/SAP_Scripting/master/example/sap.png)
 
-<h2>Modules</h2>
 
 <ul>
   <li>
@@ -19,6 +18,10 @@ Module for scripting in SAP R3
     </strong>  
   </li>
 </ul>  
+
+## Updates
+### 6-Aug-2021
+- New command: Get properties of SAP objects
 
 <h2>License</h2>
 
