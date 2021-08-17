@@ -185,8 +185,29 @@ try:
                     session.findById(id_object).caretPosition(input_)
                 except:
                     session.findById(id_object).caretPosition = input_
-            
-    
+            elif tipo == "expandNode":
+                try:
+                    session.findById(id_object).expandNode(input_)
+                except: 
+                    session.findById(id_object).expandNode = input_
+            elif tipo == "selectItem":
+                try:
+                    session.findById(id_object).selectItem(input_)
+                except: 
+                    session.findById(id_object).selectItem = input_
+            elif tipo == "ensureVisibleHorizontalItem":
+                try:
+                    split_input = input_.split(',')
+                    param1 = split_input[0]
+                    param2 = split_input[1]
+                    session.findById(id_object).ensureVisibleHorizontalItem(param1, param2)
+                except:
+                    session.findById(id_object).ensureVisibleHorizontalItem = input_
+            elif tipo == "topNode":
+                try:
+                    session.findById(id_object).topNode(input_)
+                except:
+                    session.findById(id_object).topNode = input_
 
     if module == "ExtraerTexto":
         id_object = GetParams('id_object')
