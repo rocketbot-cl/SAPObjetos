@@ -73,6 +73,7 @@ if module == "LoginSap":
             session = connection.Children(0)
 
             if user and password:
+                session.findById(id_user).SetFocus()
                 session.findById(id_user).text = user
                 session.findById(id_pass).text = password
 

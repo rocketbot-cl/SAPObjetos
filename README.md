@@ -20,6 +20,8 @@ Module for scripting in SAP R3
 </ul>  
 
 ## Updates
+### 27-Aug-2021
+- SetFocus sap in login command
 ### 6-Aug-2021
 - New command: Get properties of SAP objects
 
