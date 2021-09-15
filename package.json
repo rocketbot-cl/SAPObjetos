@@ -1,8 +1,8 @@
 {
   "author": "Marcela Vergara",
-  "description": "Module to work with SAP R3 and Hana",
+  "description": "With this module you can automate SAP R3 and Hana. Perform all the actions that you can record with the tracker shared by Stefan Schnell in the official SAP forum",
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "12.2",
+  "version": "12.4",
   "license": "MIT",
   "homepage": "http://rocketbot.co/",
   "linux": false,
@@ -21,19 +21,19 @@
     {
       "en": {
         "title": "LoginSap",
-        "description": "Enter the info for connection",
+        "description": "Open the sap application, establish the connection and login",
         "title_options": "Select Option",
         "options": null
       },
       "es": {
         "title": "LoginSap",
-        "description": "Ingrese los datos de conexión",
+        "description": "Abre la aplicación de sap, establece la conexión y realiza el login",
         "title_options": "Seleccione una opción",
         "options": null
       },
       "pr": {
         "title": "LoginSap",
-        "description": "Insira os dados de conexão",
+        "description": "Abre o aplicativo SAP, estabeleça a conexão e faz login",
         "title_options": "选择选项",
         "options": null
       },
@@ -51,6 +51,11 @@
               "es": "Ruta SAP",
               "en": "Path SAP",
               "pr": "Rota SAP"
+            },
+            "description": {
+              "es": "Ruta de la aplicación de SAP",
+              "en": "SAP Application path",
+              "pr": "Caminho do aplicativo SAP"
             },
             "help": {
               "es": "Ingrese la ruta con slash '/'",
@@ -72,6 +77,11 @@
               "en": "Connection Name",
               "pr": "Nome do conexão"
             },
+            "description": {
+              "es": "Nombre de la conexión donde quieres logearte",
+              "en": "Connection name where you want to do login",
+              "pr": "Nome da conexão onde você deseja fazer o login"
+            },
             "id": "conn",
             "css": "col-md-6"
           },
@@ -86,6 +96,11 @@
               "es": "ID Usuario",
               "en": "User ID",
               "pr": "ID Usuario"
+            },
+            "description": {
+              "es": "Identificador del campo de usuario de SAP",
+              "en": "The ID of SAP User field ",
+              "pr": "O ID do campo usuario"
             },
             "id": "id_user",
             "css": "col-md-6"
@@ -102,6 +117,11 @@
               "en": "User",
               "pr": "Nome do usuário"
             },
+            "description": {
+              "es": "Nombre de usuario que ingresas en el campo usuario al hacer login",
+              "en": "User name that you enter in the user field to login",
+              "pr": "Nome do usuário que você digita no campo usuário para fazer o login"
+            },
             "id": "user",
             "css": "col-md-6"
           },
@@ -117,6 +137,11 @@
               "en": "Password ID",
               "pr": "ID de senha"
             },
+            "description": {
+              "es": "Identificador del campo de contraseña de SAP",
+              "en": "The ID of SAP password field ",
+              "pr": "O ID do campo senha"
+            },
             "id": "id_pass",
             "css": "col-md-6"
           },
@@ -131,6 +156,11 @@
               "es": "Contraseña",
               "en": "Password",
               "pr": "Senha"
+            },
+            "description": {
+              "es": "Contraseña que ingresas en el campo contraseña al hacer login",
+              "en": "Password that you enter in the password field to login",
+              "pr": "Senha que você digita no campo senha para fazer o login"
             },
             "id": "password",
             "css": "col-md-6"
@@ -184,6 +214,11 @@
               "en": "Object ID",
               "pr": "ID do objeto"
             },
+            "description": {
+              "es": "Identificador obtenido en el tracker",
+              "en": "ID obtained in the tracker",
+              "pr": "Identificador obtido no tracker"
+            },
             "id": "id_object",
             "css": "col-md-12"
           },
@@ -198,6 +233,11 @@
               "es": "Valor:",
               "en": "Value:",
               "pr": "valor"
+            },
+            "description": {
+              "es": "Valor mostrado en el tracker después de un igual (=) (Ej. id.atributo = valor), o como entre parentesis (Ex. id.atributo(valor)",
+              "en": "Value shown in the tracker after an equal (=) (eg id.attribute=value), or as in parentheses (eg id.attribute(value)",
+              "pr": "Valor mostrado no tracker após um igual (=) (Ej. id.atributo = valor), ou como entre parêntesis (Ex. id.atributo(valor)"
             },
             "help": {
               "es": "solo cuando requiere parametros",
@@ -218,6 +258,11 @@
               "es": "Opción",
               "en": "Option",
               "pr": "Opção"
+            },
+            "description": {
+              "es": "Propiedad indicada en el tracker después de findById('algun id'). Ej session.findById('wnd[0]/tbar[0]/okcd').propiedad",
+              "en": "Propery indicated in the tracker after findById('some id'). Ex session.findById('wnd[0]/tbar[0]/okcd').property",
+              "pr": "Propiedade indicada no tracker depóis findById('algun id'). Ex session.findById('wnd[0]/tbar[0]/okcd').propiedade"
             },
             "options": [
               {
@@ -369,6 +414,11 @@
               "en": "Object ID",
               "pr": "ID do objeto"
             },
+            "description": {
+              "es": "Identificador obtenido en el tracker",
+              "en": "ID obtained in the tracker",
+              "pr": "Identificador obtido no tracker"
+            },
             "id": "id_object",
             "css": "col-md-12"
           },
@@ -384,11 +434,17 @@
               "en": "Assign to Variable",
               "pr": "Atribuir à variável"
             },
+            "description": {
+              "es": "Nombre de variable donde guardar el resultado",
+              "en": "Variable name where the result will be saved",
+              "pr": "Nome do variável onde o resultado vai ser salvado"
+            },
             "help": {
               "es": "Nombre de variable sin llaves {}",
               "en": "Var name without {}",
               "pr": "Nome do variável, sem {}"
             },
+            "remove_vars": true,
             "id": "var",
             "css": "col-md-12"
           }
@@ -432,9 +488,9 @@
           {
             "type": "select",
             "placeholder": {
-              "es": "wnd[0]/tbar[0]/okcd",
-              "en": "wnd[0]/tbar[0]/okcd",
-              "pr": "wnd[0]/tbar[0]/okcd"
+              "es": "Check",
+              "en": "Uncheck",
+              "pr": "Uncheck"
             },
             "title": {
               "es": "Opción",
@@ -447,14 +503,19 @@
                 "value": ""
               },
               {
-                "title": "Marcar Check",
+                "title": "Check",
                 "value": "marca_"
               },
               {
-                "title": "Desmarcar Check",
+                "title": "Uncheck",
                 "value": "desmarca_"
               }
             ],
+            "description": {
+              "es": "Seleccionar si quieres marcar o desmarcar el checkbox",
+              "en": "Select check or uncheck",
+              "pr": "Selecione marcar ou desmarcar"
+            },
             "id": "tipo",
             "css": "col-md-12"
           },
@@ -464,6 +525,11 @@
               "es": "wnd[0]/tbar[0]/okcd",
               "en": "wnd[0]/tbar[0]/okcd",
               "pr": "wnd[0]/tbar[0]/okcd"
+            },
+            "description": {
+              "es": "Identificador obtenido en el tracker",
+              "en": "ID obtained in the tracker",
+              "pr": "Identificador obtido no tracker"
             },
             "title": {
               "es": "ID Objeto",
@@ -522,6 +588,11 @@
               "en": "Object ID",
               "pr": "ID do Objecto"
             },
+            "description": {
+              "es": "Identificador obtenido en el tracker",
+              "en": "ID obtained in the tracker",
+              "pr": "Identificador obtido no tracker"
+            },
             "id": "id_object",
             "css": "col-md-12"
           },
@@ -535,6 +606,11 @@
               "es": "Número de fila:",
               "en": "Row number:",
               "pr": "Número da linha"
+            },
+            "description": {
+              "es": "Número de la fila donde se quiere extraer el texto. En el tracker aparecerá como selectedRows",
+              "en": "Number of the row where you want to extract the text. In the tracker it will appear as selectedRows",
+              "pr": "Número da linha onde você deseja extrair o texto. No tracker aparecerá como selectedRows"
             },
             "help": {
               "es": "Entregada por el tracker 'selectedRows'",
@@ -554,6 +630,11 @@
               "es": "Nombre de la columna:",
               "en": "Column name:",
               "pr": "Nome da coluna"
+            },
+            "description": {
+              "es": "Nombre de la columna donde se quiere extraer el texto. En el tracker aparecerá como currentCellColumn",
+              "en": "Name of the column where you want to extract the text. In the tracker it will appear as currentCellColumn",
+              "pr": "Nome da coluna onde você deseja extrair o texto. No tracker aparecerá como currentCellColumn"
             },
             "help": {
               "es": "Entregada por el tracker 'currentCellColumn'",
@@ -575,11 +656,17 @@
               "en": "Assign to Variable",
               "pr": "Assign to Variable"
             },
+            "description": {
+              "es": "Nombre de variable donde guardar el resultado",
+              "en": "Variable name where the result will be saved",
+              "pr": "Nome do variável onde o resultado vai ser salvado"
+            },
             "help": {
               "es": "Nombre de variable sin llaves {}",
               "en": "Var name without {}",
               "pr": "Var name without {}"
             },
+            "remove_vars": true,
             "id": "var",
             "css": "col-md-12"
           }
@@ -626,6 +713,11 @@
               "en": "Object ID",
               "pr": "Object ID"
             },
+            "description": {
+              "es": "Identificador obtenido en el tracker",
+              "en": "ID obtained in the tracker",
+              "pr": "Identificador obtido no tracker"
+            },
             "id": "id_object",
             "css": "col-md-12"
           },
@@ -638,6 +730,11 @@
             "title": {
               "es": "Número de fila:",
               "en": "Row number:"
+            },
+            "description": {
+              "es": "Número de la fila donde se quiere extraer el texto. En el tracker aparecerá como selectedRows",
+              "en": "Number of the row where you want to extract the text. In the tracker it will appear as selectedRows",
+              "pr": "Número da linha onde você deseja extrair o texto. No tracker aparecerá como selectedRows"
             },
             "help": {
               "es": "Entregada por el tracker 'selectedRows'",
@@ -659,6 +756,11 @@
             "help": {
               "es": "Entregada por el tracker 'currentCellColumn'",
               "en": "Show for tracker like 'currentCellColumn'"
+            },
+            "description": {
+              "es": "Nombre de la columna donde se quiere extraer el texto. En el tracker aparecerá como currentCellColumn",
+              "en": "Name of the column where you want to extract the text. In the tracker it will appear as currentCellColumn",
+              "pr": "Nome da coluna onde você deseja extrair o texto. No tracker aparecerá como currentCellColumn"
             },
             "id": "column",
             "css": "col-md-12"
@@ -692,6 +794,11 @@
                 "value": "doubleClickCurrentCell"
               }
             ],
+            "description": {
+              "es": "Propiedad indicada en el tracker después de findById('algun id'). Ej session.findById('wnd[0]/tbar[0]/okcd').propiedad",
+              "en": "Propery indicated in the tracker after findById('some id'). Ex session.findById('wnd[0]/tbar[0]/okcd').property",
+              "pr": "Propiedade indicada no tracker depóis findById('algun id'). Ex session.findById('wnd[0]/tbar[0]/okcd').propiedade"
+            },
             "id": "type",
             "css": "col-md-12"
           }
@@ -735,6 +842,11 @@
             "title": {
               "es": "Ruta VBA Script",
               "en": "Path VBA Script"
+            },
+            "description": {
+              "es": "Ruta del archivo VBs",
+              "en": "SBS file path",
+              "pr": "Caminho do arquivo VBS"
             },
             "id": "path",
             "css": "col-md-12"
@@ -806,6 +918,11 @@
               "en": "Object ID",
               "pr": "ID do Objeto"
             },
+            "description": {
+              "es": "Identificador obtenido en el tracker",
+              "en": "ID obtained in the tracker",
+              "pr": "Identificador obtido no tracker"
+            },
             "id": "id_object",
             "css": "col-md-12"
           },
@@ -821,11 +938,17 @@
               "en": "Assign to Variable",
               "pr": "Atribuir à variável"
             },
+            "description": {
+              "es": "Nombre de variable donde guardar el resultado",
+              "en": "Variable name where the result will be saved",
+              "pr": "Nome do variável onde o resultado vai ser salvado"
+            },
             "help": {
               "es": "Nombre de variable sin llaves {}",
               "en": "Var name without {}",
               "pr": "Nome do variável sem {}"
             },
+            "remove_vars": true,
             "id": "var",
             "css": "col-md-12"
           }
@@ -878,21 +1001,41 @@
               "en": "Object ID",
               "pr": "ID Objeto"
             },
+            "description": {
+              "es": "Identificador obtenido en el tracker",
+              "en": "ID obtained in the tracker",
+              "pr": "Identificador obtido no tracker"
+            },
             "id": "id_object",
             "css": "col-md-12"
           },
           {
             "type": "select",
-            "placeholder": {},
+            "placeholder": {
+              "en": "F1"
+            },
             "title": {
               "es": "Tecla",
               "en": "Key",
               "pr": "tecla"
             },
+            "description": {
+              "es": "Tecla o combinación que se desea enviar",
+              "en": "Key or combination to send",
+              "pr": "Tecla ou combinação a ser enviada"
+            },
             "options": [
               {
                 "title": "--Seleccione--",
                 "value": ""
+              },
+              {
+                "title": "Ctrl+C",
+                "value": "92"
+              },
+              {
+                "title": "Ctrl+V",
+                "value": "93"
               },
               {
                 "title": "Enter",
@@ -995,6 +1138,11 @@
               "en": "Object ID",
               "pr": "ID do objeto"
             },
+            "description": {
+              "es": "Identificador obtenido en el tracker",
+              "en": "ID obtained in the tracker",
+              "pr": "Identificador obtido no tracker"
+            },
             "id": "id_object",
             "css": "col-md-12"
           },
@@ -1009,6 +1157,11 @@
               "es": "Propiedad",
               "en": "Property",
               "pr": "Propiedade"
+            },
+            "description": {
+              "es": "Propiedad que se quiere obtener. Puedes ver todas las propiedades acá https://help.sap.com/viewer/b47d018c3b9b45e897faf66a6c0885a8/760.03/en-US/a2e9357389334dc89eecc1fb13999ee3.html",
+              "en": "Property to get. To see all property, go to https://help.sap.com/viewer/b47d018c3b9b45e897faf66a6c0885a8/760.03/en-US/a2e9357389334dc89eecc1fb13999ee3.html",
+              "pr": "Propriedade para obter. Para ver todas as propiedades, ir á https://help.sap.com/viewer/b47d018c3b9b45e897faf66a6c0885a8/760.03/en-US/a2e9357389334dc89eecc1fb13999ee3.html"
             },
             "options": [
               {
@@ -1054,6 +1207,11 @@
               "es": "Asignar a Variable",
               "en": "Assign to Variable",
               "pr": "Atribuir à variável"
+            },
+            "description": {
+              "es": "Nombre de variable donde guardar el resultado",
+              "en": "Variable name where the result will be saved",
+              "pr": "Nome do variável onde o resultado vai ser salvado"
             },
             "help": {
               "es": "Nombre de variable sin llaves {}",

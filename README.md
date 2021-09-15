@@ -1,34 +1,58 @@
-# SAP_Scripting
-Module for scripting in SAP R3
 
-**In the example robot you must change the data for yours
+# SAP
+  
+With this module you can automate SAP R3 and Hana. Perform all the actions that you can record with the tracker shared 
+by Stefan Schnell in the official SAP forum  
+
+## Howto install this module
+  
+__Download__ and __install__ the content in 'modules' folder in Rocketbot path
+## How to use this module
+  
+Eiusmod veniam ut nisi minim in. Do et deserunt eiusmod veniam sint aliqua nulla adipisicing laboris voluptate fugiat 
+ullamco elit do. Sint amet cillum fugiat excepteur mollit voluptate reprehenderit nisi commodo sint minim.
+## Overview
 
 
+1. LoginSap  
+Open the sap application, establish the connection and login
 
-![alt text](https://raw.githubusercontent.com/rocketbot-cl/SAP_Scripting/master/example/sap.png)
+2. Click on object  
+Click on object
 
+3. Extract Text  
+Extract text
 
-<ul>
-  <li>
-    For get identifiers of sap object, you can use tracker.exe, more info in 
-    <strong>
-      <a href="https://tracker.stschnell.de/#">
-      Scripting Tracker
-      </a>
-    </strong>  
-  </li>
-</ul>  
+4. Check/Uncheck  
+Check/Uncheck
 
-## Updates
-### 27-Aug-2021
-- SetFocus sap in login command
-### 6-Aug-2021
-- New command: Get properties of SAP objects
+5. Extract Cell  
+Extract text
 
-<h2>License</h2>
+6. Click Cell  
+Click on a cell
 
-<p><a href="http://badges.mit-license.org" rel="nofollow"><img src="https://camo.githubusercontent.com/107590fac8cbd65071396bb4d04040f76cde5bde/687474703a2f2f696d672e736869656c64732e696f2f3a6c6963656e73652d6d69742d626c75652e7376673f7374796c653d666c61742d737175617265" alt="License" data-canonical-src="http://img.shields.io/:license-mit-blue.svg?style=flat-square" style="max-width:100%;"></a></p>
+7. Run script  
+Execute VBS script recorded with SAP
 
-<ul>
-  <li><strong><a href="http://opensource.org/licenses/mit-license.php" rel="nofollow">MIT license</a></strong></li>
-</ul>  
+8. Get state checkbox  
+Return True if checkbox is selected
+
+9. Send key  
+Replicate send key event
+
+10. Get Property  
+Get a property of the SAP Object especified
+
+----
+### OS
+
+- windows
+- docker
+
+### Dependencies
+
+### License
+  
+![MIT](https://camo.githubusercontent.com/107590fac8cbd65071396bb4d04040f76cde5bde/687474703a2f2f696d672e736869656c64732e696f2f3a6c6963656e73652d6d69742d626c75652e7376673f7374796c653d666c61742d737175617265)  
+[MIT](http://opensource.org/licenses/mit-license.ph)

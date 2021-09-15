@@ -60,7 +60,8 @@ if module == "LoginSap":
 
     if id_user:
         try:
-            path = path
+            if not path:
+                path = "C:/Program Files (x86)/SAP/FrontEnd/SAPgui/saplogon.exe"
             subprocess.Popen(path)
             time.sleep(10)
 
@@ -101,6 +102,7 @@ try:
         connection = SAPObject
         session = connection.Children(0)
         session.findById("wnd[0]").maximize()
+
 
         if input_:
             if input_.startswith('"'):
