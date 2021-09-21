@@ -645,6 +645,35 @@
             "css": "col-md-12"
           },
           {
+            "type": "select",
+            "placeholder": {
+              "es": "Opción",
+              "en": "Option",
+              "pr": "Opção"
+            },
+            "title": {
+              "es": "Opción",
+              "en": "Option",
+              "pr": "Opção"
+            },
+            "options": [
+              {
+                "title": "--Seleccione--",
+                "value": ""
+              },
+              {
+                "title": "GetItemText",
+                "value": "GetItemText"
+              },
+              {
+                "title": "GetCellValue",
+                "value": "GetCellValue"
+              }
+            ],
+            "id": "tipo",
+            "css": "col-md-12"
+          },
+          {
             "type": "input",
             "placeholder": {
               "es": "variable",

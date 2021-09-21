@@ -251,13 +251,18 @@ try:
         column = GetParams('column')
         row = GetParams('row')
         var = GetParams('var')
+        tipo = GetParams('tipo')
 
         connection = SAPObject
         session = connection.Children(0)
-
+        
         if id_object:
-            val = session.findById(id_object).getcellvalue(int(row), column)
-            SetVar(var, val)
+            if tipo == "GetItemText":
+                val = session.findById(id_object).getitemtext(int(row), column)
+                SetVar(var, val)
+            if tipo == "GetCellValue":
+                val = session.findById(id_object).getcellvalue(int(row), column)
+                SetVar(var, val)
 
 
     if module == "ClickCell":
