@@ -258,7 +258,12 @@ try:
         
         if id_object:
             if tipo == "GetItemText":
-                val = session.findById(id_object).getitemtext(int(row), column)
+                if row.startswith('"'):
+                    row = eval(row)
+                if column.startswith('"'):
+                    column = eval(column)
+
+                val = session.findById(id_object).getitemtext(row, column)
                 SetVar(var, val)
             if tipo == "GetCellValue":
                 val = session.findById(id_object).getcellvalue(int(row), column)
