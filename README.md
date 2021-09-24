@@ -18,19 +18,20 @@ ullamco elit do. Sint amet cillum fugiat excepteur mollit voluptate reprehenderi
 Open the sap application, establish the connection and login
 
 2. Click on object  
-Click on object
+Click on SAP. It can be through different properties, such as setFocus, text, etc. You can also modify the text of an 
+element
 
 3. Extract Text  
-Extract text
+Extract the text of an object in sap, using the text property
 
 4. Check/Uncheck  
-Check/Uncheck
+Mark or unmark an object in SAP
 
 5. Extract Cell  
-Extract text
+Extract the text in a cell, it can be with GetItemText or GetCellValue
 
 6. Click Cell  
-Click on a cell
+Click on a cell. It can be with clickCurrentCell, setCurrentCell or doubleClickCurrentCell
 
 7. Run script  
 Execute VBS script recorded with SAP
@@ -43,6 +44,8 @@ Replicate send key event
 
 10. Get Property  
 Get a property of the SAP Object especified
+### Updates
+
 
 ----
 ### OS

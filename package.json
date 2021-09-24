@@ -183,19 +183,19 @@
     {
       "en": {
         "title": "Click on object",
-        "description": "Click on object",
+        "description": "Click on SAP. It can be through different properties, such as setFocus, text, etc. You can also modify the text of an element",
         "title_options": "Put object id",
         "options": null
       },
       "es": {
         "title": "Click en Objeto",
-        "description": "Click en objeto",
+        "description": "Hace un click en SAP. Puede ser mediante diferentes propiedades, como setFocus, text, etc. También puedes modificar el texto de un elemento",
         "title_options": "Seleccione una opción",
         "options": null
       },
       "pr": {
         "title": "Clique no objeto",
-        "description": "Clique no objeto",
+        "description": "Clique em SAP. Pode ser por meio de diferentes propriedades, como setFocus, text, etc. Você também pode modificar o texto de um elemento",
         "title_options": "选择选项",
         "options": null
       },
@@ -383,19 +383,19 @@
     {
       "en": {
         "title": "Extract Text",
-        "description": "Extract text",
+        "description": "Extract the text of an object in sap, using the text property",
         "title_options": "Put object id",
         "options": null
       },
       "es": {
         "title": "Extraer Texto",
-        "description": "Extraer texto",
+        "description": "Extrae el texto de un objeto en sap, mediante la propiedad text",
         "title_options": "Seleccione una opción",
         "options": null
       },
       "pr": {
         "title": "Extrair Texto",
-        "description": "Extrair Texto de SAP",
+        "description": "Extrair o texto de um objeto no sap, usando a propriedade text",
         "title_options": "选择选项",
         "options": null
       },
@@ -466,19 +466,19 @@
     {
       "en": {
         "title": "Check/Uncheck",
-        "description": "Check/Uncheck",
+        "description": "Mark or unmark an object in SAP",
         "title_options": "Check/Uncheck",
         "options": null
       },
       "es": {
         "title": "Marca/Desmarca Check",
-        "description": "Marca/Desmarca Check",
+        "description": "Marca o desmarca un objeto en SAP",
         "title_options": "Seleccione una opción",
         "options": null
       },
       "pr": {
         "title": "Marque / desmarque",
-        "description": "Marque / desmarque um object de SAP",
+        "description": "Marque ou desmarque um objeto no SAP",
         "title_options": "选择选项",
         "options": null
       },
@@ -557,19 +557,19 @@
     {
       "en": {
         "title": "Extract Cell",
-        "description": "Extract text",
+        "description": "Extract the text in a cell, it can be with GetItemText or GetCellValue",
         "title_options": "Put object id",
         "options": null
       },
       "es": {
         "title": "Extraer Celda",
-        "description": "Extraer texto",
+        "description": "Extrae el texto en una celda, puede ser con GetItemText o GetCellValue",
         "title_options": "Seleccione una opción",
         "options": null
       },
       "pr": {
         "title": "Extrair célula",
-        "description": "Extraia valor de uma célula",
+        "description": "Extraia o texto em uma célula, pode ser com GetItemText ou GetCellValue",
         "title_options": "选择选项",
         "options": null
       },
@@ -717,13 +717,19 @@
     {
       "en": {
         "title": "Click Cell",
-        "description": "Click on a cell",
+        "description": "Click on a cell. It can be with clickCurrentCell, setCurrentCell or doubleClickCurrentCell",
         "title_options": "Put object id",
         "options": null
       },
       "es": {
         "title": "Click en Celda",
-        "description": "Click en una celda",
+        "description": "Realiza un click en una celda. Puede ser con clickCurrentCell, setCurrentCell o doubleClickCurrentCell",
+        "title_options": "Seleccione una opción",
+        "options": null
+      },
+      "pr": {
+        "title": "Clique em célula",
+        "description": "Clique em uma célula. Pode ser com clickCurrentCell, setCurrentCell ou doubleClickCurrentCell",
         "title_options": "Seleccione una opción",
         "options": null
       },
@@ -856,6 +862,12 @@
       "es": {
         "title": "Ejecutar Script",
         "description": "Ejecuta un script VBS grabador con SAP",
+        "title_options": "Seleccione una opción",
+        "options": null
+      },
+      "pr": {
+        "title": "Execute Script",
+        "description": "Execute um gravador de script VBS com SAP",
         "title_options": "Seleccione una opción",
         "options": null
       },

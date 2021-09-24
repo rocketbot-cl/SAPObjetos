@@ -28,7 +28,8 @@ Abre la aplicación de sap, establece la conexión y realiza el login
 
 ### Click en Objeto
   
-Click en objeto
+Hace un click en SAP. Puede ser mediante diferentes propiedades, como setFocus, text, etc. También puedes modificar el 
+texto de un elemento
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
@@ -37,7 +38,7 @@ Click en objeto
 
 ### Extraer Texto
   
-Extraer texto
+Extrae el texto de un objeto en sap, mediante la propiedad text
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
@@ -45,7 +46,7 @@ Extraer texto
 
 ### Marca/Desmarca Check
   
-Marca/Desmarca Check
+Marca o desmarca un objeto en SAP
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |Opción|Seleccionar si quieres marcar o desmarcar el checkbox|Check|
@@ -53,17 +54,18 @@ Marca/Desmarca Check
 
 ### Extraer Celda
   
-Extraer texto
+Extrae el texto en una celda, puede ser con GetItemText o GetCellValue
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
 |Número de fila|Número de la fila donde se quiere extraer el texto. En el tracker aparecerá como selectedRows|0|
 |Nombre de la columna|Nombre de la columna donde se quiere extraer el texto. En el tracker aparecerá como currentCellColumn|TYPE_DOC|
+|Opción||Opción|
 |Asignar a Variable|Nombre de variable donde guardar el resultado|variable|
 
 ### Click en Celda
   
-Click en una celda
+Realiza un click en una celda. Puede ser con clickCurrentCell, setCurrentCell o doubleClickCurrentCell
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
