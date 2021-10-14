@@ -286,6 +286,18 @@
                 "value": "currentCellColumn"
               },
               {
+                "title": "caretPosition",
+                "value": "caretPosition"
+              },
+              {
+                "title": "ensureVisibleHorizontalItem",
+                "value": "ensureVisibleHorizontalItem"
+              },
+              {
+                "title": "expandNode",
+                "value": "expandNode"
+              },
+              {
                 "title": "key",
                 "value": "key"
               },
@@ -346,14 +358,6 @@
                 "value": "verticalScrollbar"
               },
               {
-                "title": "caretPosition",
-                "value": "caretPosition"
-              },
-              {
-                "title": "expandNode",
-                "value": "expandNode"
-              },
-              {
                 "title": "selectItem",
                 "value": "selectItem"
               },
@@ -361,6 +365,7 @@
                 "title": "topNode",
                 "value": "topNode"
               }
+              
             ],
             "id": "tipo",
             "css": "col-md-12"
@@ -1073,6 +1078,10 @@
               {
                 "title": "Ctrl+C",
                 "value": "92"
+              },
+              {
+                "title": "Ctrl+F12",
+                "value": "36"
               },
               {
                 "title": "Ctrl+V",

@@ -105,7 +105,7 @@ try:
 
 
         if input_:
-            if input_.startswith('"'):
+            if input_.startswith('"') and "," not in input_:
                 input_ = eval(input_)
 
         if id_object:
@@ -195,16 +195,29 @@ try:
                     session.findById(id_object).expandNode = input_
             elif tipo == "selectItem":
                 try:
-                    session.findById(id_object).selectItem(input_)
+                    split_input = input_.split(',')
+                    param1 = split_input[0]
+                    param2 = split_input[1]
+                    if param1.startswith('"'):
+                        param1 = eval(param1)
+                    if param2.startswith('"'):
+                        param2 = eval(param2)
+                    session.findById(id_object).selectItem(param1,param2)
                 except: 
-                    session.findById(id_object).selectItem = input_
+                     session.findById(id_object).selectItem(input_)
             elif tipo == "ensureVisibleHorizontalItem":
                 try:
                     split_input = input_.split(',')
                     param1 = split_input[0]
                     param2 = split_input[1]
+                    if param1.startswith('"'):
+                        param1 = eval(param1)
+                    if param2.startswith('"'):
+                        param2 = eval(param2)
+
                     session.findById(id_object).ensureVisibleHorizontalItem(param1, param2)
                 except:
+                    PrintException()
                     session.findById(id_object).ensureVisibleHorizontalItem = input_
             elif tipo == "topNode":
                 try:
