@@ -211,6 +211,8 @@ try:
                     session.findById(id_object).topNode(input_)
                 except:
                     session.findById(id_object).topNode = input_
+            elif tipo == "getAbsoluteRow":
+                session.findById(id_object).getAbsoluteRow(int(input_)).selected = -1
 
     if module == "ExtraerTexto":
         id_object = GetParams('id_object')

@@ -360,6 +360,10 @@
               {
                 "title": "topNode",
                 "value": "topNode"
+              },
+              {
+                "title": "getAbsoluteRow",
+                "value": "getAbsoluteRow"
               }
             ],
             "id": "tipo",
