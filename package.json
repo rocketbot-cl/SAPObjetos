@@ -2,7 +2,7 @@
   "author": "Marcela Vergara",
   "description": "With this module you can automate SAP R3 and Hana. Perform all the actions that you can record with the tracker shared by Stefan Schnell in the official SAP forum",
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "12.4",
+  "version": "12.5.0",
   "license": "MIT",
   "homepage": "http://rocketbot.co/",
   "linux": false,
@@ -522,6 +522,57 @@
             },
             "id": "tipo",
             "css": "col-md-12"
+          },
+          {
+            "type": "checkbox",
+            "placeholder": {
+              "es": "Checkbox",
+              "en": "Checkbox"
+            },
+            "title": {
+              "es": "Marcar individual con absoluteRow",
+              "en": "Check individually with absoluteRow"
+            },
+            "description": {
+                "es": "Opción de marcarlos con columna absoluta",
+                "en": "Option to check them with absolute row"
+            },
+            "id": "absolute",
+            "css": "col-md-6"
+          },
+          {
+            "type": "checkbox",
+            "placeholder": {
+              "es": "Checkbox",
+              "en": "Checkbox"
+            },
+            "title": {
+              "es": "Marcar todos",
+              "en": "Check all"
+            },
+            "description": {
+                "es": "Opción de marcarlos a todos",
+                "en": "Option to check them all"
+            },
+            "id": "todo",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "3",
+              "en": "3"
+            },
+            "description": {
+              "es": "Columna con la que se desea interactuar",
+              "en": "Column to interact with"
+            },
+            "title": {
+              "es": "Columna absoluta",
+              "en": "Absolute Row"
+            },
+            "id": "id_object",
+            "css": "col-md-6"
           },
           {
             "type": "input",
