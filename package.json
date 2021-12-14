@@ -571,7 +571,7 @@
               "es": "Columna absoluta",
               "en": "Absolute Row"
             },
-            "id": "id_object",
+            "id": "absoluteRow",
             "css": "col-md-6"
           },
           {

@@ -6,7 +6,7 @@
   
 Con este módulo podras automatizar SAP R3 y Hana. Realizar acciones que puede grabar con el tracker compartido por Stefan Schnell en el foro oficial de SAP.
   
-![banner](/docs/imgs/Banner_SAPObjetos.png)
+![banner](imgs/Banner_SAPObjetos.png)
 ## Como instalar este módulo
   
 __Descarga__ e __instala__ el contenido en la carpeta 'modules' en la ruta de rocketbot.  
