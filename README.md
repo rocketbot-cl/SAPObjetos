@@ -1,16 +1,21 @@
 
+
+
+
 # SAP
   
 With this module you can automate SAP R3 and Hana. Perform all the actions that you can record with the tracker shared 
 by Stefan Schnell in the official SAP forum  
 
-## Howto install this module
+## How to install this module
   
-__Download__ and __install__ the content in 'modules' folder in Rocketbot path
+__Download__ and __install__ the content in 'modules' folder in Rocketbot path  
+
+
 ## How to use this module
-  
-Eiusmod veniam ut nisi minim in. Do et deserunt eiusmod veniam sint aliqua nulla adipisicing laboris voluptate fugiat 
-ullamco elit do. Sint amet cillum fugiat excepteur mollit voluptate reprehenderit nisi commodo sint minim.
+In order to use this module, you have to connect to your SAP Account.
+
+
 ## Overview
 
 
@@ -43,8 +48,9 @@ Return True if checkbox is selected
 Replicate send key event
 
 10. Get Property  
-Get a property of the SAP Object especified
-### Updates
+Get a property of the SAP Object especified  
+
+
 
 
 ----

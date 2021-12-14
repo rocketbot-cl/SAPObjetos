@@ -224,6 +224,8 @@ try:
                     session.findById(id_object).topNode(input_)
                 except:
                     session.findById(id_object).topNode = input_
+            elif tipo == "getAbsoluteRow":
+                session.findById(id_object).getAbsoluteRow(int(input_)).selected = -1
 
     if module == "ExtraerTexto":
         id_object = GetParams('id_object')
@@ -240,6 +242,13 @@ try:
     if module == "click_check":
         id_object = GetParams('id_object')
         tipo = GetParams('tipo')
+        todo = GetParams('todo')
+        absolute = GetParams('absolute')
+        absoluteRow = GetParams('absoluteRow')
+        if todo is not None:
+            todo = eval(todo)
+        if absolute is not None:
+            absolute = eval(absolute)
         # print(id_object)
 
         if not SAPObject:
@@ -248,12 +257,26 @@ try:
         connection = SAPObject
         session = connection.Children(0)
         session.findById("wnd[0]").maximize()
-
+        
         if id_object and tipo == "marca_":
-            session.findById(id_object).selected = -1
+            if todo == True:
+                session.findById(id_object).SelectAllColumns()
+            else:
+                if absolute == True:
+                    session.findById(id_object).getAbsoluteRow(absoluteRow).selected = -1
+                else:
+                    session.findById(id_object).selected = -1
 
         if id_object and tipo == "desmarca_":
-            session.findById(id_object).selected = 0
+            if todo == True:
+                session.findById(id_object).DeselectAllColumns()
+            else:
+                if absolute == True:
+                    session.findById(id_object).getAbsoluteRow(absoluteRow).selected = 0
+                else:
+                    session.findById(id_object).selected = -0
+            
+        
 
         if not tipo:
             raise Exception("Debe seleccionar una opción")

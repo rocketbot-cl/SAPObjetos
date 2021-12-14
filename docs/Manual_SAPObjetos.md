@@ -1,17 +1,23 @@
 
+
+
+
 # SAP
   
-With this module you can automate SAP R3 and Hana. Perform all the actions that you can record with the tracker shared 
-by Stefan Schnell in the official SAP forum  
+Con este módulo podras automatizar SAP R3 y Hana. Realizar acciones que puede grabar con el tracker compartido por Stefan Schnell en el foro oficial de SAP.
   
-![banner](https://raw.githubusercontent.com/rocketbot-cl/SAPObjetos/master/docs/imgs/Banner_SAPObjetos.png)
+![banner](imgs/Banner_SAPObjetos.png)
 ## Como instalar este módulo
   
-__Descarga__ e __instala__ el contenido en la carpeta 'modules' en la ruta de rocketbot.
-## Como usar este module
-  
-Eiusmod veniam ut nisi minim in. Do et deserunt eiusmod veniam sint aliqua nulla adipisicing laboris voluptate fugiat 
-ullamco elit do. Sint amet cillum fugiat excepteur mollit voluptate reprehenderit nisi commodo sint minim.
+__Descarga__ e __instala__ el contenido en la carpeta 'modules' en la ruta de rocketbot.  
+
+
+
+
+## Como usar este módulo
+Para usar este módulo, tienes que conectarte a tu cuenta de SAP.
+
+
 ## Descripción de los comandos
 
 ### LoginSap
@@ -50,6 +56,9 @@ Marca o desmarca un objeto en SAP
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |Opción|Seleccionar si quieres marcar o desmarcar el checkbox|Check|
+|Marcar individual con absoluteRow|Opción de marcarlos con columna absoluta|Checkbox|
+|Marcar todos|Opción de marcarlos a todos|Checkbox|
+|Columna absoluta|Columna con la que se desea interactuar|3|
 |ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
 
 ### Extraer Celda
@@ -95,7 +104,7 @@ Replica el evento enviar tecla
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
-|Tecla|Tecla o combinación que se desea enviar|{'en': 'F1'}|
+|Tecla|Tecla o combinación que se desea enviar|F1|
 
 ### Obtener propiedad
   
