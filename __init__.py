@@ -328,6 +328,8 @@ try:
             session.findById(id_object).currentCellColumn = column
             session.findById(id_object).selectedRows = row
             session.findById(id_object).doubleClickCurrentCell()
+        if click_type == "doubleClickNode":
+            session.findById(id_object).doubleClickNode(row)
 
     if module == "runVBA":
    
