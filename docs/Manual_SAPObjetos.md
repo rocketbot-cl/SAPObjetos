@@ -14,8 +14,46 @@ __Descarga__ e __instala__ el contenido en la carpeta 'modules' en la ruta de ro
 
 
 
-## Como usar este módulo
+## Cómo usar este módulo
 Para usar este módulo, tienes que conectarte a tu cuenta de SAP.
+
+Primeramente hay que activar los scripts en SAP GUI.
+
+En SAP GUI, tienes que ir a la transacción RZ11; en el nombre del parámetro, escribe "sapgui/user_scripting" y haz click en Mostrar (display).
+
+![sap1](imgs/sap1.png)
+![sap2](imgs/sap2.png)
+
+Haz clicn en "Cambiar valor" y en "Nuevo valor" selecciona "TRUE". Guárdalo.
+
+![sap3](imgs/sap3.png)
+![sap4](imgs/sap4.png)
+
+La siguiente imagen indica que GUI Scripting esta habilitado en RZ11.
+
+![sap5](imgs/sap5.png)
+
+En "Accesibilidad y Scripting", ve a "Scripting" y activa la opción "Enable scripting". Guárdalo.
+
+![sap6](imgs/sap6.png)
+
+Como trabajar correctamente
+
+Abre Tracker.exe
+
+![sap7](imgs/sap7.png)
+
+Abrirá una ventana como estas
+
+![sap8](imgs/sap8.png)
+
+Abre SAP y logueate. Una vez loqueado, dale click al ícono y sincronizará la sesión activa de SAP.
+
+![sap9](imgs/sap9.png)
+
+Ve a "Recorder" y dale click en el ícono de Python.
+
+![sap10](imgs/sap10.png)
 
 
 ## Descripción de los comandos
