@@ -100,7 +100,7 @@ try:
             raise Exception("Debe iniciar sesión en SAP")
 
         connection = SAPObject
-        session = connection.Children(0)
+        session = SAPObject.Children(0)
         session.findById("wnd[0]").maximize()
 
 
@@ -225,6 +225,8 @@ try:
                 except:
                     session.findById(id_object).topNode = input_
             elif tipo == "getAbsoluteRow":
+                if not input_:
+                    input_ = GetParams("absoluteRow")
                 session.findById(id_object).getAbsoluteRow(int(input_)).selected = -1
 
     if module == "ExtraerTexto":
@@ -404,6 +406,5 @@ try:
 
     
 except Exception as e:
-    print("\x1B[" + "31;40mError\x1B[" + "0m")
     PrintException()
     raise e
