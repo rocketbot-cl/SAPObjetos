@@ -341,7 +341,7 @@ try:
         example = GetParams("example")
 
         if path:
-            path = path.replace("/", os.sep)
+            path = "\"" + path.replace("/", os.sep) + "\""
         if example:
             base_path = tmp_global_obj["basepath"]
             cur_path = base_path + 'modules' + os.sep + 'SAPObjetos' + os.sep + 'libs' + os.sep
