@@ -4,57 +4,15 @@
 
 # SAP
   
-With this module you can automate SAP R3 and Hana. Perform all the actions that you can record with the tracker shared 
-by Stefan Schnell in the official SAP forum.
+With this module you can automate SAP R3 and Hana. Perform every action that you can record with the tracker created by Stefan Schnell.  
+
+*Read this in other languages: [English](README.md), [Português](README.pr.md), [Español](README.es.md)*
 
 ## How to install this module
   
-__Download__ and __install__ the content in 'modules' folder in Rocketbot path  
-
-
-## How to use this module
-In order to use this module, you have to connect to your SAP Account.
-
-You have to activate the scripts of SAP GUI.
-
-In SAP GUI, you should go to RZ11 transaction; in the name param, write "sapgui/user_scripting" and click in "Display" (as shown in images).
-
-![sap1](docs/imgs/sap1.png)
-![sap2](docs/imgs/sap2.png)
-
-
-Click on "Change Value and on "New Value" Select "TRUE". Save it.
-
-![sap3](docs/imgs/sap3.png)
-![sap4](docs/imgs/sap4.png)
-
-The next image shows that the GUI scripting is activated.
-
-![sap5](docs/imgs/sap5.png)
-
-To activate scripting in SAP GUI you have to go to "Personalize" and go to "Options".
-
-In "Accessibility & Scripting, go to "Scripting" and activate "Enable scripting" option. Save it.
-
-![sap6](docs/imgs/sap6.png)
-
-How to work properly
-
-Open Tracker.exe
-
-![sap7](docs/imgs/sap7.png)
-
-It will open a window like this
-
-![sap8](docs/imgs/sap8.png)
-
-Open SAP and log in. Once logged, click on this icon and will sync with the active session on SAP.
-
-![sap9](docs/imgs/sap9.png)
-
-Go to "Recorder" and click on the Python icon.
-
-![sap10](docs/imgs/sap10.png)
+To install the module in Rocketbot Studio, it can be done in two ways:
+1. Manual: __Download__ the .zip file and unzip it in the modules folder. The folder name must be the same as the module and inside it must have the following files and folders: \__init__.py, package.json, docs, example and libs. If you have the application open, refresh your browser to be able to use the new module.
+2. Automatic: When entering Rocketbot Studio on the right margin you will find the **Addons** section, select **Install Mods**, search for the desired module and press install.  
 
 
 ## Overview
@@ -63,9 +21,8 @@ Go to "Recorder" and click on the Python icon.
 1. LoginSap  
 Open the sap application, establish the connection and login
 
-2. Click on object  
-Click on SAP. It can be through different properties, such as setFocus, text, etc. You can also modify the text of an 
-element
+2. Execute an action  
+Execute an action in SAP such as selecting, focusing or modifying the text of an element through different properties (setFocus, text, etc.)
 
 3. Extract Text  
 Extract the text of an object in sap, using the text property
@@ -89,7 +46,10 @@ Return True if checkbox is selected
 Replicate send key event
 
 10. Get Property  
-Get a property of the SAP Object especified  
+Get a property of the SAP Object especified
+
+11. Wait for object  
+Wait for object to be visible  
 
 
 
