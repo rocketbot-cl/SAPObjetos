@@ -4,151 +4,177 @@
 
 # SAP
   
-Con este módulo podras automatizar SAP R3 y Hana. Realizar acciones que puede grabar con el tracker compartido por Stefan Schnell en el foro oficial de SAP.
+With this module you can automate SAP R3 and Hana. Perform every action that you can record with the tracker created by Stefan Schnell.  
+
+*Read this in other languages: [English](Manual_SAPObjetos.md), [Português](Manual_SAPObjetos.pr.md), [Español](Manual_SAPObjetos.es.md)*
   
 ![banner](imgs/Banner_SAPObjetos.png)
-## Como instalar este módulo
+## How to install this module
   
-__Descarga__ e __instala__ el contenido en la carpeta 'modules' en la ruta de rocketbot.  
+To install the module in Rocketbot Studio, it can be done in two ways:
+1. Manual: __Download__ the .zip file and unzip it in the modules folder. The folder name must be the same as the module and inside it must have the following files and folders: \__init__.py, package.json, docs, example and libs. If you have the application open, refresh your browser to be able to use the new module.
+2. Automatic: When entering Rocketbot Studio on the right margin you will find the **Addons** section, select **Install Mods**, search for the desired module and press install.  
 
+## How to use this module
+In order to use this module, you have to connect to your SAP Account.
 
+You have to activate the scripts of SAP GUI.
 
-
-## Cómo usar este módulo
-Para usar este módulo, tienes que conectarte a tu cuenta de SAP.
-
-Primeramente hay que activar los scripts en SAP GUI.
-
-En SAP GUI, tienes que ir a la transacción RZ11; en el nombre del parámetro, escribe "sapgui/user_scripting" y haz click en Mostrar (display).
+In SAP GUI, you should go to RZ11 transaction; in the name param, write "sapgui/user_scripting" and click in "Display" (as shown in images).
 
 ![sap1](imgs/sap1.png)
 ![sap2](imgs/sap2.png)
 
-Haz clicn en "Cambiar valor" y en "Nuevo valor" selecciona "TRUE". Guárdalo.
+Click on "Change Value and on "New Value" select "TRUE". Save it.
 
 ![sap3](imgs/sap3.png)
 ![sap4](imgs/sap4.png)
 
-La siguiente imagen indica que GUI Scripting esta habilitado en RZ11.
+The next image shows that the GUI scripting is activated in RZ11.
 
 ![sap5](imgs/sap5.png)
 
-En "Accesibilidad y Scripting", ve a "Scripting" y activa la opción "Enable scripting". Guárdalo.
+To activate scripting in SAP GUI you have to go to "Personalize" and go to "Options".
+
+In "Accessibility & Scripting, go to "Scripting" and activate "Enable scripting" option. Save it.
 
 ![sap6](imgs/sap6.png)
 
-Como trabajar correctamente
+How to work properly
 
-Abre Tracker.exe
+Open Tracker.exe
 
 ![sap7](imgs/sap7.png)
 
-Abrirá una ventana como estas
+It will open a window like this
 
 ![sap8](imgs/sap8.png)
 
-Abre SAP y logueate. Una vez loqueado, dale click al ícono y sincronizará la sesión activa de SAP.
+Open SAP and log in. Once logged, click on this icon and will sync with the active session on SAP.
 
 ![sap9](imgs/sap9.png)
 
-Ve a "Recorder" y dale click en el ícono de Python.
+Go to 
+"Recorder" and click on the Python icon.
 
 ![sap10](imgs/sap10.png)
 
 
-## Descripción de los comandos
+## Description of the commands
 
 ### LoginSap
   
-Abre la aplicación de sap, establece la conexión y realiza el login
-|Parámetros|Descripción|ejemplo|
+Open the sap application, establish the connection and login
+|Parameters|Description|example|
 | --- | --- | --- |
-|Ruta SAP|Ruta de la aplicación de SAP|C:/Program Files (x86)/SAP/FrontEnd/SAPgui/saplogon.exe|
-|Nombre Conexión|Nombre de la conexión donde quieres logearte|Desarrollo (Directo)|
-|ID Usuario|Identificador del campo de usuario de SAP|wnd[0]/usr/txtRSYST-BNAME|
-|Usuario|Nombre de usuario que ingresas en el campo usuario al hacer login|Usuario1|
-|ID Password|Identificador del campo de contraseña de SAP|wnd[0]/usr/pwdRSYST-BCODE|
-|Contraseña|Contraseña que ingresas en el campo contraseña al hacer login|Contraseña|
+|Path SAP|SAP Application path|C:/Program Files (x86)/SAP/FrontEnd/SAPgui/saplogon.exe|
+|Connection Name|Connection name where you want to do login|Developer (Direct)|
+|User ID|The ID of SAP User field |wnd[0]/usr/txtRSYST-BNAME|
+|User|User name that you enter in the user field to login|User1|
+|Password ID|The ID of SAP password field |wnd[0]/usr/pwdRSYST-BCODE|
+|Password|Password that you enter in the password field to login|Password|
+|Timeout|Time lapse (in seconds) to search for the element|10|
+|Save connection result|Variable where the connection result will be saved|variable|
 
-### Click en Objeto
+### Execute an action
   
-Hace un click en SAP. Puede ser mediante diferentes propiedades, como setFocus, text, etc. También puedes modificar el 
-texto de un elemento
-|Parámetros|Descripción|ejemplo|
+Execute an action in SAP such as selecting, focusing or modifying the text of an element through different properties (setFocus, text, etc.)
+|Parameters|Description|example|
 | --- | --- | --- |
-|ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
-|Valor|Valor mostrado en el tracker después de un igual (=) (Ej. id.atributo = valor), o como entre parentesis (Ex. id.atributo(valor)|QMNUM|
-|Opción|Propiedad indicada en el tracker después de findById('algun id'). Ej session.findById('wnd[0]/tbar[0]/okcd').propiedad|Opción|
+|Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|
+|Row number (Optional)|Number of the row where you want to execute the action. In the tracker it will appear as selectedRows|0|
+|Column name (Optional)|Name of the column  where you want to execute the action. In the tracker it will appear as currentCellColumn|TYPE_DOC|
+|Value|Value shown in the tracker after an equal (=) (eg id.attribute=value), or as in parentheses (eg id.attribute(value)|QMNUM|
+|Option|Propery indicated in the tracker after findById('some id'). Ex session.findById('wnd[0]/tbar[0]/okcd').property|Option|
+|Timeout|Time lapse (in seconds) to search for the element|10|
 
-### Extraer Texto
+### Extract Text
   
-Extrae el texto de un objeto en sap, mediante la propiedad text
-|Parámetros|Descripción|ejemplo|
+Extract the text of an object in sap, using the text property
+|Parameters|Description|example|
 | --- | --- | --- |
-|ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
-|Asignar a Variable|Nombre de variable donde guardar el resultado|variable|
+|Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|
+|Timeout|Time lapse (in seconds) to search for the element|10|
+|Assign to Variable|Variable name where the result will be saved|variable|
 
-### Marca/Desmarca Check
+### Check/Uncheck
   
-Marca o desmarca un objeto en SAP
-|Parámetros|Descripción|ejemplo|
+Mark or unmark an object in SAP
+|Parameters|Description|example|
 | --- | --- | --- |
-|Opción|Seleccionar si quieres marcar o desmarcar el checkbox|Check|
-|Marcar individual con absoluteRow|Opción de marcarlos con columna absoluta|Checkbox|
-|Marcar todos|Opción de marcarlos a todos|Checkbox|
-|Columna absoluta|Columna con la que se desea interactuar|3|
-|ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
+|Option|Select check or uncheck|Uncheck|
+|Check individually with absoluteRow|Option to check them with absolute row|Checkbox|
+|Check all|Option to check them all|Checkbox|
+|Absolute Row|Column to interact with|3|
+|Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|
+|Timeout|Time lapse (in seconds) to search for the element|10|
 
-### Extraer Celda
+### Extract Cell
   
-Extrae el texto en una celda, puede ser con GetItemText o GetCellValue
-|Parámetros|Descripción|ejemplo|
+Extract the text in a cell, it can be with GetItemText or GetCellValue
+|Parameters|Description|example|
 | --- | --- | --- |
-|ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
-|Número de fila|Número de la fila donde se quiere extraer el texto. En el tracker aparecerá como selectedRows|0|
-|Nombre de la columna|Nombre de la columna donde se quiere extraer el texto. En el tracker aparecerá como currentCellColumn|TYPE_DOC|
-|Opción||Opción|
-|Asignar a Variable|Nombre de variable donde guardar el resultado|variable|
+|Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|
+|Row number|Number of the row where you want to extract the text. In the tracker it will appear as selectedRows|0|
+|Column name|Name of the column where you want to extract the text. In the tracker it will appear as currentCellColumn|TYPE_DOC|
+|Option||Option|
+|Timeout|Time lapse (in seconds) to search for the element|10|
+|Assign to Variable|Variable name where the result will be saved|variable|
 
-### Click en Celda
+### Click Cell
   
-Realiza un click en una celda. Puede ser con clickCurrentCell, setCurrentCell o doubleClickCurrentCell
-|Parámetros|Descripción|ejemplo|
+Click on a cell. It can be with clickCurrentCell, setCurrentCell or doubleClickCurrentCell
+|Parameters|Description|example|
 | --- | --- | --- |
-|ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
-|Número de fila|Número de la fila donde se quiere extraer el texto. En el tracker aparecerá como selectedRows|0|
-|Nombre de la columna|Nombre de la columna donde se quiere extraer el texto. En el tracker aparecerá como currentCellColumn|TYPE_DOC|
-|Tipo de click|Propiedad indicada en el tracker después de findById('algun id'). Ej session.findById('wnd[0]/tbar[0]/okcd').propiedad|Opción|
+|Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|
+|Row number|Number of the row where you want to extract the text. In the tracker it will appear as selectedRows|0|
+|Column name|Name of the column where you want to extract the text. In the tracker it will appear as currentCellColumn|TYPE_DOC|
+|Click type|Propery indicated in the tracker after findById('some id'). Ex session.findById('wnd[0]/tbar[0]/okcd').property|Option|
+|Timeout|Time lapse (in seconds) to search for the element|10|
 
-### Ejecutar Script
+### Run script
   
-Ejecuta un script VBS grabador con SAP
-|Parámetros|Descripción|ejemplo|
+Execute VBS script recorded with SAP
+|Parameters|Description|example|
 | --- | --- | --- |
-|Ruta VBA Script|Ruta del archivo VBs|C:/ruta/al/script.vbs|
-|Script predefinido||Opción|
+|Path VBA Script|SBS file path|C:/path/to/script.vbs|
+|Default Script||Option|
 
-### Obtener estado de checkbox
+### Get state checkbox
   
-Devuelve True si el checkbox está seleccionado
-|Parámetros|Descripción|ejemplo|
+Return True if checkbox is selected
+|Parameters|Description|example|
 | --- | --- | --- |
-|ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
-|Asignar a Variable|Nombre de variable donde guardar el resultado|variable|
+|Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|
+|Timeout|Time lapse (in seconds) to search for the element|10|
+|Assign to Variable|Variable name where the result will be saved|variable|
 
-### Enviar tecla
+### Send key
   
-Replica el evento enviar tecla
-|Parámetros|Descripción|ejemplo|
+Replicate send key event
+|Parameters|Description|example|
 | --- | --- | --- |
-|ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
-|Tecla|Tecla o combinación que se desea enviar|F1|
+|Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|
+|Row number (Optional)|Number of the row where you want to send the key. In the tracker it will appear as selectedRows|0|
+|Column name (Optional)|Name of the column where you want to send the key. In the tracker it will appear as currentCellColumn|TYPE_DOC|
+|Key|Key or combination to send|F1|
+|Timeout|Time lapse (in seconds) to search for the element|10|
 
-### Obtener propiedad
+### Get Property
   
-Obtiene una propiedad del objeto SAP especificado
-|Parámetros|Descripción|ejemplo|
+Get a property of the SAP Object especified
+|Parameters|Description|example|
 | --- | --- | --- |
-|ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
-|Propiedad|Propiedad que se quiere obtener. Puedes ver todas las propiedades acá https//help.sap.com/viewer/b47d018c3b9b45e897faf66a6c0885a8/760.03/en-US/a2e9357389334dc89eecc1fb13999ee3.html|Opción|
-|Asignar a Variable|Nombre de variable donde guardar el resultado|variable|
+|Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|
+|Property|Property to get. To see all property, go to https//help.sap.com/viewer/b47d018c3b9b45e897faf66a6c0885a8/760.03/en-US/a2e9357389334dc89eecc1fb13999ee3.html|Option|
+|Timeout|Time lapse (in seconds) to search for the element|10|
+|Assign to Variable|Variable name where the result will be saved|variable|
+
+### Wait for object
+  
+Wait for object to be visible
+|Parameters|Description|example|
+| --- | --- | --- |
+|Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|
+|Timeout|Time lapse (in seconds) to search for the element|10|
+|Assign to Variable|Variable name where the result will be saved|variable|
