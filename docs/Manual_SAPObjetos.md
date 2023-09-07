@@ -76,6 +76,14 @@ Open the sap application, establish the connection and login
 |Timeout|Time lapse (in seconds) to search for the element|10|
 |Save connection result|Variable where the connection result will be saved|variable|
 
+### Connect
+  
+Connect to an opened sap application
+|Parameters|Description|example|
+| --- | --- | --- |
+|Connection Name|Connection name where you want to do login|Developer (Direct)|
+|Save connection result|Variable where the connection result will be saved|variable|
+
 ### Execute an action
   
 Execute an action in SAP such as selecting, focusing or modifying the text of an element through different properties (setFocus, text, etc.)

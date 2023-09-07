@@ -156,10 +156,37 @@ if module == "LoginSap":
             SAPObject = None
             raise e
 
+if module == "Connect":
+
+    conn = GetParams('conn')
+    """
+        validaciones
+    """
+    try:
+        SapGuiAuto = client.GetObject('SAPGUI')
+        application = SapGuiAuto.GetScriptingEngine
+        SAPObjetos_mod = application.OpenConnection(conn, True)
+            
+        SAP_session = None
+        try:
+            SAP_session = SAPObjetos_mod.Children(0)
+        except:
+            SAP_session = SAPObjetos_mod.Children(1)
+
+        if SAPObjetos_mod:
+            SAPObject = SAPObjetos_mod
+
+    except Exception as e:
+        traceback.print_exc()
+        PrintException()
+        print(sys.exc_info()[0])
+        SAPObject = None
+        raise e
+
 try:
     id_object = GetParams('id_object')
     if module != "LoginSap" and module != "wait_object":
-        waitForObject(SAP_session, "wnd[0]").maximize()
+        # waitForObject(SAP_session, "wnd[0]").maximize()
         SelectedObj = waitForObject(SAP_session, id_object, timeout)
     
     if module == "ClickObjeto":

@@ -37,6 +37,14 @@ Abre o aplicativo SAP, estabeleça a conexão e faz login
 |Timeout|Tempo decorrido (em segundos) para procurar o elemento|10|
 |Salvar resultado da conexão|Variável onde o resultado da conexão será salvo|variável|
 
+### Conectar
+  
+Conecte-se a um aplicativo SAP aberto
+|Parâmetros|Descrição|exemplo|
+| --- | --- | --- |
+|Nome do conexão|Nome da conexão onde você deseja fazer o login|Desarrollo (Directo)|
+|Salvar resultado da conexão|Variável onde o resultado da conexão será salvo|variável|
+
 ### Executar uma ação
   
 Execute uma ação no SAP como selecionar, focar ou modificar o texto de um elemento através de diferentes propriedades (setFocus, text, etc.)
