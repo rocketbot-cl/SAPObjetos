@@ -40,7 +40,7 @@ In "Accessibility & Scripting, go to "Scripting" and activate "Enable scripting"
 
 ![sap6](imgs/sap6.png)
 
-How to work properly
+How to work properly?
 
 Open Tracker.exe
 
@@ -64,7 +64,7 @@ Go to
 
 ### LoginSap
   
-Open the sap application, establish the connection and login
+Open SAP application, establish the connection and login
 |Parameters|Description|example|
 | --- | --- | --- |
 |Path SAP|SAP Application path|C:/Program Files (x86)/SAP/FrontEnd/SAPgui/saplogon.exe|
@@ -78,7 +78,7 @@ Open the sap application, establish the connection and login
 
 ### Connect
   
-Connect to an opened sap application
+Connect to an opened SAP application
 |Parameters|Description|example|
 | --- | --- | --- |
 |Connection Name|Connection name where you want to do login|Developer (Direct)|
@@ -98,7 +98,7 @@ Execute an action in SAP such as selecting, focusing or modifying the text of an
 
 ### Extract Text
   
-Extract the text of an object in sap, using the text property
+Extract the text of an object in SAP, using the text property
 |Parameters|Description|example|
 | --- | --- | --- |
 |Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|

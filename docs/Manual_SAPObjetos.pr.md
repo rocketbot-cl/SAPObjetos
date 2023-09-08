@@ -59,7 +59,7 @@ Execute uma ação no SAP como selecionar, focar ou modificar o texto de um elem
 
 ### Extrair Texto
   
-Extrair o texto de um objeto no sap, usando a propriedade text
+Extrair o texto de um objeto no SAP, usando a propriedade text
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
 |ID do objeto|Identificador obtido no tracker|wnd[0]/tbar[0]/okcd|

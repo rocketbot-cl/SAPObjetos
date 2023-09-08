@@ -22,12 +22,12 @@ Para usar este módulo, tienes que conectarte a tu cuenta de SAP.
 
 Primeramente hay que activar los scripts en SAP GUI.
 
-En SAP GUI, tiene sque ir a la transacción RZ11; en el nombre del parámetro, escribe "sapgui/user_scripting" y haz click en Mostrar (display).
+En SAP GUI, tienes que ir a la transacción RZ11; en el nombre del parámetro, escribe "sapgui/user_scripting" y haz click en Mostrar (display).
 
 ![sap1](imgs/sap1.png)
 ![sap2](imgs/sap2.png)
 
-Haz clicn en "Cambiar valor" y en "Nuevo valor" selecciona "TRUE". Guárdalo.
+Haz click en "Cambiar valor" y en "Nuevo valor" selecciona "TRUE". Guárdalo.
 
 ![sap3](imgs/sap3.png)
 ![sap4](imgs/sap4.png)
@@ -40,13 +40,13 @@ En "Accesibilidad y Scripting", ve a "Scripting" y activa la opción "Enable scr
 
 ![sap6](imgs/sap6.png)
 
-Como trabajar correctamente
+¿Como trabajar correctamente?
 
 Abre Tracker.exe
 
 ![sap7](imgs/sap7.png)
 
-Abrirá una ventana como estas
+Abrirá una ventana como esta
 
 ![sap8](imgs/sap8.png)
 
@@ -64,11 +64,11 @@ Ve a "Recorder" y dale click en el ícono de Python.
 
 ### LoginSap
   
-Abre la aplicación de sap, establece la conexión y realiza el login
+Abre la aplicación SAP, establece la conexión y realiza el login
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |Ruta SAP|Ruta de la aplicación de SAP|C:/Program Files (x86)/SAP/FrontEnd/SAPgui/saplogon.exe|
-|Nombre Conexión|Nombre de la conexión donde quieres logearte|Desarrollo (Directo)|
+|Nombre Conexión|Nombre de la conexión donde quieres hacer login|Desarrollo (Directo)|
 |ID Usuario|Identificador del campo de usuario de SAP|wnd[0]/usr/txtRSYST-BNAME|
 |Usuario|Nombre de usuario que ingresas en el campo usuario al hacer login|Usuario1|
 |ID Password|Identificador del campo de contraseña de SAP|wnd[0]/usr/pwdRSYST-BCODE|
@@ -81,7 +81,7 @@ Abre la aplicación de sap, establece la conexión y realiza el login
 Conéctese a una aplicación SAP abierta
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
-|Nombre Conexión|Nombre de la conexión donde quieres logearte|Desarrollo (Directo)|
+|Nombre Conexión|Nombre de la conexión donde quieres hacer login|Desarrollo (Directo)|
 |Guardar resultado de conexión|Variable donde se guardará el resultado de la conexión|variable|
 
 ### Ejecutar una acción
@@ -98,7 +98,7 @@ Ejecutar una acción en SAP como seleccionar, hacer foco o modificar el texto de
 
 ### Extraer Texto
   
-Extrae el texto de un objeto en sap, mediante la propiedad text
+Extrae el texto de un objeto en SAP, mediante la propiedad text
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|

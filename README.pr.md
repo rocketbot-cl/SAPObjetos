@@ -28,7 +28,7 @@ Conecte-se a um aplicativo SAP aberto
 Execute uma ação no SAP como selecionar, focar ou modificar o texto de um elemento através de diferentes propriedades (setFocus, text, etc.)
 
 4. Extrair Texto  
-Extrair o texto de um objeto no sap, usando a propriedade text
+Extrair o texto de um objeto no SAP, usando a propriedade text
 
 5. Marque / desmarque  
 Marque ou desmarque um objeto no SAP

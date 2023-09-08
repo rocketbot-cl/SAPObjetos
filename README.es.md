@@ -19,7 +19,7 @@ Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
 
 
 1. LoginSap  
-Abre la aplicación de sap, establece la conexión y realiza el login
+Abre la aplicación SAP, establece la conexión y realiza el login
 
 2. Conectar  
 Conéctese a una aplicación SAP abierta
@@ -28,7 +28,7 @@ Conéctese a una aplicación SAP abierta
 Ejecutar una acción en SAP como seleccionar, hacer foco o modificar el texto de un elemento mediante diferentes propiedades (setFocus, text, etc.)
 
 4. Extraer Texto  
-Extrae el texto de un objeto en sap, mediante la propiedad text
+Extrae el texto de un objeto en SAP, mediante la propiedad text
 
 5. Marca/Desmarca Check  
 Marca o desmarca un objeto en SAP

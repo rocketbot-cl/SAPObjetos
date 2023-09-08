@@ -26,13 +26,13 @@
     {
       "en": {
         "title": "LoginSap",
-        "description": "Open the sap application, establish the connection and login",
+        "description": "Open SAP application, establish the connection and login",
         "title_options": "Select Option",
         "options": null
       },
       "es": {
         "title": "LoginSap",
-        "description": "Abre la aplicación de sap, establece la conexión y realiza el login",
+        "description": "Abre la aplicación SAP, establece la conexión y realiza el login",
         "title_options": "Seleccione una opción",
         "options": null
       },
@@ -83,7 +83,7 @@
               "pr": "Nome do conexão"
             },
             "description": {
-              "es": "Nombre de la conexión donde quieres logearte",
+              "es": "Nombre de la conexión donde quieres hacer login",
               "en": "Connection name where you want to do login",
               "pr": "Nome da conexão onde você deseja fazer o login"
             },
@@ -238,7 +238,7 @@
     {
       "en": {
         "title": "Connect",
-        "description": "Connect to an opened sap application",
+        "description": "Connect to an opened SAP application",
         "title_options": "Select Option",
         "options": null
       },
@@ -270,7 +270,7 @@
               "pr": "Nome do conexão"
             },
             "description": {
-              "es": "Nombre de la conexión donde quieres logearte",
+              "es": "Nombre de la conexión donde quieres hacer login",
               "en": "Connection name where you want to do login",
               "pr": "Nome da conexão onde você deseja fazer o login"
             },
@@ -602,19 +602,19 @@
     {
       "en": {
         "title": "Extract Text",
-        "description": "Extract the text of an object in sap, using the text property",
+        "description": "Extract the text of an object in SAP, using the text property",
         "title_options": "Put object id",
         "options": null
       },
       "es": {
         "title": "Extraer Texto",
-        "description": "Extrae el texto de un objeto en sap, mediante la propiedad text",
+        "description": "Extrae el texto de un objeto en SAP, mediante la propiedad text",
         "title_options": "Seleccione una opción",
         "options": null
       },
       "pr": {
         "title": "Extrair Texto",
-        "description": "Extrair o texto de um objeto no sap, usando a propriedade text",
+        "description": "Extrair o texto de um objeto no SAP, usando a propriedade text",
         "title_options": "Selecione a opção",
         "options": null
       },

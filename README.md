@@ -19,16 +19,16 @@ To install the module in Rocketbot Studio, it can be done in two ways:
 
 
 1. LoginSap  
-Open the sap application, establish the connection and login
+Open SAP application, establish the connection and login
 
 2. Connect  
-Connect to an opened sap application
+Connect to an opened SAP application
 
 3. Execute an action  
 Execute an action in SAP such as selecting, focusing or modifying the text of an element through different properties (setFocus, text, etc.)
 
 4. Extract Text  
-Extract the text of an object in sap, using the text property
+Extract the text of an object in SAP, using the text property
 
 5. Check/Uncheck  
 Mark or unmark an object in SAP
