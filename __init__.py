@@ -195,6 +195,7 @@ try:
         row = GetParams('row')
         input_ = GetParams('input_')
         tipo = GetParams('tipo')
+        async_sap = GetParams('async_sap')
 
         #agregar espacios hasta completar 10 caracteres
         #"{:>10}".format(input_)
@@ -214,14 +215,13 @@ try:
         if input_:
             if input_.startswith('"') and "," not in input_:
                 input_ = eval(input_)
-
-        if id_object:
-
+        
+        def action_sap(SelectedObj, tipo, input_=None): 
             if tipo == "text":
-                try:
-                    SelectedObj.text()
-                except:
+                if input_:
                     SelectedObj.text = input_
+                else:
+                    SelectedObj.text()
 
             elif tipo == "press":
                 SelectedObj.press()
@@ -338,6 +338,14 @@ try:
             elif tipo == "doubleClickItem":
                 SelectedObj.doubleClickItem(row, column)
 
+        if id_object:
+            if async_sap and eval(async_sap):
+                q = Queue()
+                t = Thread(target=action_sap, args=(SelectedObj, tipo, input_))
+                t.start()
+            else:
+                action_sap(SelectedObj, tipo, input_)
+        
     if module == "ExtraerTexto":
         # id_object = GetParams('id_object')
         var = GetParams('var')

@@ -56,6 +56,7 @@ Execute uma ação no SAP como selecionar, focar ou modificar o texto de um elem
 |valor|Valor mostrado no tracker após um igual (=) (Ej. id.atributo = valor), ou como entre parêntesis (Ex. id.atributo(valor)|QMNUM|
 |Opção|Propiedade indicada no tracker depóis findById('algun id'). Ex session.findById('wnd[0]/tbar[0]/okcd').propiedade|Opção|
 |Timeout|Tempo decorrido (em segundos) para procurar o elemento|10|
+|Asynchronous mode|Click asynchronously|Checkbox|
 
 ### Extrair Texto
   

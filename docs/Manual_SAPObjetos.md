@@ -95,6 +95,7 @@ Execute an action in SAP such as selecting, focusing or modifying the text of an
 |Value|Value shown in the tracker after an equal (=) (eg id.attribute=value), or as in parentheses (eg id.attribute(value)|QMNUM|
 |Option|Propery indicated in the tracker after findById('some id'). Ex session.findById('wnd[0]/tbar[0]/okcd').property|Option|
 |Timeout|Time lapse (in seconds) to search for the element|10|
+|Asynchronous mode|Click asynchronously|Checkbox|
 
 ### Extract Text
   
