@@ -1,10 +1,15 @@
 {
   "author": "Marcela Vergara",
-  "description": "With this module you can automate SAP R3 and Hana. Perform all the actions that you can record with the tracker shared by Stefan Schnell in the official SAP forum",
+  "description": "Module to work with SAP R3 and Hana | Modulo para trabajar con SAP R3 y Hana",
+  "description_lang": {
+    "en": "With this module you can automate SAP R3 and Hana. Perform every action that you can record with the tracker created by Stefan Schnell.",
+    "es": "Con este módulo puedes automatizar SAP R3 y Hana. Realiza todas las acciones que puedas grabar con el rastreador creado por Stefan Schnell.",
+    "pr": "Com este módulo você pode automatizar SAP R3 e Hana. Execute todas as ações que você pode gravar com o rastreador criado por Stefan Schnell."
+  },
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "12.6.1",
+  "version": "12.10.6",
   "license": "MIT",
-  "homepage": "http://rocketbot.co/",
+  "homepage": "http://rocketbot.com/",
   "linux": false,
   "windows": true,
   "mac": false,
@@ -21,20 +26,20 @@
     {
       "en": {
         "title": "LoginSap",
-        "description": "Open the sap application, establish the connection and login",
+        "description": "Open SAP application, establish the connection and login",
         "title_options": "Select Option",
         "options": null
       },
       "es": {
         "title": "LoginSap",
-        "description": "Abre la aplicación de sap, establece la conexión y realiza el login",
+        "description": "Abre la aplicación SAP, establece la conexión y realiza el login",
         "title_options": "Seleccione una opción",
         "options": null
       },
       "pr": {
         "title": "LoginSap",
         "description": "Abre o aplicativo SAP, estabeleça a conexão e faz login",
-        "title_options": "选择选项",
+        "title_options": "Selecione a opção",
         "options": null
       },
       "form": {
@@ -78,7 +83,7 @@
               "pr": "Nome do conexão"
             },
             "description": {
-              "es": "Nombre de la conexión donde quieres logearte",
+              "es": "Nombre de la conexión donde quieres hacer login",
               "en": "Connection name where you want to do login",
               "pr": "Nome da conexão onde você deseja fazer o login"
             },
@@ -164,6 +169,56 @@
             },
             "id": "password",
             "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "10",
+              "en": "10",
+              "pr": "10"
+            },
+            "title": {
+              "es": "Timeout",
+              "en": "Timeout",
+              "pr": "Timeout"
+            },
+            "description": {
+              "es": "Lapso de tiempo (en segundos) para buscar el elemento",
+              "en": "Time lapse (in seconds) to search for the element",
+              "pr": "Tempo decorrido (em segundos) para procurar o elemento"
+            },
+            "help": {
+              "es": "Tiempo de espera en segundos. Por defecto 10",
+              "en": "Waiting time in seconds. Default 10",
+              "pr": "Tempo de espera em segundos. Padrão 10"
+            },
+            "id": "timeout",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "variable",
+              "en": "variable",
+              "pr": "variável"
+            },
+            "title": {
+              "es": "Guardar resultado de conexión",
+              "en": "Save connection result",
+              "pr": "Salvar resultado da conexão"
+            },
+            "description": {
+              "es": "Variable donde se guardará el resultado de la conexión",
+              "en": "Variable where the connection result will be saved",
+              "pr": "Variável onde o resultado da conexão será salvo"
+            },
+            "help": {
+                "es": "Nombre de la variable sin {}",
+                "en": "Variable name without {}",
+                "pr": "Nome da variável sem {}"
+            },
+            "id": "variable",
+            "css": "col-md-6"
           }
         ]
       },
@@ -182,21 +237,103 @@
     },
     {
       "en": {
-        "title": "Click on object",
-        "description": "Click on SAP. It can be through different properties, such as setFocus, text, etc. You can also modify the text of an element",
-        "title_options": "Put object id",
+        "title": "Connect",
+        "description": "Connect to an opened SAP application",
+        "title_options": "Select Option",
         "options": null
       },
       "es": {
-        "title": "Click en Objeto",
-        "description": "Hace un click en SAP. Puede ser mediante diferentes propiedades, como setFocus, text, etc. También puedes modificar el texto de un elemento",
+        "title": "Conectar",
+        "description": "Conéctese a una aplicación SAP abierta",
         "title_options": "Seleccione una opción",
         "options": null
       },
       "pr": {
-        "title": "Clique no objeto",
-        "description": "Clique em SAP. Pode ser por meio de diferentes propriedades, como setFocus, text, etc. Você também pode modificar o texto de um elemento",
-        "title_options": "选择选项",
+        "title": "Conectar",
+        "description": "Conecte-se a um aplicativo SAP aberto",
+        "title_options": "Selecione a opção",
+        "options": null
+      },
+      "form": {
+        "css": "modal-lg",
+        "inputs": [
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "Desarrollo (Directo)",
+              "en": "Developer (Direct)",
+              "pr": "Desarrollo (Directo)"
+            },
+            "title": {
+              "es": "Nombre Conexión",
+              "en": "Connection Name",
+              "pr": "Nome do conexão"
+            },
+            "description": {
+              "es": "Nombre de la conexión donde quieres hacer login",
+              "en": "Connection name where you want to do login",
+              "pr": "Nome da conexão onde você deseja fazer o login"
+            },
+            "id": "conn",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "variable",
+              "en": "variable",
+              "pr": "variável"
+            },
+            "title": {
+              "es": "Guardar resultado de conexión",
+              "en": "Save connection result",
+              "pr": "Salvar resultado da conexão"
+            },
+            "description": {
+              "es": "Variable donde se guardará el resultado de la conexión",
+              "en": "Variable where the connection result will be saved",
+              "pr": "Variável onde o resultado da conexão será salvo"
+            },
+            "help": {
+                "es": "Nombre de la variable sin {}",
+                "en": "Variable name without {}",
+                "pr": "Nome da variável sem {}"
+            },
+            "id": "variable",
+            "css": "col-md-6"
+          }
+        ]
+      },
+      "video_youtube": "",
+      "icon": "data:image/png;base64,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",
+      "module": "Connect",
+      "module_name": "SAPObjetos",
+      "visible": true,
+      "options": false,
+      "father": "module",
+      "group": "scripts",
+      "linux": false,
+      "windows": true,
+      "mac": false,
+      "docker": true
+    },
+    {
+      "en": {
+        "title": "Execute an action",
+        "description": "Execute an action in SAP such as selecting, focusing or modifying the text of an element through different properties (setFocus, text, etc.)",
+        "title_options": "Put object id",
+        "options": null
+      },
+      "es": {
+        "title": "Ejecutar una acción",
+        "description": "Ejecutar una acción en SAP como seleccionar, hacer foco o modificar el texto de un elemento mediante diferentes propiedades (setFocus, text, etc.)",
+        "title_options": "Seleccione una opción",
+        "options": null
+      },
+      "pr": {
+        "title": "Executar uma ação",
+        "description": "Execute uma ação no SAP como selecionar, focar ou modificar o texto de um elemento através de diferentes propriedades (setFocus, text, etc.)",
+        "title_options": "Selecione uma opção",
         "options": null
       },
       "form": {
@@ -225,6 +362,50 @@
           {
             "type": "input",
             "placeholder": {
+              "es": "0",
+              "en": "0"
+            },
+            "title": {
+              "es": "Número de fila (Opcional):",
+              "en": "Row number (Optional):"
+            },
+            "description": {
+              "es": "Número de la fila donde se quiere ejecutar la acción. En el tracker aparecerá como selectedRows",
+              "en": "Number of the row where you want to execute the action. In the tracker it will appear as selectedRows",
+              "pr": "Número da linha onde você deseja executar a ação. No tracker aparecerá como selectedRows"
+            },
+            "help": {
+              "es": "Entregada por el tracker 'selectedRows'",
+              "en": "Show for tracker like 'selectedRows'"
+            },
+            "id": "row",
+            "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "TYPE_DOC",
+              "en": "TYPE_DOC"
+            },
+            "title": {
+              "es": "Nombre de la columna (Opcional):",
+              "en": "Column name (Optional):"
+            },
+            "help": {
+              "es": "Entregada por el tracker 'currentCellColumn'",
+              "en": "Show for tracker like 'currentCellColumn'"
+            },
+            "description": {
+              "es": "Nombre de la columna donde se quiere ejecutar la acción. En el tracker aparecerá como currentCellColumn",
+              "en": "Name of the column  where you want to execute the action. In the tracker it will appear as currentCellColumn",
+              "pr": "Nome da coluna onde você deseja executar a ação. No tracker aparecerá como currentCellColumn"
+            },
+            "id": "column",
+            "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": {
               "es": "QMNUM",
               "en": "QMNUM",
               "pr": "QMNUM"
@@ -240,7 +421,7 @@
               "pr": "Valor mostrado no tracker após um igual (=) (Ej. id.atributo = valor), ou como entre parêntesis (Ex. id.atributo(valor)"
             },
             "help": {
-              "es": "solo cuando requiere parametros",
+              "es": "Solo cuando requiere parametros",
               "en": "Only when it requires parameters",
               "pr": "Somente quando requer parâmetros"
             },
@@ -368,11 +549,57 @@
               {
                 "title": "getAbsoluteRow",
                 "value": "getAbsoluteRow"
+              },
+              {
+                "title": "doubleClickItem",
+                "value": "doubleClickItem"
               }
               
             ],
             "id": "tipo",
             "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "10",
+              "en": "10",
+              "pr": "10"
+            },
+            "title": {
+              "es": "Timeout",
+              "en": "Timeout",
+              "pr": "Timeout"
+            },
+            "description": {
+              "es": "Lapso de tiempo (en segundos) para buscar el elemento",
+              "en": "Time lapse (in seconds) to search for the element",
+              "pr": "Tempo decorrido (em segundos) para procurar o elemento"
+            },
+            "help": {
+              "es": "Tiempo de espera en segundos. Por defecto 10",
+              "en": "Waiting time in seconds. Default 10",
+              "pr": "Tempo de espera em segundos. Padrão 10"
+            },
+            "id": "timeout",
+            "css": "col-md-6"
+          },
+          {
+            "type": "checkbox",
+            "placeholder": {
+              "es": "Checkbox",
+              "en": "Checkbox"
+            },
+            "title": {
+              "es": "Modo asincrono",
+              "en": "Asynchronous mode"
+            },
+            "description": {
+                "es": "Realizar click de modo asíncrono",
+                "en": "Click asynchronously"
+            },
+            "id": "async_sap",
+            "css": "col-md-6"
           }
         ]
       },
@@ -392,20 +619,20 @@
     {
       "en": {
         "title": "Extract Text",
-        "description": "Extract the text of an object in sap, using the text property",
+        "description": "Extract the text of an object in SAP, using the text property",
         "title_options": "Put object id",
         "options": null
       },
       "es": {
         "title": "Extraer Texto",
-        "description": "Extrae el texto de un objeto en sap, mediante la propiedad text",
+        "description": "Extrae el texto de un objeto en SAP, mediante la propiedad text",
         "title_options": "Seleccione una opción",
         "options": null
       },
       "pr": {
         "title": "Extrair Texto",
-        "description": "Extrair o texto de um objeto no sap, usando a propriedade text",
-        "title_options": "选择选项",
+        "description": "Extrair o texto de um objeto no SAP, usando a propriedade text",
+        "title_options": "Selecione a opção",
         "options": null
       },
       "form": {
@@ -434,6 +661,31 @@
           {
             "type": "input",
             "placeholder": {
+              "es": "10",
+              "en": "10",
+              "pr": "10"
+            },
+            "title": {
+              "es": "Timeout",
+              "en": "Timeout",
+              "pr": "Timeout"
+            },
+            "description": {
+              "es": "Lapso de tiempo (en segundos) para buscar el elemento",
+              "en": "Time lapse (in seconds) to search for the element",
+              "pr": "Tempo decorrido (em segundos) para procurar o elemento"
+            },
+            "help": {
+              "es": "Tiempo de espera en segundos. Por defecto 10",
+              "en": "Waiting time in seconds. Default 10",
+              "pr": "Tempo de espera em segundos. Padrão 10"
+            },
+            "id": "timeout",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": {
               "es": "variable",
               "en": "variable",
               "pr": "variável"
@@ -455,7 +707,7 @@
             },
             "remove_vars": true,
             "id": "var",
-            "css": "col-md-12"
+            "css": "col-md-6"
           }
         ]
       },
@@ -488,7 +740,7 @@
       "pr": {
         "title": "Marque / desmarque",
         "description": "Marque ou desmarque um objeto no SAP",
-        "title_options": "选择选项",
+        "title_options": "Selecione a opção",
         "options": null
       },
       "form": {
@@ -598,6 +850,31 @@
             },
             "id": "id_object",
             "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "10",
+              "en": "10",
+              "pr": "10"
+            },
+            "title": {
+              "es": "Timeout",
+              "en": "Timeout",
+              "pr": "Timeout"
+            },
+            "description": {
+              "es": "Lapso de tiempo (en segundos) para buscar el elemento",
+              "en": "Time lapse (in seconds) to search for the element",
+              "pr": "Tempo decorrido (em segundos) para procurar o elemento"
+            },
+            "help": {
+              "es": "Tiempo de espera en segundos. Por defecto 10",
+              "en": "Waiting time in seconds. Default 10",
+              "pr": "Tempo de espera em segundos. Padrão 10"
+            },
+            "id": "timeout",
+            "css": "col-md-6"
           }
         ]
       },
@@ -630,7 +907,7 @@
       "pr": {
         "title": "Extrair célula",
         "description": "Extraia o texto em uma célula, pode ser com GetItemText ou GetCellValue",
-        "title_options": "选择选项",
+        "title_options": "Selecione a opção",
         "options": null
       },
       "form": {
@@ -736,6 +1013,31 @@
           {
             "type": "input",
             "placeholder": {
+              "es": "10",
+              "en": "10",
+              "pr": "10"
+            },
+            "title": {
+              "es": "Timeout",
+              "en": "Timeout",
+              "pr": "Timeout"
+            },
+            "description": {
+              "es": "Lapso de tiempo (en segundos) para buscar el elemento",
+              "en": "Time lapse (in seconds) to search for the element",
+              "pr": "Tempo decorrido (em segundos) para procurar o elemento"
+            },
+            "help": {
+              "es": "Tiempo de espera en segundos. Por defecto 10",
+              "en": "Waiting time in seconds. Default 10",
+              "pr": "Tempo de espera em segundos. Padrão 10"
+            },
+            "id": "timeout",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": {
               "es": "variable",
               "en": "variable",
               "pr": "variável"
@@ -757,7 +1059,7 @@
             },
             "remove_vars": true,
             "id": "var",
-            "css": "col-md-12"
+            "css": "col-md-6"
           }
         ]
       },
@@ -900,6 +1202,31 @@
             },
             "id": "type",
             "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "10",
+              "en": "10",
+              "pr": "10"
+            },
+            "title": {
+              "es": "Timeout",
+              "en": "Timeout",
+              "pr": "Timeout"
+            },
+            "description": {
+              "es": "Lapso de tiempo (en segundos) para buscar el elemento",
+              "en": "Time lapse (in seconds) to search for the element",
+              "pr": "Tempo decorrido (em segundos) para procurar o elemento"
+            },
+            "help": {
+              "es": "Tiempo de espera en segundos. Por defecto 10",
+              "en": "Waiting time in seconds. Default 10",
+              "pr": "Tempo de espera em segundos. Padrão 10"
+            },
+            "id": "timeout",
+            "css": "col-md-6"
           }
         ]
       },
@@ -1034,6 +1361,31 @@
           {
             "type": "input",
             "placeholder": {
+              "es": "10",
+              "en": "10",
+              "pr": "10"
+            },
+            "title": {
+              "es": "Timeout",
+              "en": "Timeout",
+              "pr": "Timeout"
+            },
+            "description": {
+              "es": "Lapso de tiempo (en segundos) para buscar el elemento",
+              "en": "Time lapse (in seconds) to search for the element",
+              "pr": "Tempo decorrido (em segundos) para procurar o elemento"
+            },
+            "help": {
+              "es": "Tiempo de espera en segundos. Por defecto 10",
+              "en": "Waiting time in seconds. Default 10",
+              "pr": "Tempo de espera em segundos. Padrão 10"
+            },
+            "id": "timeout",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": {
               "es": "variable",
               "en": "variable",
               "pr": "variável"
@@ -1055,7 +1407,7 @@
             },
             "remove_vars": true,
             "id": "var",
-            "css": "col-md-12"
+            "css": "col-md-6"
           }
         ]
       },
@@ -1088,7 +1440,7 @@
       "pr": {
         "title": "Envio de tecla",
         "description": "Replica evento de envio de tecla",
-        "title_options": "选择选项",
+        "title_options": "Selecione a opção",
         "options": null
       },
       "form": {
@@ -1113,6 +1465,50 @@
             },
             "id": "id_object",
             "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "0",
+              "en": "0"
+            },
+            "title": {
+              "es": "Número de fila (Opcional):",
+              "en": "Row number (Optional):"
+            },
+            "description": {
+              "es": "Número de la fila donde se quiere enviar tecla. En el tracker aparecerá como selectedRows",
+              "en": "Number of the row where you want to send the key. In the tracker it will appear as selectedRows",
+              "pr": "Número da linha onde você deseja enviar a chave. No tracker aparecerá como selectedRows"
+            },
+            "help": {
+              "es": "Entregada por el tracker 'selectedRows'",
+              "en": "Show for tracker like 'selectedRows'"
+            },
+            "id": "row",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "TYPE_DOC",
+              "en": "TYPE_DOC"
+            },
+            "title": {
+              "es": "Nombre de la columna (Opcional):",
+              "en": "Column name (Optional):"
+            },
+            "help": {
+              "es": "Entregada por el tracker 'currentCellColumn'",
+              "en": "Show for tracker like 'currentCellColumn'"
+            },
+            "description": {
+              "es": "Nombre de la columna donde se quiere enviar tecla. En el tracker aparecerá como currentCellColumn",
+              "en": "Name of the column where you want to send the key. In the tracker it will appear as currentCellColumn",
+              "pr": "Nome da coluna onde você deseja enviar a chave. No tracker aparecerá como currentCellColumn"
+            },
+            "id": "column",
+            "css": "col-md-6"
           },
           {
             "type": "select",
@@ -1196,7 +1592,32 @@
               }
             ],
             "id": "key",
-            "css": "col-md-12"
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "10",
+              "en": "10",
+              "pr": "10"
+            },
+            "title": {
+              "es": "Timeout",
+              "en": "Timeout",
+              "pr": "Timeout"
+            },
+            "description": {
+              "es": "Lapso de tiempo (en segundos) para buscar el elemento",
+              "en": "Time lapse (in seconds) to search for the element",
+              "pr": "Tempo decorrido (em segundos) para procurar o elemento"
+            },
+            "help": {
+              "es": "Tiempo de espera en segundos. Por defecto 10",
+              "en": "Waiting time in seconds. Default 10",
+              "pr": "Tempo de espera em segundos. Padrão 10"
+            },
+            "id": "timeout",
+            "css": "col-md-6"
           }
         ]
       },
@@ -1308,6 +1729,31 @@
           {
             "type": "input",
             "placeholder": {
+              "es": "10",
+              "en": "10",
+              "pr": "10"
+            },
+            "title": {
+              "es": "Timeout",
+              "en": "Timeout",
+              "pr": "Timeout"
+            },
+            "description": {
+              "es": "Lapso de tiempo (en segundos) para buscar el elemento",
+              "en": "Time lapse (in seconds) to search for the element",
+              "pr": "Tempo decorrido (em segundos) para procurar o elemento"
+            },
+            "help": {
+              "es": "Tiempo de espera en segundos. Por defecto 10",
+              "en": "Waiting time in seconds. Default 10",
+              "pr": "Tempo de espera em segundos. Padrão 10"
+            },
+            "id": "timeout",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": {
               "es": "variable",
               "en": "variable",
               "pr": "variável"
@@ -1329,7 +1775,7 @@
             },
             "remove_vars": true,
             "id": "result",
-            "css": "col-md-12"
+            "css": "col-md-6"
           }
         ]
       },
@@ -1345,6 +1791,114 @@
       "windows": true,
       "mac": false,
       "docker": true
-    }
+    }, 
+    {
+        "en": {
+          "title": "Wait for object",
+          "description": "Wait for object to be visible",
+          "title_options": "Put object id",
+          "options": null
+        },
+        "es": {
+          "title": "Esperar objeto",
+          "description": "Espera a que un objeto sea visible",
+          "title_options": "Seleccione una opción",
+          "options": null
+        },
+        "pr": {
+          "title": "Esperar objeto",
+          "description": "Espera a que um objeto seja visível",
+          "title_options": "",
+          "options": null
+        },
+        "form": {
+          "css": "modal-md",
+          "inputs": [
+            {
+              "type": "input",
+              "placeholder": {
+                "es": "wnd[0]/tbar[0]/okcd",
+                "en": "wnd[0]/tbar[0]/okcd",
+                "pr": "wnd[0]/tbar[0]/okcd"
+              },
+              "title": {
+                "es": "ID Objeto",
+                "en": "Object ID",
+                "pr": "ID do objeto"
+              },
+              "description": {
+                "es": "Identificador obtenido en el tracker",
+                "en": "ID obtained in the tracker",
+                "pr": "Identificador obtido no tracker"
+              },
+              "id": "item",
+              "css": "col-md-12"
+            },
+            {
+            "type": "input",
+            "placeholder": {
+              "es": "10",
+              "en": "10",
+              "pr": "10"
+            },
+            "title": {
+              "es": "Timeout",
+              "en": "Timeout",
+              "pr": "Timeout"
+            },
+            "description": {
+              "es": "Lapso de tiempo (en segundos) para buscar el elemento",
+              "en": "Time lapse (in seconds) to search for the element",
+              "pr": "Tempo decorrido (em segundos) para procurar o elemento"
+            },
+            "help": {
+              "es": "Tiempo de espera en segundos. Por defecto 10",
+              "en": "Waiting time in seconds. Default 10",
+              "pr": "Tempo de espera em segundos. Padrão 10"
+            },
+            "id": "timeout",
+            "css": "col-md-6"
+            },
+            {
+              "type": "input",
+              "placeholder": {
+                "es": "variable",
+                "en": "variable",
+                "pr": "variável"
+              },
+              "title": {
+                "es": "Asignar a Variable",
+                "en": "Assign to Variable",
+                "pr": "Atribuir à variável"
+              },
+              "description": {
+                "es": "Nombre de variable donde guardar el resultado",
+                "en": "Variable name where the result will be saved",
+                "pr": "Nome do variável onde o resultado vai ser salvado"
+              },
+              "help": {
+                "es": "Nombre de variable sin llaves {}",
+                "en": "Var name without {}",
+                "pr": "Nome do variável sem {}"
+              },
+              "remove_vars": true,
+              "id": "result",
+              "css": "col-md-12"
+            }
+          ]
+        },
+        "video_youtube": "",
+        "icon": "data:image/png;base64,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",
+        "module": "wait_object",
+        "module_name": "SAPObjetos",
+        "visible": true,
+        "options": false,
+        "father": "module",
+        "group": "scripts",
+        "linux": false,
+        "windows": true,
+        "mac": false,
+        "docker": true
+      }
   ]
 }

@@ -23,7 +23,7 @@ In "Accessibility & Scripting, go to "Scripting" and activate "Enable scripting"
 
 ![sap6](imgs/sap6.png)
 
-How to work properly
+How to work properly?
 
 Open Tracker.exe
 
@@ -48,12 +48,12 @@ Para usar este módulo, tienes que conectarte a tu cuenta de SAP.
 
 Primeramente hay que activar los scripts en SAP GUI.
 
-En SAP GUI, tiene sque ir a la transacción RZ11; en el nombre del parámetro, escribe "sapgui/user_scripting" y haz click en Mostrar (display).
+En SAP GUI, tienes que ir a la transacción RZ11; en el nombre del parámetro, escribe "sapgui/user_scripting" y haz click en Mostrar (display).
 
 ![sap1](imgs/sap1.png)
 ![sap2](imgs/sap2.png)
 
-Haz clicn en "Cambiar valor" y en "Nuevo valor" selecciona "TRUE". Guárdalo.
+Haz click en "Cambiar valor" y en "Nuevo valor" selecciona "TRUE". Guárdalo.
 
 ![sap3](imgs/sap3.png)
 ![sap4](imgs/sap4.png)
@@ -66,13 +66,13 @@ En "Accesibilidad y Scripting", ve a "Scripting" y activa la opción "Enable scr
 
 ![sap6](imgs/sap6.png)
 
-Como trabajar correctamente
+¿Como trabajar correctamente?
 
 Abre Tracker.exe
 
 ![sap7](imgs/sap7.png)
 
-Abrirá una ventana como estas
+Abrirá una ventana como esta
 
 ![sap8](imgs/sap8.png)
 

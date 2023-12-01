@@ -26,17 +26,64 @@ Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
 from win32com import client
 import sys
 import subprocess
-import time
+from time import time, sleep
+import os
+import traceback
 
+GetParams = GetParams #type:ignore
+tmp_global_obj = tmp_global_obj #type:ignore
+PrintException = PrintException #type:ignore
+SetVar = SetVar #type:ignore
+GetGlobals = GetGlobals #type:ignore
+
+# Add modules libraries to Rocektbot
+# -----------------------------------
+base_path = tmp_global_obj["basepath"]
+cur_path = os.path.join(base_path, 'modules', 'SAPObjetos', 'libs')
+
+if cur_path not in sys.path:
+    sys.path.append(cur_path)
+
+try:
+    from threading import Thread
+    from queue import Queue
+except ImportError:
+    from Queue import Queue
+    
 """
     Obtengo el modulo que fue invocado
 """
 module = GetParams("module")
+
 global SAPObject
 global id_object
+global SAPObjetos_mod
+global SAP_session
+
+def open_sap(path):
+    global subprocess
+    subprocess.Popen(path)
+    
+def waitForObject(session, id, timeout=10):
+    global time, sleep
+    inicio = time()
+    while True:
+        try:
+            return session.findById(id)
+        except Exception as e:
+            pass
+        sleep(1)
+        fin = time()
+        total = fin - inicio
+        if total > timeout:
+            return session.findById(id)
 
 
-
+timeout = GetParams("timeout")
+if not timeout:
+    timeout = 10
+else:
+    timeout = int(timeout)
 """
     Realiza Login
 """
@@ -51,7 +98,7 @@ if module == "LoginSap":
     path = GetParams('path')
     conn = GetParams('conn')
     id_button = GetParams('id_btn')
-
+    # result = GetParams('result')
     """
         validaciones
     """
@@ -62,36 +109,93 @@ if module == "LoginSap":
         try:
             if not path:
                 path = "C:/Program Files (x86)/SAP/FrontEnd/SAPgui/saplogon.exe"
-            subprocess.Popen(path)
-            time.sleep(10)
 
-            print("Get Object 'SAPGUI'")
-            SapGuiAuto = client.GetObject('SAPGUI')
-            application = SapGuiAuto.GetScriptingEngine
-            print("Open connection")
-            connection = application.OpenConnection(conn, True)
-            print("session")
-            session = connection.Children(0)
+            q = Queue()
+            t = Thread(target=open_sap, args=(path,))
+            t.start()
+
+            inicio = time()
+            while True:
+                try:
+                    # print("Get Object 'SAPGUI'")
+                    SapGuiAuto = client.GetObject('SAPGUI')
+                    application = SapGuiAuto.GetScriptingEngine
+                    # print("Open connection")
+                    SAPObjetos_mod = application.OpenConnection(conn, True)
+                    break
+                except Exception as e:
+                    pass
+
+                sleep(1)
+                fin = time()
+                total = fin - inicio
+                if total > 60:
+                    # SetVar(result, False)
+                    raise Exception("Timeout: SAP cannot be opened")
+                
+            SAP_session = None
+            try:
+                SAP_session = SAPObjetos_mod.Children(0)
+            except:
+                SAP_session = SAPObjetos_mod.Children(1)
 
             if user and password:
-                session.findById(id_user).SetFocus()
-                session.findById(id_user).text = user
-                session.findById(id_pass).text = password
+                SelectedObj = waitForObject(SAP_session, id_user, timeout)
+                SelectedObj.SetFocus()
+                SelectedObj.text = user
+                SelectedObj = waitForObject(SAP_session, id_pass, timeout)
+                SelectedObj.text = password
 
-            if connection:
-                SAPObject = connection
+            if SAPObjetos_mod:
+                SAPObject = SAPObjetos_mod
 
-        except:
+        except Exception as e:
+            traceback.print_exc()
             PrintException()
             print(sys.exc_info()[0])
             SAPObject = None
+            raise e
+
+if module == "Connect":
+
+    conn = GetParams('conn')
+    """
+        validaciones
+    """
+    try:
+        SapGuiAuto = client.GetObject('SAPGUI')
+        application = SapGuiAuto.GetScriptingEngine
+        SAPObjetos_mod = application.OpenConnection(conn, True)
+            
+        SAP_session = None
+        try:
+            SAP_session = SAPObjetos_mod.Children(0)
+        except:
+            SAP_session = SAPObjetos_mod.Children(1)
+
+        if SAPObjetos_mod:
+            SAPObject = SAPObjetos_mod
+
+    except Exception as e:
+        traceback.print_exc()
+        PrintException()
+        print(sys.exc_info()[0])
+        SAPObject = None
+        raise e
 
 try:
+    id_object = GetParams('id_object')
+    if module != "LoginSap" and module != "wait_object":
+        # waitForObject(SAP_session, "wnd[0]").maximize()
+        SelectedObj = waitForObject(SAP_session, id_object, timeout)
+    
     if module == "ClickObjeto":
-        # global id_object
-        id_object = GetParams('id_object')
+        # id_object = GetParams('id_object')
+        column = GetParams('column')
+        row = GetParams('row')
         input_ = GetParams('input_')
         tipo = GetParams('tipo')
+        async_sap = GetParams('async_sap')
 
         #agregar espacios hasta completar 10 caracteres
         #"{:>10}".format(input_)
@@ -99,100 +203,103 @@ try:
         if not SAPObject:
             raise Exception("Debe iniciar sesión en SAP")
 
-        connection = SAPObject
-        session = SAPObject.Children(0)
-        session.findById("wnd[0]").maximize()
+        #waitForObject(SAP_session, "wnd[0]").maximize()
 
+        if column not in ["", None] and row not in ["", None]:
+            try:
+                SelectedObj.currentCellColumn = column
+                SelectedObj.selectedRows = row
+            except:
+                pass
 
         if input_:
             if input_.startswith('"') and "," not in input_:
                 input_ = eval(input_)
-
-        if id_object:
-
+        
+        def action_sap(SelectedObj, tipo, input_=None): 
             if tipo == "text":
-                try:
-                    session.findById(id_object).text()
-                except:
-                    session.findById(id_object).text = input_
+                if input_:
+                    SelectedObj.text = input_
+                else:
+                    SelectedObj.text()
 
             elif tipo == "press":
-                session.findById(id_object).press()
+                SelectedObj.press()
 
             elif tipo == "setFocus":
-                session.findById(id_object).setFocus()
+                SelectedObj.setFocus()
 
             elif tipo == "select":
-                session.findById(id_object).select()
+                SelectedObj.select()
 
             elif tipo == "close":
-                session.findById(id_object).close()
+                SelectedObj.close()
 
             elif tipo == "contextMenu":
-                session.findById(id_object).contextMenu()
-                time.sleep(2)
+                SelectedObj.contextMenu()
+                sleep(2)
 
             elif tipo == "createSession":
-                session.createSession()
+                SAP_session.createSession()
 
             elif tipo == "selectColumn":
-                session.findById(id_object).selectColumn(input_)
+                SelectedObj.selectColumn(input_)
 
             elif tipo == "pressContextButton":
                 if input_:
-                    session.findById(id_object).pressContextButton(input_)
+                    SelectedObj.pressContextButton(input_)
                 else:
-                    session.findById(id_object).pressContextButton()
+                    SelectedObj.pressContextButton()
 
             elif tipo == "pressToolbarContextButton":
                 if input_:
-                    session.findById(id_object).pressToolbarContextButton(input_)
+                    SelectedObj.pressToolbarContextButton(input_)
                 else:
-                    session.findById(id_object).pressToolbarContextButton()
+                    SelectedObj.pressToolbarContextButton()
 
             elif tipo == "pressButton":
                 if input_:
-                    session.findById(id_object).pressButton(input_)
+                    SelectedObj.pressButton(input_)
                 else:
-                    session.findById(id_object).pressButton()
+                    SelectedObj.pressButton()
 
             elif tipo == "pressToolbarButton":
-                session.findById(id_object).pressToolbarButton(input_)
+                SelectedObj.pressToolbarButton(input_)
 
             elif tipo == "currentCellColumn":
-                session.findById(id_object).currentCellColumn(input_)
+                SelectedObj.currentCellColumn(input_)
 
             elif tipo == "selectContextMenuItem":
-                session.findById(id_object).selectContextMenuItem(input_)
+                SelectedObj.selectContextMenuItem(input_)
 
             elif tipo == "selectedNode":
-                session.findById(id_object).selectedNode(input_)
+                SelectedObj.selectedNode(input_)
 
             elif tipo == "selectNode":
-                session.findById(id_object).selectNode(input_)
+                SelectedObj.selectNode(input_)
 
             elif tipo == "selectedRows":
-                session.findById(id_object).selectedRows = input_
+                SelectedObj.selectedRows = input_
 
             elif tipo == "verticalScrollbar":
                 try:
-                    session.findById(id_object).verticalScrollbar(input_)
+                    SelectedObj.verticalScrollbar(input_)
                 except:
-                    session.findById(id_object).verticalScrollbar.position = input_
+                    SelectedObj.verticalScrollbar.position = input_
 
             elif tipo == "key":
-                session.findById(id_object).key = input_
+                SelectedObj.key = input_
             
             elif tipo == "caretPosition":
                 try:
-                    session.findById(id_object).caretPosition(input_)
+                    SelectedObj.caretPosition(input_)
                 except:
-                    session.findById(id_object).caretPosition = input_
+                    SelectedObj.caretPosition = input_
             elif tipo == "expandNode":
                 try:
-                    session.findById(id_object).expandNode(input_)
+                    SelectedObj.expandNode(input_)
                 except: 
-                    session.findById(id_object).expandNode = input_
+                    SelectedObj.expandNode = input_
             elif tipo == "selectItem":
                 try:
                     split_input = input_.split(',')
@@ -202,9 +309,9 @@ try:
                         param1 = eval(param1)
                     if param2.startswith('"'):
                         param2 = eval(param2)
-                    session.findById(id_object).selectItem(param1,param2)
+                    SelectedObj.selectItem(param1,param2)
                 except: 
-                     session.findById(id_object).selectItem(input_)
+                     SelectedObj.selectItem(input_)
             elif tipo == "ensureVisibleHorizontalItem":
                 try:
                     split_input = input_.split(',')
@@ -215,34 +322,40 @@ try:
                     if param2.startswith('"'):
                         param2 = eval(param2)
 
-                    session.findById(id_object).ensureVisibleHorizontalItem(param1, param2)
+                    SelectedObj.ensureVisibleHorizontalItem(param1, param2)
                 except:
                     PrintException()
-                    session.findById(id_object).ensureVisibleHorizontalItem = input_
+                    SelectedObj.ensureVisibleHorizontalItem = input_
             elif tipo == "topNode":
                 try:
-                    session.findById(id_object).topNode(input_)
+                    SelectedObj.topNode(input_)
                 except:
-                    session.findById(id_object).topNode = input_
+                    SelectedObj.topNode = input_
             elif tipo == "getAbsoluteRow":
                 if not input_:
                     input_ = GetParams("absoluteRow")
-                session.findById(id_object).getAbsoluteRow(int(input_)).selected = -1
-
-    if module == "ExtraerTexto":
-        id_object = GetParams('id_object')
-        var = GetParams('var')
-
-        connection = SAPObject
-        session = connection.Children(0)
+                SelectedObj.getAbsoluteRow(int(input_)).selected = -1
+            elif tipo == "doubleClickItem":
+                SelectedObj.doubleClickItem(row, column)
 
         if id_object:
-            val = session.findById(id_object).text
+            if async_sap and eval(async_sap):
+                q = Queue()
+                t = Thread(target=action_sap, args=(SelectedObj, tipo, input_))
+                t.start()
+            else:
+                action_sap(SelectedObj, tipo, input_)
+        
+    if module == "ExtraerTexto":
+        # id_object = GetParams('id_object')
+        var = GetParams('var')
+
+        if id_object:
+            val = SelectedObj.text
             SetVar(var,val)
 
-
     if module == "click_check":
-        id_object = GetParams('id_object')
+        # id_object = GetParams('id_object')
         tipo = GetParams('tipo')
         todo = GetParams('todo')
         absolute = GetParams('absolute')
@@ -255,45 +368,37 @@ try:
 
         if not SAPObject:
             raise Exception("Debe iniciar sesión en SAP")
-
-        connection = SAPObject
-        session = connection.Children(0)
-        session.findById("wnd[0]").maximize()
+        
+        # waitForObject(SAP_session, "wnd[0]").maximize()
         
         if id_object and tipo == "marca_":
             if todo == True:
-                session.findById(id_object).SelectAllColumns()
+                SelectedObj.SelectAllColumns()
             else:
                 if absolute == True:
-                    session.findById(id_object).getAbsoluteRow(absoluteRow).selected = -1
+                    SelectedObj.getAbsoluteRow(absoluteRow).selected = -1
                 else:
-                    session.findById(id_object).selected = -1
+                    SelectedObj.selected = -1
 
         if id_object and tipo == "desmarca_":
             if todo == True:
-                session.findById(id_object).DeselectAllColumns()
+                SelectedObj.DeselectAllColumns()
             else:
                 if absolute == True:
-                    session.findById(id_object).getAbsoluteRow(absoluteRow).selected = 0
+                    SelectedObj.getAbsoluteRow(absoluteRow).selected = 0
                 else:
-                    session.findById(id_object).selected = -0
-            
-        
+                    SelectedObj.selected = -0   
 
         if not tipo:
             raise Exception("Debe seleccionar una opción")
 
-
     if module == "ExtractCell":
-        id_object = GetParams('id_object')
+        # id_object = GetParams('id_object')
         column = GetParams('column')
         row = GetParams('row')
         var = GetParams('var')
         tipo = GetParams('tipo')
 
-        connection = SAPObject
-        session = connection.Children(0)
-        
         if id_object:
             if tipo == "GetItemText":
                 if row.startswith('"'):
@@ -301,41 +406,35 @@ try:
                 if column.startswith('"'):
                     column = eval(column)
 
-                val = session.findById(id_object).getitemtext(row, column)
+                val = SelectedObj.getitemtext(row, column)
                 SetVar(var, val)
             if tipo == "GetCellValue":
-                val = session.findById(id_object).getcellvalue(int(row), column)
+                val = SelectedObj.getcellvalue(int(row), column)
                 SetVar(var, val)
 
-
     if module == "ClickCell":
-        id_object = GetParams('id_object')
+        # id_object = GetParams('id_object')
         column = GetParams('column')
         row = GetParams('row')
         click_type = GetParams("type")
-
-        connection = SAPObject
-        session = connection.Children(0)
 
         if not id_object:
             raise Exception("Field 'Id object' is empty")
 
         if not click_type or click_type == "clickCurrentCell":
-            session.findById(id_object).currentCellColumn = column
-            session.findById(id_object).selectedRows = row
-            session.findById(id_object).clickCurrentCell()
+            SelectedObj.currentCellColumn = column
+            SelectedObj.selectedRows = row
+            SelectedObj.clickCurrentCell()
         if click_type == "setCurrentCell":
-            session.findById(id_object).setCurrentCell(row, column)
+            SelectedObj.setCurrentCell(row, column)
         if click_type == "doubleClickCurrentCell":
-            session.findById(id_object).currentCellColumn = column
-            session.findById(id_object).selectedRows = row
-            session.findById(id_object).doubleClickCurrentCell()
+            SelectedObj.currentCellColumn = column
+            SelectedObj.selectedRows = row
+            SelectedObj.doubleClickCurrentCell()
         if click_type == "doubleClickNode":
-            session.findById(id_object).doubleClickNode(row)
+            SelectedObj.doubleClickNode(row)
 
     if module == "runVBA":
-   
-        import subprocess
 
         path = GetParams("path")
         example = GetParams("example")
@@ -347,31 +446,43 @@ try:
             cur_path = base_path + 'modules' + os.sep + 'SAPObjetos' + os.sep + 'libs' + os.sep
             path = cur_path + example
 
-        subprocess.call(r"cscript " + path)
+        p = subprocess.Popen([r"C:\Windows\System32\cscript.exe ", path], shell=True)
+        sleep(5)
+        print(p.communicate())
+        
+    if module == "wait_object":
+        # ProcessTime = time.perf_counter  #this returns nearly 0 when first call it if python version <= 3.6
+        # timer = ProcessTime()
+        # actual = timer
+        item = GetParams('item')
+        var_ = GetParams('result') 
 
+        try:
+            result = waitForObject(SAP_session, item, timeout) 
+            if result:
+                SetVar(var_, True)
+        except Exception as e:
+            # print(e)
+            SetVar(var_, False)
 
     if module == "checkbox":
-        id_object = GetParams('id_object')
+        # id_object = GetParams('id_object')
         result = GetParams('var')
-    
-        connection = SAPObject
-        session = connection.Children(0)
 
         if not id_object:
             raise Exception("Field 'Id object' is empty")
 
-        val = session.findById(id_object).selected
+        val = SelectedObj.selected
         SetVar(result, val)
 
     if module == "sendKey":
-        id_object = GetParams('id_object')
+        # id_object = GetParams('id_object')
+        column = GetParams('column')
+        row = GetParams('row')
         key = GetParams('key')
 
         if not SAPObject:
             raise Exception("Debe iniciar sesión en SAP")
-
-        connection = SAPObject
-        session = connection.Children(0)
 
         if not id_object:
             raise Exception("Field 'Id object' is empty")
@@ -379,8 +490,11 @@ try:
         if key.isdigit():
             key = int(key)
 
-        session.findById(id_object).sendVKey(key)
-
+        if column not in ["", None] and row not in ["", None]:
+            SelectedObj.currentCellColumn = column
+            SelectedObj.selectedRows = row
+        
+        SelectedObj.sendVKey(key)
 
     if module == "GetProperty":
         
@@ -395,16 +509,14 @@ try:
               }
             return properties[property]
 
-        id_object = GetParams('id_object')
+        # id_object = GetParams('id_object')
         property = GetParams('property')
         result = GetParams('result')
 
-        connection = SAPObject
-        session = connection.Children(0)
-        res = GetProperty(session.findById(id_object), property)
+        res = GetProperty(SelectedObj, property)
         SetVar(result, res)
-
     
 except Exception as e:
+    traceback.print_exc()
     PrintException()
     raise e
