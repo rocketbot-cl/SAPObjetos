@@ -185,8 +185,7 @@ if module == "Connect":
 
 try:
     id_object = GetParams('id_object')
-    if module != "LoginSap" and module != "wait_object":
-        # waitForObject(SAP_session, "wnd[0]").maximize()
+    if id_object:
         SelectedObj = waitForObject(SAP_session, id_object, timeout)
     
     if module == "ClickObjeto":
@@ -440,7 +439,7 @@ try:
         example = GetParams("example")
 
         if path:
-            path = "\"" + path.replace("/", os.sep) + "\""
+            path = os.path.normpath(path)
         if example:
             base_path = tmp_global_obj["basepath"]
             cur_path = base_path + 'modules' + os.sep + 'SAPObjetos' + os.sep + 'libs' + os.sep
