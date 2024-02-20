@@ -98,63 +98,72 @@ if module == "LoginSap":
     path = GetParams('path')
     conn = GetParams('conn')
     id_button = GetParams('id_btn')
-    # result = GetParams('result')
+    sync_sap = GetParams('sync_sap')
+    async_sap = GetParams('async_sap')
+    # result = GetParams('result')  
     """
         validaciones
     """
     if not id_user or not id_pass or not conn or not path:
         raise Exception('No ha ingresado todos los datos')
 
-    if id_user:
-        try:
-            if not path:
-                path = "C:/Program Files (x86)/SAP/FrontEnd/SAPgui/saplogon.exe"
+    try:
+        if not path:
+            path = "C:/Program Files (x86)/SAP/FrontEnd/SAPgui/saplogon.exe"
 
+        sync_sap = eval(sync_sap) if sync_sap else None
+        async_sap = eval(async_sap) if async_sap else None
+        
+        if sync_sap or (not sync_sap and not async_sap):
+            open_sap(path)
+        else:
             q = Queue()
             t = Thread(target=open_sap, args=(path,))
             t.start()
 
-            inicio = time()
-            while True:
-                try:
-                    # print("Get Object 'SAPGUI'")
-                    SapGuiAuto = client.GetObject('SAPGUI')
-                    application = SapGuiAuto.GetScriptingEngine
-                    # print("Open connection")
-                    SAPObjetos_mod = application.OpenConnection(conn, True)
-                    break
-                except Exception as e:
-                    pass
-
-                sleep(1)
-                fin = time()
-                total = fin - inicio
-                if total > 60:
-                    # SetVar(result, False)
-                    raise Exception("Timeout: SAP cannot be opened")
-                
-            SAP_session = None
+        inicio = time()
+        while True:
             try:
-                SAP_session = SAPObjetos_mod.Children(0)
-            except:
+                # print("Get Object 'SAPGUI'")
+                SapGuiAuto = client.GetObject('SAPGUI')
+                application = SapGuiAuto.GetScriptingEngine
+                # print("Open connection")
+                SAPObjetos_mod = application.OpenConnection(conn, True)
+                break
+            except Exception as e:
+                pass
+
+            sleep(1)
+            fin = time()
+            total = fin - inicio
+            if total > 60:
+                # SetVar(result, False)
+                raise Exception("Timeout: SAP cannot be opened")
+            
+        SAP_session = None
+        try:
+            SAP_session = SAPObjetos_mod.Children(0)
+        except:
+            try:
                 SAP_session = SAPObjetos_mod.Children(1)
+            except:
+                raise("Unable to connect to SAP Application. Check if RZ11 transaction is enabled.")
 
-            if user and password:
-                SelectedObj = waitForObject(SAP_session, id_user, timeout)
-                SelectedObj.SetFocus()
-                SelectedObj.text = user
-                SelectedObj = waitForObject(SAP_session, id_pass, timeout)
-                SelectedObj.text = password
+        if user and password:
+            SelectedObj = waitForObject(SAP_session, id_user, timeout)
+            SelectedObj.SetFocus()
+            SelectedObj.text = user
+            SelectedObj = waitForObject(SAP_session, id_pass, timeout)
+            SelectedObj.text = password
 
-            if SAPObjetos_mod:
-                SAPObject = SAPObjetos_mod
+        if SAPObjetos_mod:
+            SAPObject = SAPObjetos_mod
 
-        except Exception as e:
-            traceback.print_exc()
-            PrintException()
-            print(sys.exc_info()[0])
-            SAPObject = None
-            raise e
+    except Exception as e:
+        PrintException()
+        print(sys.exc_info()[0])
+        SAPObject = None
+        raise e
 
 if module == "Connect":
 
@@ -185,7 +194,7 @@ if module == "Connect":
 
 try:
     id_object = GetParams('id_object')
-    if module != "LoginSap" and module != "wait_object":
+    if module != "LoginSap" and module != "wait_object" and id_object:
         # waitForObject(SAP_session, "wnd[0]").maximize()
         SelectedObj = waitForObject(SAP_session, id_object, timeout)
     
@@ -216,13 +225,13 @@ try:
             if input_.startswith('"') and "," not in input_:
                 input_ = eval(input_)
         
-        def action_sap(SelectedObj, tipo, input_=None): 
+        def action_sap(SelectedObj, tipo, column=None, row=None, input_=None): 
             if tipo == "text":
                 if input_:
                     SelectedObj.text = input_
                 else:
                     SelectedObj.text()
-
+                        
             elif tipo == "press":
                 SelectedObj.press()
 
@@ -244,6 +253,9 @@ try:
 
             elif tipo == "selectColumn":
                 SelectedObj.selectColumn(input_)
+                
+            elif tipo == "columns.elementAt":
+                SelectedObj.columns.elementAt(column).selected = input_
 
             elif tipo == "pressContextButton":
                 if input_:
@@ -341,18 +353,34 @@ try:
         if id_object:
             if async_sap and eval(async_sap):
                 q = Queue()
-                t = Thread(target=action_sap, args=(SelectedObj, tipo, input_))
+                t = Thread(target=action_sap, args=(SelectedObj, tipo, column, row, input_))
                 t.start()
             else:
-                action_sap(SelectedObj, tipo, input_)
+                action_sap(SelectedObj, tipo, column, row, input_)
         
     if module == "ExtraerTexto":
         # id_object = GetParams('id_object')
+        caption = GetParams('caption')
         var = GetParams('var')
-
+        value = GetParams('input_')
+        
         if id_object:
-            val = SelectedObj.text
+            if value:
+                try:
+                    val = SelectedObj.GetNodeTextByKey(value)
+                except:
+                    pass
+            else:
+                val = SelectedObj.text
             SetVar(var,val)
+        
+        if caption and eval(caption):
+                try:
+                    val = {SelectedObj.caption(): val} 
+                except:
+                    pass
+
+        SetVar(var,val)
 
     if module == "click_check":
         # id_object = GetParams('id_object')
@@ -498,22 +526,35 @@ try:
 
     if module == "GetProperty":
         
-        def GetProperty(object, property):
-            properties = {
-                "Height": object.Height, 
-                "Highlighted": object.Highlighted,
+        def GetProperty(object, property, value):
+            
+            properties = { 
                 "Name": object.Name,
-                "Required": object.Required,
                 "Text": object.Text,
                 "Width": object.Width,
-              }
+                "Height": object.Height
+            }
+            try:
+                properties["Required"] = object.Required
+            except:
+                pass
+            try:
+                properties["Highlighted"] = object.Highlighted
+            except:
+                pass
+            try:
+                properties["ChildrenCount"] = object.getNodeChildrenCount(value)
+            except:
+                pass
+
             return properties[property]
 
         # id_object = GetParams('id_object')
+        value = GetParams('input_')
         property = GetParams('property')
         result = GetParams('result')
-
-        res = GetProperty(SelectedObj, property)
+        
+        res = GetProperty(SelectedObj, property, value)
         SetVar(result, res)
     
 except Exception as e:

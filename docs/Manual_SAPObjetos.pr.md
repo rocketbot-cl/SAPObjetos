@@ -34,7 +34,9 @@ Abre o aplicativo SAP, estabeleça a conexão e faz login
 |Nome do usuário|Nome do usuário que você digita no campo usuário para fazer o login|Usuario1|
 |ID de senha|O ID do campo senha|wnd[0]/usr/pwdRSYST-BCODE|
 |Senha|Senha que você digita no campo senha para fazer o login|S3nh4 123|
+|Synchronous mode|Connect synchronously|Checkbox|
 |Timeout|Tempo decorrido (em segundos) para procurar o elemento|10|
+|Asynchronous mode|Connect asynchronously|Checkbox|
 |Salvar resultado da conexão|Variável onde o resultado da conexão será salvo|variável|
 
 ### Conectar
@@ -52,7 +54,7 @@ Execute uma ação no SAP como selecionar, focar ou modificar o texto de um elem
 | --- | --- | --- |
 |ID do objeto|Identificador obtido no tracker|wnd[0]/tbar[0]/okcd|
 |Row number (Optional)|Número da linha onde você deseja executar a ação. No tracker aparecerá como selectedRows|0|
-|Column name (Optional)|Nome da coluna onde você deseja executar a ação. No tracker aparecerá como currentCellColumn|TYPE_DOC|
+|Column name or number (Optional)|Nome o numero da coluna onde você deseja executar a ação. No tracker aparecerá como currentCellColumn o columns.elementAt|TYPE_DOC|
 |valor|Valor mostrado no tracker após um igual (=) (Ej. id.atributo = valor), ou como entre parêntesis (Ex. id.atributo(valor)|QMNUM|
 |Opção|Propiedade indicada no tracker depóis findById('algun id'). Ex session.findById('wnd[0]/tbar[0]/okcd').propiedade|Opção|
 |Timeout|Tempo decorrido (em segundos) para procurar o elemento|10|
@@ -64,6 +66,8 @@ Extrair o texto de um objeto no SAP, usando a propriedade text
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
 |ID do objeto|Identificador obtido no tracker|wnd[0]/tbar[0]/okcd|
+|Valor|Valor mostrado no tracker após um igual (=) (Ej. id.atributo = valor), ou como entre parêntesis (Ex. id.atributo(valor)|QMNUM|
+|Título|Opção de obter o título junto com o texto em forma de dicionário||
 |Timeout|Tempo decorrido (em segundos) para procurar o elemento|10|
 |Atribuir à variável|Nome do variável onde o resultado vai ser salvado|variável|
 
@@ -136,6 +140,7 @@ Obtém uma propriedade do objeto SAP especificado
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
 |ID do objeto|Identificador obtido no tracker|wnd[0]/tbar[0]/okcd|
+|Valor|Valor mostrado no tracker após um igual (=) (Ej. id.atributo = valor), ou como entre parêntesis (Ex. id.atributo(valor)|QMNUM|
 |Propiedade|Propriedade para obter. Para ver todas as propiedades, ir á https//help.sap.com/viewer/b47d018c3b9b45e897faf66a6c0885a8/760.03/en-US/a2e9357389334dc89eecc1fb13999ee3.html|Opção|
 |Timeout|Tempo decorrido (em segundos) para procurar o elemento|10|
 |Atribuir à variável|Nome do variável onde o resultado vai ser salvado|variável|

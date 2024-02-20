@@ -7,7 +7,7 @@
     "pr": "Com este módulo você pode automatizar SAP R3 e Hana. Execute todas as ações que você pode gravar com o rastreador criado por Stefan Schnell."
   },
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "12.10.6",
+  "version": "12.10.13",
   "license": "MIT",
   "homepage": "http://rocketbot.com/",
   "linux": false,
@@ -171,6 +171,23 @@
             "css": "col-md-6"
           },
           {
+          "type": "checkbox",
+          "placeholder": {
+            "es": "Checkbox",
+            "en": "Checkbox"
+          },
+          "title": {
+            "es": "Modo sincrono",
+            "en": "Synchronous mode"
+          },
+          "description": {
+              "es": "Realizar conexión de modo síncrono",
+              "en": "Connect synchronously"
+          },
+          "id": "sync_sap",
+          "css": "col-md-6"
+          },
+          {
             "type": "input",
             "placeholder": {
               "es": "10",
@@ -193,6 +210,23 @@
               "pr": "Tempo de espera em segundos. Padrão 10"
             },
             "id": "timeout",
+            "css": "col-md-6"
+          },
+          {
+            "type": "checkbox",
+            "placeholder": {
+              "es": "Checkbox",
+              "en": "Checkbox"
+            },
+            "title": {
+              "es": "Modo asincrono",
+              "en": "Asynchronous mode"
+            },
+            "description": {
+                "es": "Realizar conexión de modo asíncrono",
+                "en": "Connect asynchronously"
+            },
+            "id": "async_sap",
             "css": "col-md-6"
           },
           {
@@ -388,17 +422,17 @@
               "en": "TYPE_DOC"
             },
             "title": {
-              "es": "Nombre de la columna (Opcional):",
-              "en": "Column name (Optional):"
+              "es": "Nombre o número de la columna (Opcional):",
+              "en": "Column name or number (Optional):"
             },
             "help": {
-              "es": "Entregada por el tracker 'currentCellColumn'",
-              "en": "Show for tracker like 'currentCellColumn'"
+              "es": "Entregada por el tracker 'currentCellColumn' o 'columns.elementAt'",
+              "en": "Show for tracker like 'currentCellColumn' or 'columns.elementAt'"
             },
             "description": {
-              "es": "Nombre de la columna donde se quiere ejecutar la acción. En el tracker aparecerá como currentCellColumn",
-              "en": "Name of the column  where you want to execute the action. In the tracker it will appear as currentCellColumn",
-              "pr": "Nome da coluna onde você deseja executar a ação. No tracker aparecerá como currentCellColumn"
+              "es": "Nombre o número de la columna donde se quiere ejecutar la acción. En el tracker aparecerá como currentCellColumn o columns.elementAt",
+              "en": "Name or number of the column  where you want to execute the action. In the tracker it will appear as currentCellColumn or columns.elementAt",
+              "pr": "Nome o numero da coluna onde você deseja executar a ação. No tracker aparecerá como currentCellColumn o columns.elementAt"
             },
             "id": "column",
             "css": "col-md-12"
@@ -513,6 +547,10 @@
               {
                 "title": "selectColumn",
                 "value": "selectColumn"
+              },
+              {
+                "title": "columns.elementAt",
+                "value": "columns.elementAt"
               },
               {
                 "title": "selectContextMenuItem",
@@ -657,6 +695,51 @@
             },
             "id": "id_object",
             "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "QMNUM",
+              "en": "QMNUM",
+              "pr": "QMNUM"
+            },
+            "title": {
+              "es": "Valor:",
+              "en": "Value:",
+              "pr": "Valor:"
+            },
+            "description": {
+              "es": "Valor mostrado en el tracker después de un igual (=) (Ej. id.atributo = valor), o como entre parentesis (Ex. id.atributo(valor)",
+              "en": "Value shown in the tracker after an equal (=) (eg id.attribute=value), or as in parentheses (eg id.attribute(value)",
+              "pr": "Valor mostrado no tracker após um igual (=) (Ej. id.atributo = valor), ou como entre parêntesis (Ex. id.atributo(valor)"
+            },
+            "help": {
+              "es": "Solo cuando requiere parametros",
+              "en": "Only when it requires parameters",
+              "pr": "Somente quando requer parâmetros"
+            },
+            "id": "input_",
+            "css": "col-md-6"
+          },
+          {
+            "type": "checkbox",
+            "placeholder": {
+              "es": "",
+              "en": "",
+              "pr": ""
+            },
+            "title": {
+              "es": "Titulo",
+              "en": "Caption",
+              "pr": "Título"
+            },
+            "description": {
+              "es": "Opción para obtener el título junto con el texto en forma de diccionario",
+              "en": "Option to get the title along with the text in the form of a dictionary",
+              "pr": "Opção de obter o título junto com o texto em forma de dicionário"
+            },
+            "id": "caption",
+            "css": "col-md-6"
           },
           {
             "type": "input",
@@ -1676,6 +1759,31 @@
             "id": "id_object",
             "css": "col-md-12"
           },
+          		  {
+            "type": "input",
+            "placeholder": {
+              "es": "QMNUM",
+              "en": "QMNUM",
+              "pr": "QMNUM"
+            },
+            "title": {
+              "es": "Valor:",
+              "en": "Value:",
+              "pr": "Valor:"
+            },
+            "description": {
+              "es": "Valor mostrado en el tracker después de un igual (=) (Ej. id.atributo = valor), o como entre parentesis (Ex. id.atributo(valor)",
+              "en": "Value shown in the tracker after an equal (=) (eg id.attribute=value), or as in parentheses (eg id.attribute(value)",
+              "pr": "Valor mostrado no tracker após um igual (=) (Ej. id.atributo = valor), ou como entre parêntesis (Ex. id.atributo(valor)"
+            },
+            "help": {
+              "es": "Solo cuando requiere parametros",
+              "en": "Only when it requires parameters",
+              "pr": "Somente quando requer parâmetros"
+            },
+            "id": "input_",
+            "css": "col-md-6"
+          },
           {
             "type": "select",
             "placeholder": {
@@ -1721,6 +1829,10 @@
               {
                 "title": "Width",
                 "value": "Width"
+              },
+              {
+                "title": "ChildrenCount",
+                "value": "ChildrenCount"
               }
             ],
             "id": "property",
