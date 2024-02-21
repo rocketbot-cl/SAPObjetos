@@ -8,7 +8,7 @@ Con este módulo puedes automatizar SAP R3 y Hana. Realiza todas las acciones qu
 
 *Read this in other languages: [English](Manual_SAPObjetos.md), [Português](Manual_SAPObjetos.pr.md), [Español](Manual_SAPObjetos.es.md)*
   
-![banner](imgs/Banner_SAPObjetos.png)
+![banner](imgs/Banner_SAPObjetos.png o jpg)
 ## Como instalar este módulo
   
 Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
@@ -107,6 +107,15 @@ Extrae el texto de un objeto en SAP, mediante la propiedad text
 |ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
 |Valor|Valor mostrado en el tracker después de un igual (=) (Ej. id.atributo = valor), o como entre parentesis (Ex. id.atributo(valor)|QMNUM|
 |Titulo|Opción para obtener el título junto con el texto en forma de diccionario||
+|Timeout|Lapso de tiempo (en segundos) para buscar el elemento|10|
+|Asignar a Variable|Nombre de variable donde guardar el resultado|variable|
+
+### Extraer texto de ayuda
+  
+Extrae el texto de un objeto en SAP del recuadro de ayuda
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
 |Timeout|Lapso de tiempo (en segundos) para buscar el elemento|10|
 |Asignar a Variable|Nombre de variable donde guardar el resultado|variable|
 

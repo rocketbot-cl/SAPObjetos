@@ -8,7 +8,7 @@ With this module you can automate SAP R3 and Hana. Perform every action that you
 
 *Read this in other languages: [English](Manual_SAPObjetos.md), [Português](Manual_SAPObjetos.pr.md), [Español](Manual_SAPObjetos.es.md)*
   
-![banner](imgs/Banner_SAPObjetos.png)
+![banner](imgs/Banner_SAPObjetos.png o jpg)
 ## How to install this module
   
 To install the module in Rocketbot Studio, it can be done in two ways:
@@ -107,6 +107,15 @@ Extract the text of an object in SAP, using the text property
 |Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|
 |Value|Value shown in the tracker after an equal (=) (eg id.attribute=value), or as in parentheses (eg id.attribute(value)|QMNUM|
 |Caption|Option to get the title along with the text in the form of a dictionary||
+|Timeout|Time lapse (in seconds) to search for the element|10|
+|Assign to Variable|Variable name where the result will be saved|variable|
+
+### Extract text from tooltip
+  
+Extract the text of an object tooltip in SAP
+|Parameters|Description|example|
+| --- | --- | --- |
+|Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|
 |Timeout|Time lapse (in seconds) to search for the element|10|
 |Assign to Variable|Variable name where the result will be saved|variable|
 

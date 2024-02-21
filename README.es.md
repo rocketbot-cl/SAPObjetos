@@ -30,28 +30,31 @@ Ejecutar una acción en SAP como seleccionar, hacer foco o modificar el texto de
 4. Extraer Texto  
 Extrae el texto de un objeto en SAP, mediante la propiedad text
 
-5. Marca/Desmarca Check  
+5. Extraer texto de ayuda  
+Extrae el texto de un objeto en SAP del recuadro de ayuda
+
+6. Marca/Desmarca Check  
 Marca o desmarca un objeto en SAP
 
-6. Extraer Celda  
+7. Extraer Celda  
 Extrae el texto en una celda, puede ser con GetItemText o GetCellValue
 
-7. Click en Celda  
+8. Click en Celda  
 Realiza un click en una celda. Puede ser con clickCurrentCell, setCurrentCell o doubleClickCurrentCell
 
-8. Ejecutar Script  
+9. Ejecutar Script  
 Ejecuta un script VBS grabador con SAP
 
-9. Obtener estado de checkbox  
+10. Obtener estado de checkbox  
 Devuelve True si el checkbox está seleccionado
 
-10. Enviar tecla  
+11. Enviar tecla  
 Replica el evento enviar tecla
 
-11. Obtener propiedad  
+12. Obtener propiedad  
 Obtiene una propiedad del objeto SAP especificado
 
-12. Esperar objeto  
+13. Esperar objeto  
 Espera a que un objeto sea visible  
 
 

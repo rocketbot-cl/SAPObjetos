@@ -381,6 +381,14 @@ try:
                     pass
 
         SetVar(var,val)
+        
+    if module == "ExtraerTextoAyuda":
+        # id_object = GetParams('id_object')
+        var = GetParams('var')
+
+        if id_object:
+            val = SelectedObj.Tooltip
+            SetVar(var,val)
 
     if module == "click_check":
         # id_object = GetParams('id_object')
