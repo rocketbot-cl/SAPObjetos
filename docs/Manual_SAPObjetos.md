@@ -8,7 +8,7 @@ With this module you can automate SAP R3 and Hana. Perform every action that you
 
 *Read this in other languages: [English](Manual_SAPObjetos.md), [Português](Manual_SAPObjetos.pr.md), [Español](Manual_SAPObjetos.es.md)*
   
-![banner](imgs/Banner_SAPObjetos.png o jpg)
+![banner](imgs/Banner_SAPObjetos.png)
 ## How to install this module
   
 To install the module in Rocketbot Studio, it can be done in two ways:
