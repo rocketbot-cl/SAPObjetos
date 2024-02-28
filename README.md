@@ -30,28 +30,31 @@ Execute an action in SAP such as selecting, focusing or modifying the text of an
 4. Extract Text  
 Extract the text of an object in SAP, using the text property
 
-5. Check/Uncheck  
+5. Extract text from tooltip  
+Extract the text of an object tooltip in SAP
+
+6. Check/Uncheck  
 Mark or unmark an object in SAP
 
-6. Extract Cell  
+7. Extract Cell  
 Extract the text in a cell, it can be with GetItemText or GetCellValue
 
-7. Click Cell  
+8. Click Cell  
 Click on a cell. It can be with clickCurrentCell, setCurrentCell or doubleClickCurrentCell
 
-8. Run script  
+9. Run script  
 Execute VBS script recorded with SAP
 
-9. Get state checkbox  
+10. Get state checkbox  
 Return True if checkbox is selected
 
-10. Send key  
+11. Send key  
 Replicate send key event
 
-11. Get Property  
+12. Get Property  
 Get a property of the SAP Object especified
 
-12. Wait for object  
+13. Wait for object  
 Wait for object to be visible  
 
 

@@ -30,28 +30,31 @@ Execute uma ação no SAP como selecionar, focar ou modificar o texto de um elem
 4. Extrair Texto  
 Extrair o texto de um objeto no SAP, usando a propriedade text
 
-5. Marque / desmarque  
+5. Extraia o texto de ajuda  
+Extraia o texto de um objeto no SAP da caixa de ajuda
+
+6. Marque / desmarque  
 Marque ou desmarque um objeto no SAP
 
-6. Extrair célula  
+7. Extrair célula  
 Extraia o texto em uma célula, pode ser com GetItemText ou GetCellValue
 
-7. Clique em célula  
+8. Clique em célula  
 Clique em uma célula. Pode ser com clickCurrentCell, setCurrentCell ou doubleClickCurrentCell
 
-8. Execute Script  
+9. Execute Script  
 Execute um gravador de script VBS com SAP
 
-9.   
+10.   
 
 
-10. Envio de tecla  
+11. Envio de tecla  
 Replica evento de envio de tecla
 
-11. Obter propriedade  
+12. Obter propriedade  
 Obtém uma propriedade do objeto SAP especificado
 
-12. Esperar objeto  
+13. Esperar objeto  
 Espera a que um objeto seja visível  
 
 

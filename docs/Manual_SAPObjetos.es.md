@@ -73,7 +73,9 @@ Abre la aplicación SAP, establece la conexión y realiza el login
 |Usuario|Nombre de usuario que ingresas en el campo usuario al hacer login|Usuario1|
 |ID Password|Identificador del campo de contraseña de SAP|wnd[0]/usr/pwdRSYST-BCODE|
 |Contraseña|Contraseña que ingresas en el campo contraseña al hacer login|Contraseña|
+|Modo sincrono|Realizar conexión de modo síncrono|Checkbox|
 |Timeout|Lapso de tiempo (en segundos) para buscar el elemento|10|
+|Modo asincrono|Realizar conexión de modo asíncrono|Checkbox|
 |Guardar resultado de conexión|Variable donde se guardará el resultado de la conexión|variable|
 
 ### Conectar
@@ -91,7 +93,7 @@ Ejecutar una acción en SAP como seleccionar, hacer foco o modificar el texto de
 | --- | --- | --- |
 |ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
 |Número de fila (Opcional)|Número de la fila donde se quiere ejecutar la acción. En el tracker aparecerá como selectedRows|0|
-|Nombre de la columna (Opcional)|Nombre de la columna donde se quiere ejecutar la acción. En el tracker aparecerá como currentCellColumn|TYPE_DOC|
+|Nombre o número de la columna (Opcional)|Nombre o número de la columna donde se quiere ejecutar la acción. En el tracker aparecerá como currentCellColumn o columns.elementAt|TYPE_DOC|
 |Valor|Valor mostrado en el tracker después de un igual (=) (Ej. id.atributo = valor), o como entre parentesis (Ex. id.atributo(valor)|QMNUM|
 |Opción|Propiedad indicada en el tracker después de findById('algun id'). Ej session.findById('wnd[0]/tbar[0]/okcd').propiedad|Opción|
 |Timeout|Lapso de tiempo (en segundos) para buscar el elemento|10|
@@ -100,6 +102,17 @@ Ejecutar una acción en SAP como seleccionar, hacer foco o modificar el texto de
 ### Extraer Texto
   
 Extrae el texto de un objeto en SAP, mediante la propiedad text
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
+|Valor|Valor mostrado en el tracker después de un igual (=) (Ej. id.atributo = valor), o como entre parentesis (Ex. id.atributo(valor)|QMNUM|
+|Titulo|Opción para obtener el título junto con el texto en forma de diccionario||
+|Timeout|Lapso de tiempo (en segundos) para buscar el elemento|10|
+|Asignar a Variable|Nombre de variable donde guardar el resultado|variable|
+
+### Extraer texto de ayuda
+  
+Extrae el texto de un objeto en SAP del recuadro de ayuda
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
@@ -175,6 +188,7 @@ Obtiene una propiedad del objeto SAP especificado
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
+|Valor|Valor mostrado en el tracker después de un igual (=) (Ej. id.atributo = valor), o como entre parentesis (Ex. id.atributo(valor)|QMNUM|
 |Propiedad|Propiedad que se quiere obtener. Puedes ver todas las propiedades acá https//help.sap.com/viewer/b47d018c3b9b45e897faf66a6c0885a8/760.03/en-US/a2e9357389334dc89eecc1fb13999ee3.html|Opción|
 |Timeout|Lapso de tiempo (en segundos) para buscar el elemento|10|
 |Asignar a Variable|Nombre de variable donde guardar el resultado|variable|

@@ -73,7 +73,9 @@ Open SAP application, establish the connection and login
 |User|User name that you enter in the user field to login|User1|
 |Password ID|The ID of SAP password field |wnd[0]/usr/pwdRSYST-BCODE|
 |Password|Password that you enter in the password field to login|Password|
+|Synchronous mode|Connect synchronously|Checkbox|
 |Timeout|Time lapse (in seconds) to search for the element|10|
+|Asynchronous mode|Connect asynchronously|Checkbox|
 |Save connection result|Variable where the connection result will be saved|variable|
 
 ### Connect
@@ -91,7 +93,7 @@ Execute an action in SAP such as selecting, focusing or modifying the text of an
 | --- | --- | --- |
 |Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|
 |Row number (Optional)|Number of the row where you want to execute the action. In the tracker it will appear as selectedRows|0|
-|Column name (Optional)|Name of the column  where you want to execute the action. In the tracker it will appear as currentCellColumn|TYPE_DOC|
+|Column name or number (Optional)|Name or number of the column  where you want to execute the action. In the tracker it will appear as currentCellColumn or columns.elementAt|TYPE_DOC|
 |Value|Value shown in the tracker after an equal (=) (eg id.attribute=value), or as in parentheses (eg id.attribute(value)|QMNUM|
 |Option|Propery indicated in the tracker after findById('some id'). Ex session.findById('wnd[0]/tbar[0]/okcd').property|Option|
 |Timeout|Time lapse (in seconds) to search for the element|10|
@@ -100,6 +102,17 @@ Execute an action in SAP such as selecting, focusing or modifying the text of an
 ### Extract Text
   
 Extract the text of an object in SAP, using the text property
+|Parameters|Description|example|
+| --- | --- | --- |
+|Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|
+|Value|Value shown in the tracker after an equal (=) (eg id.attribute=value), or as in parentheses (eg id.attribute(value)|QMNUM|
+|Caption|Option to get the title along with the text in the form of a dictionary||
+|Timeout|Time lapse (in seconds) to search for the element|10|
+|Assign to Variable|Variable name where the result will be saved|variable|
+
+### Extract text from tooltip
+  
+Extract the text of an object tooltip in SAP
 |Parameters|Description|example|
 | --- | --- | --- |
 |Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|
@@ -175,6 +188,7 @@ Get a property of the SAP Object especified
 |Parameters|Description|example|
 | --- | --- | --- |
 |Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|
+|Value|Value shown in the tracker after an equal (=) (eg id.attribute=value), or as in parentheses (eg id.attribute(value)|QMNUM|
 |Property|Property to get. To see all property, go to https//help.sap.com/viewer/b47d018c3b9b45e897faf66a6c0885a8/760.03/en-US/a2e9357389334dc89eecc1fb13999ee3.html|Option|
 |Timeout|Time lapse (in seconds) to search for the element|10|
 |Assign to Variable|Variable name where the result will be saved|variable|
