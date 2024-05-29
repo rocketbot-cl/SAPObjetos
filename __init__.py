@@ -196,7 +196,8 @@ try:
     id_object = GetParams('id_object')
     if module != "LoginSap" and module != "wait_object" and id_object:
         # waitForObject(SAP_session, "wnd[0]").maximize()
-        SelectedObj = waitForObject(SAP_session, id_object, timeout)
+        if id_object:
+            SelectedObj = waitForObject(SAP_session, id_object, timeout)
     
     if module == "ClickObjeto":
         # id_object = GetParams('id_object')
@@ -227,11 +228,14 @@ try:
         
         def action_sap(SelectedObj, tipo, column=None, row=None, input_=None): 
             if tipo == "text":
-                if input_:
+                if input_ is not None or input_ != "":
                     SelectedObj.text = input_
                 else:
                     SelectedObj.text()
-                        
+            
+            elif tipo == "clearText":
+                SelectedObj.text = ""
+                    
             elif tipo == "press":
                 SelectedObj.press()
 
@@ -348,7 +352,20 @@ try:
                     input_ = GetParams("absoluteRow")
                 SelectedObj.getAbsoluteRow(int(input_)).selected = -1
             elif tipo == "doubleClickItem":
-                SelectedObj.doubleClickItem(row, column)
+                if input_:
+                    try:
+                        split_input = input_.split(',')
+                        param1 = split_input[0]
+                        param2 = split_input[1]
+                        if param1.startswith('"'):
+                            param1 = eval(param1)
+                        if param2.startswith('"'):
+                            param2 = eval(param2)
+                        SelectedObj.doubleClickItem(param1, param2)
+                    except:
+                        SelectedObj.doubleClickItem(input_)
+                else:
+                    SelectedObj.doubleClickItem(row, column)
 
         if id_object:
             if async_sap and eval(async_sap):
@@ -360,19 +377,43 @@ try:
         
     if module == "ExtraerTexto":
         # id_object = GetParams('id_object')
+        tipo = GetParams('tipo')
         caption = GetParams('caption')
         var = GetParams('var')
-        value = GetParams('input_')
-        
-        if id_object:
-            if value:
+        input_ = GetParams('input_')
+                
+        if tipo == "TreeObject.GetNodeTextByKey" or not tipo:
+            if input_:
                 try:
-                    val = SelectedObj.GetNodeTextByKey(value)
+                    val = SelectedObj.GetNodeTextByKey(input_)
+                except:
+                    pass
+            else:
+                # Kept for compatibility
+                val = SelectedObj.text
+
+        if tipo == "GetItemText":
+            if input_:
+                try:
+                    val = SelectedObj.GetItemText(input_)
                 except:
                     pass
             else:
                 val = SelectedObj.text
-            SetVar(var,val)
+    
+    
+        if tipo == "TreeObject.GetItemText":
+            try:
+                split_input = input_.split(',')
+                param1 = split_input[0]
+                param2 = split_input[1]
+                if param1.startswith('"'):
+                    param1 = eval(param1)
+                if param2.startswith('"'):
+                    param2 = eval(param2)
+                val = SelectedObj.GetItemText(param1,param2)
+            except: 
+                val = SelectedObj.GetItemText(input_)
         
         if caption and eval(caption):
                 try:
@@ -427,7 +468,28 @@ try:
 
         if not tipo:
             raise Exception("Debe seleccionar una opción")
-
+    
+    if module == "ExportFile":
+        
+        path_id = GetParams('path_id')
+        path = GetParams('path')
+        file_id = GetParams('filename_id')
+        file_name = GetParams('filename')
+        button_id = GetParams('button_id')
+        
+        button_obj_0 = waitForObject(SAP_session, "wnd[1]/tbar[0]/btn[0]", timeout)
+        button_obj_0.press()
+        
+        
+        path_obj = waitForObject(SAP_session, path_id, timeout)
+        path_obj.text = path
+        time.sleep(1)
+        file_obj = waitForObject(SAP_session, file_id, timeout)
+        file_obj.text = file_name
+        time.sleep(2)
+        button_obj = waitForObject(SAP_session, button_id, timeout)
+        button_obj.press()
+    
     if module == "ExtractCell":
         # id_object = GetParams('id_object')
         column = GetParams('column')

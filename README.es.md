@@ -55,7 +55,10 @@ Replica el evento enviar tecla
 Obtiene una propiedad del objeto SAP especificado
 
 13. Esperar objeto  
-Espera a que un objeto sea visible  
+Espera a que un objeto sea visible
+
+14. Exportar archivo  
+Exportar un archivo desde SAP  
 
 
 

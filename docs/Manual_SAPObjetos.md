@@ -105,6 +105,7 @@ Extract the text of an object in SAP, using the text property
 |Parameters|Description|example|
 | --- | --- | --- |
 |Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|
+|Options|Options to extract the text||
 |Value|Value shown in the tracker after an equal (=) (eg id.attribute=value), or as in parentheses (eg id.attribute(value)|QMNUM|
 |Caption|Option to get the title along with the text in the form of a dictionary||
 |Timeout|Time lapse (in seconds) to search for the element|10|
@@ -201,3 +202,15 @@ Wait for object to be visible
 |Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|
 |Timeout|Time lapse (in seconds) to search for the element|10|
 |Assign to Variable|Variable name where the result will be saved|variable|
+
+### Export file
+  
+Export a file from SAP
+|Parameters|Description|example|
+| --- | --- | --- |
+|Folder ID|ID obtained in the tracker|wnd[1]/usr/ctxtDY_PATH|
+|Folder path|ID obtained in the tracker|C:\users\user\documents|
+|Filename ID|ID obtained in the tracker|wnd[1]/usr/ctxtDY_FILENAME|
+|Filename|ID obtained in the tracker|file.txt|
+|Button ID|ID obtained in the tracker|wnd[1]/tbar[0]/btn[11]|
+|Timeout|Time lapse (in seconds) to search for the element|10|
