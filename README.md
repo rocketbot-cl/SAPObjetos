@@ -55,7 +55,10 @@ Replicate send key event
 Get a property of the SAP Object especified
 
 13. Wait for object  
-Wait for object to be visible  
+Wait for object to be visible
+
+14. Export file  
+Export a file from SAP  
 
 
 

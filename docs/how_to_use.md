@@ -76,7 +76,7 @@ Abrirá una ventana como esta
 
 ![sap8](imgs/sap8.png)
 
-Abre SAP y logueate. Una vez loqueado, dale click al ícono y sincronizará la sesión activa de SAP.
+Abre SAP y logueate. Una vez logueado, dale click al ícono y sincronizará la sesión activa de SAP.
 
 ![sap9](imgs/sap9.png)
 
@@ -86,6 +86,46 @@ Ve a "Recorder" y dale click en el ícono de Python.
 
 ---
 
+## Cómo usar este módulo
+Para usar este módulo, você precisa se conectar à sua conta SAP.
+
+Primeiro você deve ativar os scripts no SAP GUI.
+
+No SAP GUI, você deve ir para a transação RZ11; no nome do parâmetro, digite "sapgui/user_scripting" e clique em Exibir (display).
+
+![sap1](imgs/sap1.png)
+![sap2](imgs/sap2.png)
+
+Clique em “Alterar valor” e em “Novo valor” selecione "TRUE". Salve isso.
+
+![sap3](imgs/sap3.png)
+![sap4](imgs/sap4.png)
+
+A imagem a seguir indica que o GUI Scripting está habilitado no RZ11.
+
+![sap5](imgs/sap5.png)
+
+Em “Acessibilidade e scripting”, vá para “Scripting” e ative a opção “Ativar scripts”. Salve isso.
+
+![sap6](imgs/sap6.png)
+
+Como funcionar corretamente?
+
+Abrir Tracker.exe
+
+![sap7](imgs/sap7.png)
+
+Irá abrir uma janela como esta.
+
+![sap8](imgs/sap8.png)
+
+Abra o SAP e faça login. Uma vez logado, clique no ícone e sincronizará a sessão SAP ativa.
+
+![sap9](imgs/sap9.png)
+
+Vá em "Recorder" e clique no ícone Python.
+
+![sap10](imgs/sap10.png)
 
 
 

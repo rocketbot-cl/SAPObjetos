@@ -50,7 +50,7 @@ Abrirá una ventana como esta
 
 ![sap8](imgs/sap8.png)
 
-Abre SAP y logueate. Una vez loqueado, dale click al ícono y sincronizará la sesión activa de SAP.
+Abre SAP y logueate. Una vez logueado, dale click al ícono y sincronizará la sesión activa de SAP.
 
 ![sap9](imgs/sap9.png)
 
@@ -105,6 +105,7 @@ Extrae el texto de un objeto en SAP, mediante la propiedad text
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
+|Opciones|Opciones para extraer el texto||
 |Valor|Valor mostrado en el tracker después de un igual (=) (Ej. id.atributo = valor), o como entre parentesis (Ex. id.atributo(valor)|QMNUM|
 |Titulo|Opción para obtener el título junto con el texto en forma de diccionario||
 |Timeout|Lapso de tiempo (en segundos) para buscar el elemento|10|
@@ -201,3 +202,15 @@ Espera a que un objeto sea visible
 |ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
 |Timeout|Lapso de tiempo (en segundos) para buscar el elemento|10|
 |Asignar a Variable|Nombre de variable donde guardar el resultado|variable|
+
+### Exportar archivo
+  
+Exportar un archivo desde SAP
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|ID Carpeta|Identificador obtenido en el tracker|wnd[1]/usr/ctxtDY_PATH|
+|Ruta de carpeta|Identificador obtenido en el tracker|C:\users\user\documents|
+|ID de nombre de archivo|Identificador obtenido en el tracker|wnd[1]/usr/ctxtDY_FILENAME|
+|Nombre de archivo|Identificador obtenido en el tracker|file.txt|
+|ID boton|Identificador obtenido en el tracker|wnd[1]/tbar[0]/btn[11]|
+|Timeout|Lapso de tiempo (en segundos) para buscar el elemento|10|
