@@ -26,9 +26,10 @@ Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
 from win32com import client
 import sys
 import subprocess
-from time import time, sleep
+import time
 import os
 import traceback
+import configparser
 
 GetParams = GetParams #type:ignore
 tmp_global_obj = tmp_global_obj #type:ignore
@@ -60,20 +61,22 @@ global id_object
 global SAPObjetos_mod
 global SAP_session
 
+config = configparser.ConfigParser()
+config.read(os.path.join(base_path, 'modules', 'SAPObjetos','config.ini'))
+
 def open_sap(path):
     global subprocess
     subprocess.Popen(path)
     
 def waitForObject(session, id, timeout=10):
-    global time, sleep
-    inicio = time()
+    inicio = time.time()
     while True:
         try:
             return session.findById(id)
         except Exception as e:
             pass
-        sleep(1)
-        fin = time()
+        time.sleep(1)
+        fin = time.time()
         total = fin - inicio
         if total > timeout:
             return session.findById(id)
@@ -81,7 +84,7 @@ def waitForObject(session, id, timeout=10):
 
 timeout = GetParams("timeout")
 if not timeout:
-    timeout = 10
+    timeout = config.get('DEFAULT', 'timeout', fallback='10')
 else:
     timeout = int(timeout)
 """
@@ -121,7 +124,7 @@ if module == "LoginSap":
             t = Thread(target=open_sap, args=(path,))
             t.start()
 
-        inicio = time()
+        inicio = time.time()
         while True:
             try:
                 # print("Get Object 'SAPGUI'")
@@ -133,8 +136,8 @@ if module == "LoginSap":
             except Exception as e:
                 pass
 
-            sleep(1)
-            fin = time()
+            time.sleep(1)
+            fin = time.time()
             total = fin - inicio
             if total > 60:
                 # SetVar(result, False)
@@ -250,7 +253,7 @@ try:
 
             elif tipo == "contextMenu":
                 SelectedObj.contextMenu()
-                sleep(2)
+                time.sleep(2)
 
             elif tipo == "createSession":
                 SAP_session.createSession()
@@ -426,7 +429,6 @@ try:
     if module == "ExtraerTextoAyuda":
         # id_object = GetParams('id_object')
         var = GetParams('var')
-
         if id_object:
             val = SelectedObj.Tooltip
             SetVar(var,val)
@@ -545,7 +547,7 @@ try:
             path = cur_path + example
 
         p = subprocess.Popen([r"C:\Windows\System32\cscript.exe ", path], shell=True)
-        sleep(5)
+        time.sleep(5)
         print(p.communicate())
         
     if module == "wait_object":
