@@ -59,6 +59,10 @@ Ve a "Recorder" y dale click en el ícono de Python.
 
 ![sap10](imgs/sap10.png)
 
+# Timeout
+
+Configure los tiempos de espera en el archivo config.ini que se encuentra en la carpeta del módulo. El usuario puede configurar el tiempo de espera para abrir SAP y el tiempo de espera global que se utilizará en la ejecución de comandos.
+
 
 ## Descripción de los comandos
 

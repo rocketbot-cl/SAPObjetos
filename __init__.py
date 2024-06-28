@@ -26,7 +26,7 @@ Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
 from win32com import client
 import sys
 import subprocess
-import time
+from time import time
 import os
 import traceback
 import configparser
@@ -69,14 +69,14 @@ def open_sap(path):
     subprocess.Popen(path)
     
 def waitForObject(session, id, timeout=10):
-    inicio = time.time()
+    inicio = time()
     while True:
         try:
             return session.findById(id)
         except Exception as e:
             pass
         time.sleep(1)
-        fin = time.time()
+        fin = time()
         total = fin - inicio
         if total > timeout:
             return session.findById(id)
@@ -84,7 +84,7 @@ def waitForObject(session, id, timeout=10):
 
 timeout = GetParams("timeout")
 if not timeout:
-    timeout = config.get('DEFAULT', 'timeout', fallback='10')
+    timeout = int(config.get('COMMAND', 'timeout', fallback=10))
 else:
     timeout = int(timeout)
 """
@@ -124,7 +124,7 @@ if module == "LoginSap":
             t = Thread(target=open_sap, args=(path,))
             t.start()
 
-        inicio = time.time()
+        inicio = time()
         while True:
             try:
                 # print("Get Object 'SAPGUI'")
@@ -137,9 +137,10 @@ if module == "LoginSap":
                 pass
 
             time.sleep(1)
-            fin = time.time()
+            fin = time()
             total = fin - inicio
-            if total > 60:
+            open_timeout = int(config.get('OPEN', 'timeout', fallback=60))
+            if total > open_timeout:
                 # SetVar(result, False)
                 raise Exception("Timeout: SAP cannot be opened")
             

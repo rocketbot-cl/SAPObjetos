@@ -59,6 +59,10 @@ Go to
 
 ![sap10](imgs/sap10.png)
 
+# Timeouts
+
+Configure timeouts in the config.ini file that's located in the module folder. User can configure the timeout for opening SAP and the global timeout to be used in commands execution.
+
 
 ## Description of the commands
 
