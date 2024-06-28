@@ -58,6 +58,11 @@ Vá em "Recorder" e clique no ícone Python.
 
 ![sap10](imgs/sap10.png)
 
+# Timeout
+
+Configure
+ os tempos limite no arquivo config.ini localizado na pasta do módulo. O usuário pode configurar o timeout para abertura do SAP e o timeout global para ser utilizado na execução dos comandos.
+
 
 
 

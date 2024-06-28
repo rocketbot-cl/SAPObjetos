@@ -41,6 +41,10 @@ Go to "Recorder" and click on the Python icon.
 
 ![sap10](imgs/sap10.png)
 
+# Timeouts
+
+Configure timeouts in the config.ini file that's located in the module folder. User can configure the timeout for opening SAP and the global timeout to be used in commands execution.
+
 ---
 
 ## Cómo usar este módulo
@@ -84,6 +88,10 @@ Ve a "Recorder" y dale click en el ícono de Python.
 
 ![sap10](imgs/sap10.png)
 
+# Timeout
+
+Configure los tiempos de espera en el archivo config.ini que se encuentra en la carpeta del módulo. El usuario puede configurar el tiempo de espera para abrir SAP y el tiempo de espera global que se utilizará en la ejecución de comandos.
+
 ---
 
 ## Cómo usar este módulo
@@ -126,6 +134,10 @@ Abra o SAP e faça login. Uma vez logado, clique no ícone e sincronizará a ses
 Vá em "Recorder" e clique no ícone Python.
 
 ![sap10](imgs/sap10.png)
+
+# Timeout
+
+Configure os tempos limite no arquivo config.ini localizado na pasta do módulo. O usuário pode configurar o timeout para abertura do SAP e o timeout global para ser utilizado na execução dos comandos.
 
 
 
