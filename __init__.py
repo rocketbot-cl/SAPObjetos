@@ -26,7 +26,7 @@ Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
 from win32com import client
 import sys
 import subprocess
-from time import time
+from time import time, sleep
 import os
 import traceback
 import configparser
@@ -75,7 +75,7 @@ def waitForObject(session, id, timeout=10):
             return session.findById(id)
         except Exception as e:
             pass
-        time.sleep(1)
+        sleep(1)
         fin = time()
         total = fin - inicio
         if total > timeout:
@@ -136,7 +136,7 @@ if module == "LoginSap":
             except Exception as e:
                 pass
 
-            time.sleep(1)
+            sleep(1)
             fin = time()
             total = fin - inicio
             open_timeout = int(config.get('OPEN', 'timeout', fallback=60))
@@ -254,7 +254,7 @@ try:
 
             elif tipo == "contextMenu":
                 SelectedObj.contextMenu()
-                time.sleep(2)
+                sleep(2)
 
             elif tipo == "createSession":
                 SAP_session.createSession()
@@ -486,10 +486,10 @@ try:
         
         path_obj = waitForObject(SAP_session, path_id, timeout)
         path_obj.text = path
-        time.sleep(1)
+        sleep(1)
         file_obj = waitForObject(SAP_session, file_id, timeout)
         file_obj.text = file_name
-        time.sleep(2)
+        sleep(2)
         button_obj = waitForObject(SAP_session, button_id, timeout)
         button_obj.press()
     
@@ -548,7 +548,7 @@ try:
             path = cur_path + example
 
         p = subprocess.Popen([r"C:\Windows\System32\cscript.exe ", path], shell=True)
-        time.sleep(5)
+        sleep(5)
         print(p.communicate())
         
     if module == "wait_object":
