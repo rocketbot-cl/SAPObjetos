@@ -69,6 +69,7 @@ def open_sap(path):
     subprocess.Popen(path)
     
 def waitForObject(session, id, timeout=10):
+    from time import time
     inicio = time()
     while True:
         try:
