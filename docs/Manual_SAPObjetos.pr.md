@@ -92,6 +92,14 @@ Conecte-se a um aplicativo SAP aberto
 |Nome do conexão|Nome da conexão onde você deseja fazer o login|Desarrollo (Directo)|
 |Salvar resultado da conexão|Variável onde o resultado da conexão será salvo|variável|
 
+### Alterar Sessão
+  
+Alterar para outra sessão de uma conexão SAP
+|Parâmetros|Descrição|exemplo|
+| --- | --- | --- |
+|Número da sessão|Número da sessão para qual você deseja conectar|2|
+|Salvar resultado da conexão|Variável onde o resultado da conexão será salvo|variável|
+
 ### Executar uma ação
   
 Execute uma ação no SAP como selecionar, focar ou modificar o texto de um elemento através de diferentes propriedades (setFocus, text, etc.)

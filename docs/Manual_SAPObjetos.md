@@ -90,6 +90,14 @@ Connect to an opened SAP application
 |Connection Name|Connection name where you want to do login|Developer (Direct)|
 |Save connection result|Variable where the connection result will be saved|variable|
 
+### Change Session
+  
+Change to another session of a SAP connection
+|Parameters|Description|example|
+| --- | --- | --- |
+|Session number|Session number to which you want to connect|2|
+|Save connection result|Variable where the connection result will be saved|variable|
+
 ### Execute an action
   
 Execute an action in SAP such as selecting, focusing or modifying the text of an element through different properties (setFocus, text, etc.)

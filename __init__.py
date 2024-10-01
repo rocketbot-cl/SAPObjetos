@@ -173,6 +173,7 @@ if module == "LoginSap":
 if module == "Connect":
 
     conn = GetParams('conn')
+    var = GetParams('variable')
     """
         validaciones
     """
@@ -189,12 +190,26 @@ if module == "Connect":
 
         if SAPObjetos_mod:
             SAPObject = SAPObjetos_mod
-
+        SetVar(var, True)
     except Exception as e:
         traceback.print_exc()
         PrintException()
         print(sys.exc_info()[0])
         SAPObject = None
+        SetVar(var, False)
+        raise e
+
+if module == "ChangeSession":
+
+    session_num = GetParams('session_num')
+
+    try:
+        print("Sessions Count: ", SAPObjetos_mod.Children.Count)
+        SAP_session = SAPObjetos_mod.Children(int(session_num))
+
+    except Exception as e:
+        traceback.print_exc()
+        PrintException()
         raise e
 
 try:
