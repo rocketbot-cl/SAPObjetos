@@ -7,7 +7,7 @@
     "pr": "Com este módulo você pode automatizar SAP R3 e Hana. Execute todas as ações que você pode gravar com o rastreador criado por Stefan Schnell."
   },
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "12.11.23",
+  "version": "12.12.23",
   "license": "MIT",
   "homepage": "http://rocketbot.com/",
   "linux": false,
@@ -341,6 +341,88 @@
       "video_youtube": "",
       "icon": "data:image/png;base64,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",
       "module": "Connect",
+      "module_name": "SAPObjetos",
+      "visible": true,
+      "options": false,
+      "father": "module",
+      "group": "scripts",
+      "linux": false,
+      "windows": true,
+      "mac": false,
+      "docker": true
+    },
+    {
+      "en": {
+        "title": "Change Session",
+        "description": "Change to another session of a SAP connection",
+        "title_options": "Select Option",
+        "options": null
+      },
+      "es": {
+        "title": "Cambiar sesión",
+        "description": "Cambiar a otra sesión de una conexión con SAP",
+        "title_options": "Seleccione una opción",
+        "options": null
+      },
+      "pr": {
+        "title": "Alterar Sessão",
+        "description": "Alterar para outra sessão de uma conexão SAP",
+        "title_options": "Selecione a opção",
+        "options": null
+      },
+      "form": {
+        "css": "modal-lg",
+        "inputs": [
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "2",
+              "en": "2",
+              "pr": "2"
+            },
+            "title": {
+              "es": "Numero de sesión",
+              "en": "Session number",
+              "pr": "Número da sessão"
+            },
+            "description": {
+              "es": "Numero de sesion a la cual se quiere conectar",
+              "en": "Session number to which you want to connect",
+              "pr": "Número da sessão para qual você deseja conectar"
+            },
+            "id": "session_num",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "variable",
+              "en": "variable",
+              "pr": "variável"
+            },
+            "title": {
+              "es": "Guardar resultado de conexión",
+              "en": "Save connection result",
+              "pr": "Salvar resultado da conexão"
+            },
+            "description": {
+              "es": "Variable donde se guardará el resultado de la conexión",
+              "en": "Variable where the connection result will be saved",
+              "pr": "Variável onde o resultado da conexão será salvo"
+            },
+            "help": {
+                "es": "Nombre de la variable sin {}",
+                "en": "Variable name without {}",
+                "pr": "Nome da variável sem {}"
+            },
+            "id": "variable",
+            "css": "col-md-6"
+          }
+        ]
+      },
+      "video_youtube": "",
+      "icon": "data:image/png;base64,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",
+      "module": "ChangeSession",
       "module_name": "SAPObjetos",
       "visible": true,
       "options": false,

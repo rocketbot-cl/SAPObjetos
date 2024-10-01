@@ -24,40 +24,43 @@ Abre o aplicativo SAP, estabeleça a conexão e faz login
 2. Conectar  
 Conecte-se a um aplicativo SAP aberto
 
-3. Executar uma ação  
+3. Alterar Sessão  
+Alterar para outra sessão de uma conexão SAP
+
+4. Executar uma ação  
 Execute uma ação no SAP como selecionar, focar ou modificar o texto de um elemento através de diferentes propriedades (setFocus, text, etc.)
 
-4. Extrair Texto  
+5. Extrair Texto  
 Extrair o texto de um objeto no SAP, usando a propriedade text
 
-5. Extraia o texto de ajuda  
+6. Extraia o texto de ajuda  
 Extraia o texto de um objeto no SAP da caixa de ajuda
 
-6. Marque / desmarque  
+7. Marque / desmarque  
 Marque ou desmarque um objeto no SAP
 
-7. Extrair célula  
+8. Extrair célula  
 Extraia o texto em uma célula, pode ser com GetItemText ou GetCellValue
 
-8. Clique em célula  
+9. Clique em célula  
 Clique em uma célula. Pode ser com clickCurrentCell, setCurrentCell ou doubleClickCurrentCell
 
-9. Execute Script  
+10. Execute Script  
 Execute um gravador de script VBS com SAP
 
-10.   
+11.   
 
 
-11. Envio de tecla  
+12. Envio de tecla  
 Replica evento de envio de tecla
 
-12. Obter propriedade  
+13. Obter propriedade  
 Obtém uma propriedade do objeto SAP especificado
 
-13. Esperar objeto  
+14. Esperar objeto  
 Espera a que um objeto seja visível
 
-14. Exportar arquivo  
+15. Exportar arquivo  
 Exportar um arquivo do SAP  
 
 

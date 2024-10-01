@@ -5,8 +5,6 @@
 # SAP
   
 Con este módulo puedes automatizar SAP R3 y Hana. Realiza todas las acciones que puedas grabar con el rastreador creado por Stefan Schnell.  
-
-*Read this in other languages: [English](Manual_SAPObjetos.md), [Português](Manual_SAPObjetos.pr.md), [Español](Manual_SAPObjetos.es.md)*
   
 ![banner](imgs/Banner_SAPObjetos.png)
 ## Como instalar este módulo
@@ -88,6 +86,14 @@ Conéctese a una aplicación SAP abierta
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |Nombre Conexión|Nombre de la conexión donde quieres hacer login|Desarrollo (Directo)|
+|Guardar resultado de conexión|Variable donde se guardará el resultado de la conexión|variable|
+
+### Cambiar sesión
+  
+Cambiar a otra sesión de una conexión con SAP
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|Numero de sesión|Numero de sesion a la cual se quiere conectar|2|
 |Guardar resultado de conexión|Variable donde se guardará el resultado de la conexión|variable|
 
 ### Ejecutar una acción

@@ -24,40 +24,43 @@ Open SAP application, establish the connection and login
 2. Connect  
 Connect to an opened SAP application
 
-3. Execute an action  
+3. Change Session  
+Change to another session of a SAP connection
+
+4. Execute an action  
 Execute an action in SAP such as selecting, focusing or modifying the text of an element through different properties (setFocus, text, etc.)
 
-4. Extract Text  
+5. Extract Text  
 Extract the text of an object in SAP, using the text property
 
-5. Extract text from tooltip  
+6. Extract text from tooltip  
 Extract the text of an object tooltip in SAP
 
-6. Check/Uncheck  
+7. Check/Uncheck  
 Mark or unmark an object in SAP
 
-7. Extract Cell  
+8. Extract Cell  
 Extract the text in a cell, it can be with GetItemText or GetCellValue
 
-8. Click Cell  
+9. Click Cell  
 Click on a cell. It can be with clickCurrentCell, setCurrentCell or doubleClickCurrentCell
 
-9. Run script  
+10. Run script  
 Execute VBS script recorded with SAP
 
-10. Get state checkbox  
+11. Get state checkbox  
 Return True if checkbox is selected
 
-11. Send key  
+12. Send key  
 Replicate send key event
 
-12. Get Property  
+13. Get Property  
 Get a property of the SAP Object especified
 
-13. Wait for object  
+14. Wait for object  
 Wait for object to be visible
 
-14. Export file  
+15. Export file  
 Export a file from SAP  
 
 
