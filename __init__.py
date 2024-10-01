@@ -386,7 +386,11 @@ try:
                         SelectedObj.doubleClickItem(input_)
                 else:
                     SelectedObj.doubleClickItem(row, column)
-
+            elif tipo == "selectAll":
+                SelectedObj.selectAll()
+            elif tipo == "modifyCell":
+                SelectedObj.modifyCell(row, column, input_)
+                
         if id_object:
             if async_sap and eval(async_sap):
                 q = Queue()

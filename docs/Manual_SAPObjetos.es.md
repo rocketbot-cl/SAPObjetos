@@ -5,8 +5,6 @@
 # SAP
   
 Con este módulo puedes automatizar SAP R3 y Hana. Realiza todas las acciones que puedas grabar con el rastreador creado por Stefan Schnell.  
-
-*Read this in other languages: [English](Manual_SAPObjetos.md), [Português](Manual_SAPObjetos.pr.md), [Español](Manual_SAPObjetos.es.md)*
   
 ![banner](imgs/Banner_SAPObjetos.png)
 ## Como instalar este módulo

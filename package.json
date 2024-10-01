@@ -623,6 +623,10 @@
                 "value": "select"
               },
               {
+                "title": "selectAll",
+                "value": "selectAll"
+              },
+              {
                 "title": "setFocus",
                 "value": "setFocus"
               },
@@ -677,6 +681,10 @@
               {
                 "title": "doubleClickItem",
                 "value": "doubleClickItem"
+              },
+              {
+                "title": "modifyCell",
+                "value": "modifyCell"
               }
               
             ],
