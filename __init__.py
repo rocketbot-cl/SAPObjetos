@@ -305,6 +305,9 @@ try:
             elif tipo == "currentCellColumn":
                 SelectedObj.currentCellColumn(input_)
 
+            elif tipo == "currentCellRow":
+                SelectedObj.currentCellRow = int(input_)
+
             elif tipo == "selectContextMenuItem":
                 SelectedObj.selectContextMenuItem(input_)
 
@@ -393,7 +396,12 @@ try:
                 SelectedObj.selectAll()
             elif tipo == "modifyCell":
                 SelectedObj.modifyCell(row, column, input_)
-                
+            elif tipo == "doubleClickNode":
+                try:
+                    SelectedObj.DoubleClickNode(input_)
+                except Exception as e:
+                    PrintException(e) 
+
         if id_object:
             if async_sap and eval(async_sap):
                 q = Queue()
@@ -408,7 +416,6 @@ try:
         caption = GetParams('caption')
         var = GetParams('var')
         input_ = GetParams('input_')
-                
         if tipo == "TreeObject.GetNodeTextByKey" or not tipo:
             if input_:
                 try:
@@ -642,7 +649,10 @@ try:
                 properties["ChildrenCount"] = object.getNodeChildrenCount(value)
             except:
                 pass
-
+            try:
+                properties["RowCount"] = object.RowCount
+            except:
+                pass
             return properties[property]
 
         # id_object = GetParams('id_object')
