@@ -426,6 +426,16 @@ try:
                 # Kept for compatibility
                 val = SelectedObj.text
 
+        if tipo == "TreeObject.GetNodeTextByPath" or not tipo:
+            if input_:
+                try:
+                    val = SelectedObj.GetNodeTextByPath(input_)
+                except:
+                    pass
+            else:
+                # Kept for compatibility
+                val = SelectedObj.text
+
         if tipo == "GetItemText":
             if input_:
                 try:
