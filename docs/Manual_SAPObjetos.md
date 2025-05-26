@@ -82,6 +82,18 @@ Open SAP application, establish the connection and login
 |Asynchronous mode|Connect asynchronously|Checkbox|
 |Save connection result|Variable where the connection result will be saved|variable|
 
+### Complete Login SAP
+  
+Establish the connection and login
+|Parameters|Description|example|
+| --- | --- | --- |
+|User ID|The ID of SAP User field |wnd[0]/usr/txtRSYST-BNAME|
+|User|User name that you enter in the user field to login|User1|
+|Password ID|The ID of SAP password field |wnd[0]/usr/pwdRSYST-BCODE|
+|Password|Password that you enter in the password field to login|Password|
+|Login Button ID|The ID of the SAP login button|wnd[0]/tbar[1]/btn[0]|
+|Save connection result|Variable where the connection result will be saved|variable|
+
 ### Connect
   
 Connect to an opened SAP application
