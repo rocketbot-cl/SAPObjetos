@@ -21,46 +21,49 @@ Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
 1. LoginSap  
 Abre la aplicación SAP, establece la conexión y realiza el login
 
-2. Conectar  
+2. Completar Login SAP  
+Establece la conexión y realiza el login
+
+3. Conectar  
 Conéctese a una aplicación SAP abierta
 
-3. Cambiar sesión  
+4. Cambiar sesión  
 Cambiar a otra sesión de una conexión con SAP
 
-4. Ejecutar una acción  
+5. Ejecutar una acción  
 Ejecutar una acción en SAP como seleccionar, hacer foco o modificar el texto de un elemento mediante diferentes propiedades (setFocus, text, etc.)
 
-5. Extraer Texto  
+6. Extraer Texto  
 Extrae el texto de un objeto en SAP, mediante la propiedad text
 
-6. Extraer texto de ayuda  
+7. Extraer texto de ayuda  
 Extrae el texto de un objeto en SAP del recuadro de ayuda
 
-7. Marca/Desmarca Check  
+8. Marca/Desmarca Check  
 Marca o desmarca un objeto en SAP
 
-8. Extraer Celda  
+9. Extraer Celda  
 Extrae el texto en una celda, puede ser con GetItemText o GetCellValue
 
-9. Click en Celda  
+10. Click en Celda  
 Realiza un click en una celda. Puede ser con clickCurrentCell, setCurrentCell o doubleClickCurrentCell
 
-10. Ejecutar Script  
+11. Ejecutar Script  
 Ejecuta un script VBS grabador con SAP
 
-11. Obtener estado de checkbox  
+12. Obtener estado de checkbox  
 Devuelve True si el checkbox está seleccionado
 
-12. Enviar tecla  
+13. Enviar tecla  
 Replica el evento enviar tecla
 
-13. Obtener propiedad  
+14. Obtener propiedad  
 Obtiene una propiedad del objeto SAP especificado
 
-14. Esperar objeto  
+15. Esperar objeto  
 Espera a que un objeto sea visible
 
-15. Exportar archivo  
+16. Exportar archivo  
 Exportar un archivo desde SAP  
 
 

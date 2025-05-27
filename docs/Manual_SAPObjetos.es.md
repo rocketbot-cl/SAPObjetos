@@ -5,6 +5,8 @@
 # SAP
   
 Con este módulo puedes automatizar SAP R3 y Hana. Realiza todas las acciones que puedas grabar con el rastreador creado por Stefan Schnell.  
+
+*Read this in other languages: [English](Manual_SAPObjetos.md), [Português](Manual_SAPObjetos.pr.md), [Español](Manual_SAPObjetos.es.md)*
   
 ![banner](imgs/Banner_SAPObjetos.png)
 ## Como instalar este módulo
@@ -78,6 +80,18 @@ Abre la aplicación SAP, establece la conexión y realiza el login
 |Modo sincrono|Realizar conexión de modo síncrono|Checkbox|
 |Timeout|Lapso de tiempo (en segundos) para buscar el elemento|10|
 |Modo asincrono|Realizar conexión de modo asíncrono|Checkbox|
+|Guardar resultado de conexión|Variable donde se guardará el resultado de la conexión|variable|
+
+### Completar Login SAP
+  
+Establece la conexión y realiza el login
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|ID Usuario|Identificador del campo de usuario de SAP|wnd[0]/usr/txtRSYST-BNAME|
+|Usuario|Nombre de usuario que ingresas en el campo usuario al hacer login|Usuario1|
+|ID Password|Identificador del campo de contraseña de SAP|wnd[0]/usr/pwdRSYST-BCODE|
+|Contraseña|Contraseña que ingresas en el campo contraseña al hacer login|Contraseña|
+|ID del Botón Login|Identificador del botón para realizar el login de SAP|wnd[0]/tbar[1]/btn[0]|
 |Guardar resultado de conexión|Variable donde se guardará el resultado de la conexión|variable|
 
 ### Conectar

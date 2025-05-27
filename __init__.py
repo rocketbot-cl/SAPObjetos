@@ -170,6 +170,51 @@ if module == "LoginSap":
         SAPObject = None
         raise e
 
+if module == "CompleteLogin":
+    id_user = GetParams('id_user')
+    user = GetParams('user')
+    id_pass = GetParams('id_pass')
+    password = GetParams('password')
+    id_button = GetParams('id_btn')
+    var = GetParams('variable')
+    
+    try:
+        if not id_user or not id_pass:
+            raise Exception('No ha ingresado todos los datos')
+        SapGuiAuto = client.GetObject('SAPGUI')
+        application = SapGuiAuto.GetScriptingEngine
+        SAPObjetos_mod = application.Children(0)
+        SAP_session = None
+        try:
+            SAP_session = SAPObjetos_mod.Children(0)
+        except:
+            try:
+                SAP_session = SAPObjetos_mod.Children(1)
+            except:
+                raise Exception("Unable to connect to SAP Application. Check if RZ11 transaction is enabled.")
+        # SAP_session = SAPObjetos_mod.Children(0)
+
+        if user and password:
+            SelectedObj = waitForObject(SAP_session, id_user, timeout)
+            SelectedObj.SetFocus()
+            SelectedObj.text = user
+            SelectedObj = waitForObject(SAP_session, id_pass, timeout)
+            SelectedObj.text = password
+            if id_button:
+                btn = waitForObject(SAP_session, id_button, timeout)
+                btn.press()
+        if SAPObjetos_mod:
+            SAPObject = SAPObjetos_mod
+        SetVar(var, True)
+
+    except Exception as e:
+        PrintException()
+        print(sys.exc_info()[0])
+        SAPObject = None
+        SetVar(var, False)
+        raise e
+
+
 if module == "Connect":
 
     conn = GetParams('conn')
