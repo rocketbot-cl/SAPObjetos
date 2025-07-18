@@ -441,6 +441,9 @@ try:
                 SelectedObj.selectAll()
             elif tipo == "modifyCell":
                 SelectedObj.modifyCell(row, column, input_)
+            elif tipo == "ModifyCheckBox":
+                print(input_)
+                SelectedObj.ModifyCheckBox(row, column, input_)
             elif tipo == "doubleClickNode":
                 try:
                     SelectedObj.DoubleClickNode(input_)
