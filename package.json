@@ -1,6 +1,6 @@
 {
   "author": "Marcela Vergara",
-  "description": "Module to work with SAP R3 and Hana | Modulo para trabajar con SAP R3 y Hana",
+  "description": "Module to work with SAP R3 and Hana",
   "description_lang": {
     "en": "With this module you can automate SAP R3 and Hana. Perform every action that you can record with the tracker created by Stefan Schnell.",
     "es": "Con este módulo puedes automatizar SAP R3 y Hana. Realiza todas las acciones que puedas grabar con el rastreador creado por Stefan Schnell.",
