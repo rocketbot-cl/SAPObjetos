@@ -202,6 +202,7 @@ Replica el evento enviar tecla
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |ID Objeto|Identificador obtenido en el tracker|wnd[0]/tbar[0]/okcd|
+|Valor|Valor obtenido en el tracker|28|
 |Número de fila (Opcional)|Número de la fila donde se quiere enviar tecla. En el tracker aparecerá como selectedRows|0|
 |Nombre de la columna (Opcional)|Nombre de la columna donde se quiere enviar tecla. En el tracker aparecerá como currentCellColumn|TYPE_DOC|
 |Tecla|Tecla o combinación que se desea enviar|F1|

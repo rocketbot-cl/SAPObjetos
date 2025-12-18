@@ -204,6 +204,7 @@ Replica evento de envio de tecla
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
 |ID Objeto|Identificador obtido no tracker|wnd[0]/tbar[0]/okcd|
+|Valor|Valor obtido no tracker|28|
 |Row number (Optional)|Número da linha onde você deseja enviar a chave. No tracker aparecerá como selectedRows|0|
 |Column name (Optional)|Nome da coluna onde você deseja enviar a chave. No tracker aparecerá como currentCellColumn|TYPE_DOC|
 |tecla|Tecla ou combinação a ser enviada|F1|
