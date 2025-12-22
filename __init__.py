@@ -668,6 +668,7 @@ try:
         column = GetParams('column')
         row = GetParams('row')
         key = GetParams('key')
+        value = GetParams('Value')
 
         if not SAPObject:
             raise Exception("Debe iniciar sesión en SAP")
@@ -675,14 +676,22 @@ try:
         if not id_object:
             raise Exception("Field 'Id object' is empty")
 
-        if key.isdigit():
+        if key and key.isdigit():
             key = int(key)
-
+        if value and value.isdigit():
+            key = int(value)
         if column not in ["", None] and row not in ["", None]:
             SelectedObj.currentCellColumn = column
             SelectedObj.selectedRows = row
-        
-        SelectedObj.sendVKey(key)
+
+        try:
+            SelectedObj.sendVKey(key)
+        except Exception as e:
+            if key == 82:
+                SelectedObj.sendVKey(40)
+            else:
+                raise e        
+
 
     if module == "GetProperty":
         

@@ -202,6 +202,7 @@ Replicate send key event
 |Parameters|Description|example|
 | --- | --- | --- |
 |Object ID|ID obtained in the tracker|wnd[0]/tbar[0]/okcd|
+|Value|Value obtained in the tracker|28|
 |Row number (Optional)|Number of the row where you want to send the key. In the tracker it will appear as selectedRows|0|
 |Column name (Optional)|Name of the column where you want to send the key. In the tracker it will appear as currentCellColumn|TYPE_DOC|
 |Key|Key or combination to send|F1|
