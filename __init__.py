@@ -104,12 +104,11 @@ if module == "LoginSap":
     id_button = GetParams('id_btn')
     sync_sap = GetParams('sync_sap')
     async_sap = GetParams('async_sap')
-    # result = GetParams('result')  
+    result = GetParams('result')  
     """
         validaciones
     """
-    if not id_user or not id_pass or not conn or not path:
-        raise Exception('No ha ingresado todos los datos')
+    
 
     try:
         if not path:
@@ -128,10 +127,10 @@ if module == "LoginSap":
         inicio = time()
         while True:
             try:
-                # print("Get Object 'SAPGUI'")
+            
                 SapGuiAuto = client.GetObject('SAPGUI')
                 application = SapGuiAuto.GetScriptingEngine
-                # print("Open connection")
+                
                 SAPObjetos_mod = application.OpenConnection(conn, True)
                 break
             except Exception as e:
@@ -142,7 +141,7 @@ if module == "LoginSap":
             total = fin - inicio
             open_timeout = int(config.get('OPEN', 'timeout', fallback=60))
             if total > open_timeout:
-                # SetVar(result, False)
+                SetVar(result, False)
                 raise Exception("Timeout: SAP cannot be opened")
             
         SAP_session = None
@@ -153,16 +152,28 @@ if module == "LoginSap":
                 SAP_session = SAPObjetos_mod.Children(1)
             except:
                 raise Exception("Unable to connect to SAP Application. Check if RZ11 transaction is enabled.")
+            
+        do_login = bool(id_user and id_pass and user is not None and password is not None)
+        
 
-        if user and password:
+        if do_login:
             SelectedObj = waitForObject(SAP_session, id_user, timeout)
             SelectedObj.SetFocus()
             SelectedObj.text = user
             SelectedObj = waitForObject(SAP_session, id_pass, timeout)
             SelectedObj.text = password
 
+            if id_button:
+                btn = waitForObject(SAP_session, id_button, timeout)
+                btn.press()
+            
+        elif id_button:
+            btn = waitForObject(SAP_session, id_button, timeout)
+            btn.press()   
+        
         if SAPObjetos_mod:
             SAPObject = SAPObjetos_mod
+        SetVar(result, True)
 
     except Exception as e:
         PrintException()
