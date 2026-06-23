@@ -397,16 +397,19 @@ try:
                     SelectedObj.expandNode = input_
             elif tipo == "selectItem":
                 try:
-                    split_input = input_.split(',')
-                    param1 = split_input[0]
-                    param2 = split_input[1]
-                    
-                    if param1.startswith('"'):
-                        param1 = eval(param1)
-                    if param2.startswith('"'):
-                        param2 = eval(param2)
-                    print(param1,param2, SelectedObj)
-                    SelectedObj.selectItem(param1,param2)
+                    if input_:
+                        split_input = input_.split(',')
+                        param1 = split_input[0]
+                        param2 = split_input[1]
+                        
+                        if param1.startswith('"'):
+                            param1 = eval(param1)
+                        if param2.startswith('"'):
+                            param2 = eval(param2)
+                        print(param1,param2, SelectedObj)
+                        SelectedObj.selectItem(param1,param2)
+                    else:
+                        SelectedObj.selectItem(row, column)
                 except Exception as e:
                     PrintException(e) 
                     SelectedObj.selectItem(input_)
@@ -701,7 +704,7 @@ try:
             if key == 82:
                 SelectedObj.sendVKey(40)
             else:
-                raise e        
+                raise e
 
 
     if module == "GetProperty":
